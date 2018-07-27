@@ -22,6 +22,9 @@ namespace EstoqueMangas.Core.Entities
             this.Nome = nome;
             this.Endereco = endereco;
             this.Telefones = new List<Telefone>();
+
+            new AddNotifications<Editora>(this)
+                .IfNullOrEmpty(e => e.Nome);
         }
         #endregion 
     }

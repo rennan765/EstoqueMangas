@@ -17,6 +17,10 @@ namespace EstoqueMangas.Core.ValueObjects
             this.Ddd = ddd;
             this.Numero = numero;
             this.TipoTelefone = tipoTelefone;
+
+            new AddNotifications<Telefone>(this)
+                .IfNullOrEmpty(tel => tel.Ddd.ToString())
+                .IfNullOrEmpty(tel => tel.Numero);
         }
         #endregion 
     }

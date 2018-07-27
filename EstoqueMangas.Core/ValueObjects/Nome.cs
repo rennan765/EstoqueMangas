@@ -14,8 +14,11 @@ namespace EstoqueMangas.Core.ValueObjects
         {
             this.PrimeiroNome = primeiroNome;
             this.UltimoNome = ultimoNome;
+
+            new AddNotifications<Nome>(this)
+                .IfNullOrEmpty(nom => nom.PrimeiroNome)
+                .IfNullOrEmpty(nom => nom.UltimoNome);
         }
         #endregion
-
     }
 }

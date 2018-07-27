@@ -1,5 +1,4 @@
 ﻿using System;
-using EstoqueMangas.Core.Enuns;
 using prmToolkit.NotificationPattern;
 
 namespace EstoqueMangas.Core.ValueObjects
@@ -25,6 +24,14 @@ namespace EstoqueMangas.Core.ValueObjects
             Cidade = cidade;
             Estado = estado;
             Cep = cep;
+
+            new AddNotifications<Endereco>(this)
+                .IfNullOrEmpty(end => end.Logradouro)
+                .IfNullOrEmpty(end => end.Numero.ToString())
+                .IfNullOrEmpty(end => end.Complemento)
+                .IfNullOrEmpty(end => end.Cidade)
+                .IfNullOrEmpty(end => end.Estado)
+                .IfNullOrEmpty(end => end.Cep);
         }
         #endregion 
     }

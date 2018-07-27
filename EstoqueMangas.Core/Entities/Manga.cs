@@ -24,6 +24,9 @@ namespace EstoqueMangas.Core.Entities
             this.Autores = autores;
             this.AnoLancamento = anoLancamento;
             this.Edicoes = edicoes;
+
+            new AddNotifications<Manga>(this)
+                .IfNullOrWhiteSpace(m => m.Titulo);
         }
         #endregion
     }
