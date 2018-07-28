@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using EstoqueMangas.Core.Resources;
 using EstoqueMangas.Core.ValueObjects;
 using prmToolkit.NotificationPattern;
+using prmToolkit.NotificationPattern.Extensions;
 
 namespace EstoqueMangas.Core.Entities
 {
@@ -24,7 +26,7 @@ namespace EstoqueMangas.Core.Entities
             this.Telefones = new List<Telefone>();
 
             new AddNotifications<Editora>(this)
-                .IfNullOrEmpty(e => e.Nome);
+                .IfNullOrEmpty(e => e.Nome, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Nome da Editora"));
         }
         #endregion 
     }

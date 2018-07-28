@@ -1,5 +1,7 @@
 ﻿using System;
+using EstoqueMangas.Core.Resources;
 using prmToolkit.NotificationPattern;
+using prmToolkit.NotificationPattern.Extensions;
 
 namespace EstoqueMangas.Core.ValueObjects
 {
@@ -26,12 +28,13 @@ namespace EstoqueMangas.Core.ValueObjects
             Cep = cep;
 
             new AddNotifications<Endereco>(this)
-                .IfNullOrEmpty(end => end.Logradouro)
-                .IfNullOrEmpty(end => end.Numero.ToString())
-                .IfNullOrEmpty(end => end.Complemento)
-                .IfNullOrEmpty(end => end.Cidade)
-                .IfNullOrEmpty(end => end.Estado)
-                .IfNullOrEmpty(end => end.Cep);
+                .IfNullOrEmpty(end => end.Logradouro, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Logradouro"))
+                .IfNullOrEmpty(end => end.Numero.ToString(), Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Número"))
+                .IfLowerThan(end => end.Numero, 1, Message.CAMPO_X0_INVALIDO_FAVOR_INSERIR_NUMERO_MAIOR_QUE_X1.ToFormat("Número"), 1)
+                .IfNullOrEmpty(end => end.Complemento, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Complemento"))
+                .IfNullOrEmpty(end => end.Cidade, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Cidade"))
+                .IfNullOrEmpty(end => end.Estado, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Estado"))
+                .IfNullOrEmpty(end => end.Cep, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Cep"));
         }
         #endregion 
     }

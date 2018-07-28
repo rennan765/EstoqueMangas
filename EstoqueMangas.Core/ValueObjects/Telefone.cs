@@ -1,5 +1,7 @@
 ﻿using EstoqueMangas.Core.Enuns;
+using EstoqueMangas.Core.Resources;
 using prmToolkit.NotificationPattern;
+using prmToolkit.NotificationPattern.Extensions;
 
 namespace EstoqueMangas.Core.ValueObjects
 {
@@ -19,8 +21,8 @@ namespace EstoqueMangas.Core.ValueObjects
             this.TipoTelefone = tipoTelefone;
 
             new AddNotifications<Telefone>(this)
-                .IfNullOrEmpty(tel => tel.Ddd.ToString())
-                .IfNullOrEmpty(tel => tel.Numero);
+                .IfNullOrEmpty(tel => tel.Ddd.ToString(), Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Ddd"))
+                .IfNullOrEmpty(tel => tel.Numero, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Número de Telefone"));
         }
         #endregion 
     }

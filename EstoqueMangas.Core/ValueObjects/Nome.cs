@@ -1,4 +1,6 @@
-﻿using prmToolkit.NotificationPattern;
+﻿using EstoqueMangas.Core.Resources;
+using prmToolkit.NotificationPattern;
+using prmToolkit.NotificationPattern.Extensions;
 
 namespace EstoqueMangas.Core.ValueObjects
 {
@@ -16,8 +18,8 @@ namespace EstoqueMangas.Core.ValueObjects
             this.UltimoNome = ultimoNome;
 
             new AddNotifications<Nome>(this)
-                .IfNullOrEmpty(nom => nom.PrimeiroNome)
-                .IfNullOrEmpty(nom => nom.UltimoNome);
+                .IfNullOrEmpty(nom => nom.PrimeiroNome, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Primeiro Nome"))
+                .IfNullOrEmpty(nom => nom.UltimoNome, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Último Nome"));
         }
         #endregion
     }

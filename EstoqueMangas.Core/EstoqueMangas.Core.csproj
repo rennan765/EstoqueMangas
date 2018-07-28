@@ -7,7 +7,6 @@
   <ItemGroup>
     <Compile Remove="Class1.cs" />
     <Compile Remove="Enuns\Estado.cs" />
-    <Compile Remove="Resources\Message.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="prmToolkit.NotificationPattern" Version="1.0.20" />
@@ -20,5 +19,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\Message.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Message.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

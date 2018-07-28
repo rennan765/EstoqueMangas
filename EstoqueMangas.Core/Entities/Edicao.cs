@@ -1,5 +1,7 @@
 ﻿using System;
+using EstoqueMangas.Core.Resources;
 using prmToolkit.NotificationPattern;
+using prmToolkit.NotificationPattern.Extensions;
 
 namespace EstoqueMangas.Core.Entities
 {
@@ -27,11 +29,11 @@ namespace EstoqueMangas.Core.Entities
             this.Numero = numero;
 
             new AddNotifications<Edicao>(this)
-                .IfNull(e => e.Manga)
-                .IfNull(e => e.Editora)
-                .IfNullOrEmpty(e => e.EdicaoManga)
-                .IfNull(e => e.Numero)
-                .IfLowerThan(e => e.Numero, 1);
+                .IfNull(e => e.Manga, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Mangá"))
+                .IfNull(e => e.Editora, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Editora"))
+                .IfNullOrEmpty(e => e.EdicaoManga, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Edição do Mangá"))
+                .IfNull(e => e.Numero, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Número da Edição"))
+                .IfLowerThan(e => e.Numero, 1, Message.CAMPO_X0_INVALIDO_FAVOR_INSERIR_NUMERO_MAIOR_QUE_X1.ToFormat("Mangá", 0));
         }
         #endregion 
     }
