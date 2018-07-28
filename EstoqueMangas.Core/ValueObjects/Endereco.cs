@@ -30,7 +30,7 @@ namespace EstoqueMangas.Core.ValueObjects
             new AddNotifications<Endereco>(this)
                 .IfNullOrEmpty(end => end.Logradouro, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Logradouro"))
                 .IfNullOrEmpty(end => end.Numero.ToString(), Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Número"))
-                .IfLowerThan(end => end.Numero, 1, Message.CAMPO_X0_INVALIDO_FAVOR_INSERIR_NUMERO_MAIOR_QUE_X1.ToFormat("Número"), 1)
+                //.IfLowerThan(end => end.Numero, 1, Message.CAMPO_X0_INVALIDO_FAVOR_INSERIR_NUMERO_MAIOR_QUE_X1.ToFormat("Número"), 1)
                 .IfNullOrEmpty(end => end.Complemento, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Complemento"))
                 .IfNullOrEmpty(end => end.Cidade, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Cidade"))
                 .IfNullOrEmpty(end => end.Estado, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Estado"))
