@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EstoqueMangas.Core.Entities.Join.AutorManga">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Manga" Type="EstoqueMangas.Core.Entities.Manga" FixedToPoint="true">
+      <Path>
+        <Point X="3.75" Y="0.5" />
+        <Point X="3.75" Y="0.125" />
+        <Point X="5.5" Y="0.125" />
+        <Point X="5.5" Y="0.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>gAgAAAABAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Join\AutorManga.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Autor" />
+      <Property Name="Manga" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="EstoqueMangas.Core.Entities.Autor">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Autor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EstoqueMangas.Core.Entities.Edicao">
+    <Position X="3" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAABAAEAAAAAAAAAACAAAAAQAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Entities\Edicao.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Manga" />
+      <Property Name="Editora" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="EstoqueMangas.Core.Entities.Editora">
+    <Position X="4.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAEAA=</HashCode>
+      <FileName>Entities\Editora.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EstoqueMangas.Core.Entities.Manga">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAQABAAAAAAAAAAAAAAAAAAAAFA=</HashCode>
+      <FileName>Entities\Manga.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EstoqueMangas.Core.Entities.Usuario">
+    <Position X="1" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAACAAAAACAAAAAEAAAAAAAAACAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Entities\Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
