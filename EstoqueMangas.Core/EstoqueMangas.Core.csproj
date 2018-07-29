@@ -8,6 +8,7 @@
     <Compile Remove="Class1.cs" />
     <Compile Remove="Enuns\Estado.cs" />
     <Compile Remove="Interfaces\Build\IBuild.cs" />
+    <Compile Remove="Interfaces\Services\IServiceJogador.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="prmToolkit.NotificationPattern" Version="1.0.20" />
@@ -21,6 +22,12 @@
   <ItemGroup>
     <Folder Include="Extensions\" />
     <Folder Include="Entities\Build\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Interfaces\Arguments\" />
+    <Folder Include="Interfaces\Services\" />
+    <Folder Include="Interfaces\Services\Base\" />
+    <Folder Include="Interfaces\Repositores\" />
+    <Folder Include="Interfaces\Repositores\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\Message.Designer.cs">

@@ -7,7 +7,7 @@ namespace EstoqueMangas.Core.ValueObjects
 {
     public class Telefone : Notifiable
     {
-        #region Atributos
+        #region Propriedades
         public int Ddd { get; private set; }
         public string Numero { get; private set; }
         public TipoTelefone TipoTelefone { get; private set; }

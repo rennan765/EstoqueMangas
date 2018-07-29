@@ -8,7 +8,7 @@ namespace EstoqueMangas.Core.Entities
 {
     public class Autor : Notifiable
     {
-        #region Atributos 
+        #region Propriedades 
         public Guid Id { get; private set; }
         public Nome NomeAutor { get; private set; }
         public IList<AutorManga> Mangas { get; private set; }

@@ -6,7 +6,7 @@ namespace EstoqueMangas.Core.ValueObjects
 {
     public class Nome : Notifiable
     {
-        #region Atributos
+        #region Propriedades
         public string PrimeiroNome { get; private set; }
         public string UltimoNome { get; private set; }
         #endregion

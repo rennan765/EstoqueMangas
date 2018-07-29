@@ -7,7 +7,7 @@ namespace EstoqueMangas.Core.Entities
 {
     public class Edicao : Notifiable
     {
-        #region Atributos
+        #region Propriedades
         public Guid Id { get; private set; }
         public Guid MangaId { get; private set; }
         public Manga Manga { get; private set; }

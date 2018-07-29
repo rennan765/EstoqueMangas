@@ -4,22 +4,23 @@ using EstoqueMangas.Core.ValueObjects;
 
 namespace EstoqueMangas.Core.Entities.Build
 {
-    public class UsuarioBuild
+    public class UsuarioBuild : IDisposable
     {
 
-        #region Atributos
+        #region Propriedades
         public string PrimeiroNome { get; private set; }
         public string UltimoNome { get; private set; }
         public string Email { get; private set; }
-        public int DddFixo { get; private set; }
+        public string DddFixo { get; private set; }
         public string TelefoneFixo { get; private set; }
-        public int DddCelular { get; private set; }
+        public string DddCelular { get; private set; }
         public string TelefoneCelular { get; private set; }
         public string Senha { get; private set; }
+        public StatusUsuario Status { get; private set; }
         #endregion
 
         #region Construtores
-        public UsuarioBuild(string primeiroNome, string ultimoNome, string email, int dddFixo, string telefoneFixo, int dddCelular, string telefoneCelular, string senha)
+        public UsuarioBuild(string primeiroNome, string ultimoNome, string email, string dddFixo, string telefoneFixo, string dddCelular, string telefoneCelular, string senha, StatusUsuario statusUsuario)
         {
             this.PrimeiroNome = primeiroNome;
             this.UltimoNome = ultimoNome;
@@ -29,6 +30,7 @@ namespace EstoqueMangas.Core.Entities.Build
             this.DddCelular = dddCelular;
             this.TelefoneCelular = telefoneCelular;
             this.Senha = senha;
+            this.Status = statusUsuario;
         }
         #endregion
 
@@ -42,17 +44,33 @@ namespace EstoqueMangas.Core.Entities.Build
 
             if (!string.IsNullOrEmpty(this.TelefoneFixo))
             {
-                telefoneFixo = new Telefone(this.DddFixo, this.TelefoneFixo, TipoTelefone.Fixo);
+                telefoneFixo = new Telefone(Convert.ToInt32(this.DddFixo), this.TelefoneFixo, TipoTelefone.Fixo);
             }
 
             if (!string.IsNullOrEmpty(this.TelefoneFixo))
             {
-                telefoneCelular = new Telefone(this.DddCelular, this.TelefoneCelular, TipoTelefone.Celular);
+                telefoneCelular = new Telefone(Convert.ToInt32(this.DddCelular), this.TelefoneCelular, TipoTelefone.Celular);
             }
 
             return new Usuario(nome, email, telefoneFixo, telefoneCelular, this.Senha);
         }
-        #endregion 
 
+        private void LimpaCampos()
+        {
+            this.PrimeiroNome = null;
+            this.UltimoNome = null;
+            this.Email = null;
+            this.DddFixo = null;
+            this.TelefoneFixo = null;
+            this.DddCelular = null;
+            this.TelefoneCelular = null;
+            this.Senha = null;
+        }
+
+        public void Dispose()
+        {
+            this.LimpaCampos();
+        }
+        #endregion 
     }
 }

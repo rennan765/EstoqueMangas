@@ -23,5 +23,18 @@ namespace EstoqueMangas.Core.Extensions
 
             return hashValue.ToString();
         }
+
+        public static bool IsNumeric(this string texto)
+        {
+            bool isnumeric = false;
+            char[] datachars = texto.ToCharArray();
+
+            foreach (var datachar in datachars)
+            {
+                isnumeric = isnumeric ? char.IsDigit(datachar) : isnumeric;
+            }
+                
+            return isnumeric;
+        }
     }
 }

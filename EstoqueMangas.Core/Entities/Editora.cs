@@ -9,8 +9,7 @@ namespace EstoqueMangas.Core.Entities
 {
     public class Editora : Notifiable
     {
-        
-        #region Atributos
+        #region Propriedades
         public Guid Id { get; private set; }
         public string Nome { get; private set; }
         public Endereco Endereco { get; private set; }

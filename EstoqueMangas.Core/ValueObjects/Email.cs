@@ -6,7 +6,7 @@ namespace EstoqueMangas.Core.ValueObjects
 {
     public class Email : Notifiable
     {
-        #region Atributos
+        #region Propriedades
         public string EnderecoEmail { get; private set; }
         #endregion
 
