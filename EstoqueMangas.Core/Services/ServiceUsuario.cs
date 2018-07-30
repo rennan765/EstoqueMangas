@@ -10,6 +10,7 @@ using EstoqueMangas.Core.Interfaces.Repositores.Base;
 using EstoqueMangas.Core.Interfaces.Services;
 using prmToolkit.NotificationPattern;
 
+
 namespace EstoqueMangas.Core.Services
 {
     public class ServiceUsuario : Notifiable, IServiceUsuario
@@ -36,11 +37,20 @@ namespace EstoqueMangas.Core.Services
                 usuario = usuarioBuild.BuildAutenticar();
             }
 
-            usuario = _repository.Autenticar(usuario.Email.EnderecoEmail, usuario.Senha);
+            AddNotifications(usuario);
 
-            if (!(usuario is null))
+            if (!IsInvalid())
             {
-                return (AutenticarUsuarioResponse)usuario;
+                usuario = _repository.Autenticar(usuario.Email.EnderecoEmail, usuario.Senha);
+
+                if (!(usuario is null))
+                {
+                    return (AutenticarUsuarioResponse)usuario;
+                }
+                else
+                {
+                    return new ResponseBase(false);
+                }
             }
             else
             {

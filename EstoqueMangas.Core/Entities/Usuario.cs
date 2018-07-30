@@ -33,6 +33,8 @@ namespace EstoqueMangas.Core.Entities
                 .IfNullOrEmpty(u => u.Senha, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Senha"))
                 .IfNullOrInvalidLength(u => u.Senha, 8, 32, Message.A_SENHA_DEVE_TER_ENTRE_X0_E_X1_CARACTERES.ToFormat("8", "32"));
 
+            AddNotifications(this.Nome, this.Email, this.TelefoneFixo, this.TelefoneCelular);
+
             if (IsValid())
             {
                 this.Senha = this.Senha.ToHash();
@@ -54,7 +56,9 @@ namespace EstoqueMangas.Core.Entities
                 .IfNullOrEmpty(u => u.Senha, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Senha"))
                 .IfNullOrInvalidLength(u => u.Senha, 8, 32, Message.A_SENHA_DEVE_TER_ENTRE_X0_E_X1_CARACTERES.ToFormat("8", "32"))
                 .IfEnumInvalid(u => u.Status, Message.O_CAMPO_X0_E_INVALIDO.ToFormat("Status"));
-            
+
+            AddNotifications(this.Nome, this.Email, this.TelefoneFixo, this.TelefoneCelular);
+
             if (IsValid())
             {
                 this.Senha = this.Senha.ToHash();
@@ -69,6 +73,8 @@ namespace EstoqueMangas.Core.Entities
             new AddNotifications<Usuario>(this)
                 .IfNullOrEmpty(u => u.Senha, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Senha"))
                 .IfNullOrInvalidLength(u => u.Senha, 8, 32, Message.A_SENHA_DEVE_TER_ENTRE_X0_E_X1_CARACTERES.ToFormat("8", "32"));
+
+            AddNotifications(this.Email);
 
             if (IsValid())
             {
