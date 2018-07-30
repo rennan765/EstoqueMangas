@@ -16,12 +16,17 @@ namespace EstoqueMangas.Core.Repositories
             throw new NotImplementedException();
         }
 
-        public Usuario Editar(Usuario usuario)
+        public void Editar(Usuario usuario)
         {
             throw new NotImplementedException();
         }
 
-        public bool Excluir(Guid id)
+        public void Excluir(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ExisteEmail(string email)
         {
             throw new NotImplementedException();
         }

@@ -8,8 +8,9 @@ using EstoqueMangas.Core.Interfaces.Arguments;
 using EstoqueMangas.Core.Interfaces.Repositores;
 using EstoqueMangas.Core.Interfaces.Repositores.Base;
 using EstoqueMangas.Core.Interfaces.Services;
+using EstoqueMangas.Core.Resources;
 using prmToolkit.NotificationPattern;
-
+using prmToolkit.NotificationPattern.Extensions;
 
 namespace EstoqueMangas.Core.Services
 {
@@ -29,38 +30,80 @@ namespace EstoqueMangas.Core.Services
         #region Métodos
         public IResponse Autenticar(IRequest request)
         {
-            AutenticarUsuarioRequest autenticarUsuarioRequest = (AutenticarUsuarioRequest)request;
-            Usuario usuario = null;
-
-            using (var usuarioBuild = new UsuarioBuild(autenticarUsuarioRequest.Email, autenticarUsuarioRequest.Senha))
+            if (!(request is null))
             {
-                usuario = usuarioBuild.BuildAutenticar();
-            }
+                AutenticarUsuarioRequest autenticarUsuarioRequest = (AutenticarUsuarioRequest)request;
+                Usuario usuario = null;
 
-            AddNotifications(usuario);
-
-            if (!IsInvalid())
-            {
-                usuario = _repository.Autenticar(usuario.Email.EnderecoEmail, usuario.Senha);
-
-                if (!(usuario is null))
+                using (var usuarioBuild = new UsuarioBuild(autenticarUsuarioRequest.Email, autenticarUsuarioRequest.Senha))
                 {
-                    return (AutenticarUsuarioResponse)usuario;
+                    usuario = usuarioBuild.BuildAutenticar();
+                }
+
+                AddNotifications(usuario);
+
+                if (IsValid())
+                {
+                    usuario = _repository.Autenticar(usuario.Email.EnderecoEmail, usuario.Senha);
+
+                    if (!(usuario is null))
+                    {
+                        return (AutenticarUsuarioResponse)usuario;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
                 else
                 {
-                    return new ResponseBase(false);
+                    return null;
                 }
             }
             else
             {
-                return new ResponseBase(false);
+                NotificarRequestNulo();
+                return null;
             }
         }
 
         public IResponse Adicionar(IRequest request)
         {
-            throw new NotImplementedException();
+            if (!(request is null))
+            {
+                AdicionarUsuarioRequest adicionarUsuarioRequest = (AdicionarUsuarioRequest)request;
+                Usuario usuario = null;
+
+                using (var usuarioBuild = new UsuarioBuild(adicionarUsuarioRequest.PrimeiroNome, adicionarUsuarioRequest.UltimoNome, adicionarUsuarioRequest.Email, adicionarUsuarioRequest.DddFixo, adicionarUsuarioRequest.TelefoneFixo, adicionarUsuarioRequest.DddCelular, adicionarUsuarioRequest.TelefoneCelular, adicionarUsuarioRequest.Senha))
+                {
+                    usuario = usuarioBuild.BuildAdicionar();
+                }
+
+                AddNotifications(usuario);
+
+                if (IsValid())
+                {
+                    if (_repository.ExisteEmail(usuario.Email.ToString()))
+                    {
+                        usuario = _repository.Adicionar(usuario);
+                        return (AdicionarUsuarioResponse)usuario;
+                    }
+                    else
+                    {
+                        AddNotification("E-mail", "E-mail já cadastrado.");
+                        return null;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                NotificarRequestNulo();
+                return null;
+            }
         }
 
         public IResponse Editar(IRequest request)
@@ -72,6 +115,11 @@ namespace EstoqueMangas.Core.Services
         {
             throw new NotImplementedException();
         } 
+
+        private void NotificarRequestNulo()
+        {
+            AddNotification("Request", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Request"));
+        }
         #endregion
     }
 }

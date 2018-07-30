@@ -19,6 +19,13 @@ namespace EstoqueMangas.Core.ValueObjects
                 .IfNotEmail(e => e.EnderecoEmail, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("E-mail"))
                 .IfNotEmail(e => e.EnderecoEmail, Message.O_CAMPO_X0_E_INVALIDO.ToFormat("E-mail"));
         }
+        #endregion
+
+        #region Métodos
+        public override string ToString()
+        {
+            return this.EnderecoEmail;
+        }
         #endregion 
     }
 }

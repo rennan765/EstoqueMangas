@@ -8,7 +8,8 @@ namespace EstoqueMangas.Core.Interfaces.Repositores
     {
         Usuario Autenticar(string email, string senha);
         Usuario Adicionar(Usuario usuario);
-        Usuario Editar(Usuario usuario);
-        bool Excluir(Guid id);
+        void Editar(Usuario usuario);
+        void Excluir(Guid id);
+        bool ExisteEmail(string email);
     }
 }
