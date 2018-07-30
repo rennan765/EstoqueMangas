@@ -32,10 +32,16 @@ namespace EstoqueMangas.Core.Entities.Build
             this.Senha = senha;
             this.Status = statusUsuario;
         }
+
+        public UsuarioBuild(string email, string senha)
+        {
+            this.Email = email;
+            this.Senha = senha;
+        }
         #endregion
 
         #region Métodos
-        public Usuario Build()
+        public Usuario BuildCompleto()
         {
             var nome = new Nome(this.PrimeiroNome, this.UltimoNome);
             var email = new Email(this.Email);
@@ -53,6 +59,11 @@ namespace EstoqueMangas.Core.Entities.Build
             }
 
             return new Usuario(nome, email, telefoneFixo, telefoneCelular, this.Senha);
+        }
+
+        public Usuario BuildAutenticar()
+        {
+            return new Usuario(new Email(this.Email), this.Senha);
         }
 
         private void LimpaCampos()

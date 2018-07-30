@@ -22,5 +22,12 @@ namespace EstoqueMangas.Core.ValueObjects
                 .IfNullOrEmpty(nom => nom.UltimoNome, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Último Nome"));
         }
         #endregion
+
+        #region Métodos
+        public override string ToString()
+        {
+            return $"{this.PrimeiroNome} {this.UltimoNome}";
+        }
+        #endregion 
     }
 }

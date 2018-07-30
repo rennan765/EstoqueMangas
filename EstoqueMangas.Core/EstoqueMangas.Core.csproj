@@ -28,6 +28,10 @@
     <Folder Include="Interfaces\Services\Base\" />
     <Folder Include="Interfaces\Repositores\" />
     <Folder Include="Interfaces\Repositores\Base\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Services\" />
+    <Folder Include="Arguments\" />
+    <Folder Include="Arguments\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\Message.Designer.cs">

@@ -4,7 +4,7 @@ using prmToolkit.NotificationPattern;
 
 namespace EstoqueMangas.Core.Interfaces.Services.Base
 {
-    public interface IService : INotifiable, IDisposable
+    public interface IService
     {
         IResponse Adicionar(IRequest request);
         IResponse Editar(IRequest request);
