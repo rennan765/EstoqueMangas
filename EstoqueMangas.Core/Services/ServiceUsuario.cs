@@ -83,8 +83,9 @@ namespace EstoqueMangas.Core.Services
 
                 if (IsValid())
                 {
-                    if (_repository.ExisteEmail(usuario.Email.ToString()))
+                    if (_repository.EmailDisponivel(usuario.Email.ToString()))
                     {
+                        usuario.Adicionar();
                         usuario = _repository.Adicionar(usuario);
                         return (AdicionarUsuarioResponse)usuario;
                     }
@@ -108,7 +109,46 @@ namespace EstoqueMangas.Core.Services
 
         public IResponse Editar(IRequest request)
         {
-            throw new NotImplementedException();
+            if (!(request is null))
+            {
+                EditarUsuarioRequest editarUsuarioRequest = (EditarUsuarioRequest)request;
+
+                Usuario usuario = _repository.ObterPorId(editarUsuarioRequest.Id);
+
+                if (!(usuario is null))
+                {
+                    if (_repository.EmailDisponivel(editarUsuarioRequest.Email))
+                    {
+                        usuario.Editar(editarUsuarioRequest, usuario.Status);
+                        AddNotifications(usuario);
+
+                        if(IsValid())
+                        {
+                            usuario = _repository.Editar(usuario);
+                            return (EditarUsuarioResponse)usuario;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        AddNotification("E-mail", "E-mail já cadastrado.");
+                        return null;
+                    }
+                }
+                else
+                {
+                    AddNotification("Usuario", "Usuário não encontrado.");
+                    return null;
+                }
+            }
+            else
+            {
+                NotificarRequestNulo();
+                return null;
+            }
         }
 
         public IResponse Excluir(Guid id)

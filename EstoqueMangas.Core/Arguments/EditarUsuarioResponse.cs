@@ -1,10 +1,11 @@
 ﻿using System;
+using EstoqueMangas.Core.Arguments.Base;
 using EstoqueMangas.Core.Entities;
 using EstoqueMangas.Core.Interfaces.Arguments;
 
-namespace EstoqueMangas.Core.Arguments.Base
+namespace EstoqueMangas.Core.Arguments
 {
-    public class AdicionarUsuarioResponse : ResponseBase, IResponse
+    public class EditarUsuarioResponse : ResponseBase, IResponse
     {
         #region Propriedades
         public Guid Id { get; set; }
@@ -13,23 +14,23 @@ namespace EstoqueMangas.Core.Arguments.Base
         #endregion
 
         #region Construtores
-        public AdicionarUsuarioResponse()
+        public EditarUsuarioResponse()
         {
 
         }
         #endregion
 
         #region Métodos
-        public static explicit operator AdicionarUsuarioResponse(Usuario entidade)
+        public static explicit operator EditarUsuarioResponse(Usuario entidade)
         {
-            return new AdicionarUsuarioResponse()
+            return new EditarUsuarioResponse()
             {
                 Id = entidade.Id,
                 NomeCompleto = entidade.Nome.ToString(),
                 Email = entidade.Email.ToString(),
                 Mensagem = "Operação realizada com sucesso"
             };
-        }
-        #endregion
+        } 
+        #endregion 
     }
 }

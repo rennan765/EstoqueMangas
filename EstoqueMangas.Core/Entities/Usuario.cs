@@ -1,4 +1,5 @@
 ﻿using System;
+using EstoqueMangas.Core.Arguments;
 using EstoqueMangas.Core.Enuns;
 using EstoqueMangas.Core.Extensions;
 using EstoqueMangas.Core.Resources;
@@ -107,10 +108,33 @@ namespace EstoqueMangas.Core.Entities
         #endregion
 
         #region Métodos
-        public void AdicionarUsuario()
+        public void Adicionar()
         {
             this.Id = Guid.NewGuid();
             this.Status = StatusUsuario.AguardandoAprovacao;
+        }
+
+        public void Editar(EditarUsuarioRequest request, StatusUsuario status)
+        {
+            this.Nome = new Nome(request.PrimeiroNome, request.UltimoNome);
+            this.Email = new Email(request.Email);
+            this.Status = status;
+
+            if (!request.DddFixo.IsNumeric())
+            {
+                AddNotification("TelefoneFixo", Message.O_CAMPO_X0_E_INVALIDO.ToFormat("Ddd do Telefone Fixo"));
+            }
+
+            if (!request.DddCelular.IsNumeric())
+            {
+                AddNotification("TelefoneFixo", Message.O_CAMPO_X0_E_INVALIDO.ToFormat("Ddd do Telefone Celular"));
+            }
+
+            if (IsValid())
+            {
+                this.TelefoneFixo = new Telefone(request.DddFixo.ToInt(), request.TelefoneFixo, TipoTelefone.Fixo);
+                this.TelefoneCelular = new Telefone(request.DddCelular.ToInt(), request.TelefoneCelular, TipoTelefone.Celular);   
+            }
         }
         #endregion 
     }

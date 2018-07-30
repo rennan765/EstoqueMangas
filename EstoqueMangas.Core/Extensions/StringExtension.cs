@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -35,6 +36,11 @@ namespace EstoqueMangas.Core.Extensions
             }
                 
             return isnumeric;
+        }
+
+        public static int ToInt(this string texto)
+        {
+            return Convert.ToInt32(texto);
         }
     }
 }

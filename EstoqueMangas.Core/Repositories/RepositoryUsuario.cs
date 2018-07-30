@@ -6,6 +6,11 @@ namespace EstoqueMangas.Core.Repositories
 {
     public class RepositoryUsuario : IRepositoryUsuario
     {
+        public Usuario ObterPorId(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Usuario Adicionar(Usuario usuario)
         {
             throw new NotImplementedException();
@@ -16,7 +21,7 @@ namespace EstoqueMangas.Core.Repositories
             throw new NotImplementedException();
         }
 
-        public void Editar(Usuario usuario)
+        public Usuario Editar(Usuario usuario)
         {
             throw new NotImplementedException();
         }
@@ -26,7 +31,7 @@ namespace EstoqueMangas.Core.Repositories
             throw new NotImplementedException();
         }
 
-        public bool ExisteEmail(string email)
+        public bool EmailDisponivel(string email)
         {
             throw new NotImplementedException();
         }

@@ -1,16 +1,15 @@
 ﻿using System;
-
+using EstoqueMangas.Core.Arguments.Base;
 using EstoqueMangas.Core.Entities;
 using EstoqueMangas.Core.Interfaces.Arguments;
 
 namespace EstoqueMangas.Core.Arguments
 {
-    public class AutenticarUsuarioResponse : IResponse
+    public class AutenticarUsuarioResponse : ResponseBase, IResponse
     {
         #region Propriedades
         public Guid Id { get; set; }
         public string NomeCompleto { get; set; }
-        public string Mensagem { get; set; }
         #endregion
 
         #region Construtores
