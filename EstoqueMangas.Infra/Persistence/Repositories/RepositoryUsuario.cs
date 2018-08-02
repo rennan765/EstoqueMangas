@@ -2,10 +2,18 @@
 using EstoqueMangas.Core.Entities;
 using EstoqueMangas.Core.Interfaces.Repositores;
 
-namespace EstoqueMangas.Core.Repositories
+namespace EstoqueMangas.Infra.Persistence.Repositories
 {
     public class RepositoryUsuario : IRepositoryUsuario
     {
+        #region Construtores
+        public RepositoryUsuario()
+        {
+
+        }
+        #endregion 
+
+        #region Métodos
         public Usuario ObterPorId(Guid id)
         {
             throw new NotImplementedException();
@@ -35,5 +43,6 @@ namespace EstoqueMangas.Core.Repositories
         {
             throw new NotImplementedException();
         }
+        #endregion 
     }
 }

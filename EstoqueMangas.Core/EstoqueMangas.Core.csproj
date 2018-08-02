@@ -9,6 +9,7 @@
     <Compile Remove="Enuns\Estado.cs" />
     <Compile Remove="Interfaces\Build\IBuild.cs" />
     <Compile Remove="Interfaces\Services\IServiceJogador.cs" />
+    <Compile Remove="Repositories\RepositoryUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="prmToolkit.NotificationPattern" Version="1.0.20" />
@@ -28,7 +29,6 @@
     <Folder Include="Interfaces\Services\Base\" />
     <Folder Include="Interfaces\Repositores\" />
     <Folder Include="Interfaces\Repositores\Base\" />
-    <Folder Include="Repositories\" />
     <Folder Include="Services\" />
     <Folder Include="Arguments\" />
     <Folder Include="Arguments\Base\" />
