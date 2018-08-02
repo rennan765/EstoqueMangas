@@ -91,7 +91,7 @@ namespace EstoqueMangas.Core.Services
                     }
                     else
                     {
-                        AddNotification("E-mail", "E-mail já cadastrado.");
+                        AddNotification("E-mail", Message.X0_JA_CADASTRADO.ToFormat("E-mail"));
                         return null;
                     }
                 }
@@ -134,13 +134,13 @@ namespace EstoqueMangas.Core.Services
                     }
                     else
                     {
-                        AddNotification("E-mail", "E-mail já cadastrado.");
+                        AddNotification("E-mail", Message.X0_JA_CADASTRADO.ToFormat("E-mail"));
                         return null;
                     }
                 }
                 else
                 {
-                    AddNotification("Usuario", "Usuário não encontrado.");
+                    AddNotification("Usuario", Message.X0_NAO_ENCONTRADO.ToFormat("Usuario"));
                     return null;
                 }
             }

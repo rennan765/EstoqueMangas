@@ -117,19 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="A_SENHA_DEVE_TER_ENTRE_X0_E_X1_CARACTERES" xml:space="preserve">
-    <value>A senha deve ter entre {0} e {1} caracteres</value>
-  </data>
   <data name="CAMPO_X0_INVALIDO_FAVOR_INSERIR_NUMERO_MAIOR_QUE_X1" xml:space="preserve">
     <value>O campo {0} é inválido. Favor inserir um número maior que {1}.</value>
   </data>
-  <data name="FAVOR_INSERIR_X0_ENTRE_X1_E_X2_CARACTERES" xml:space="preserve">
-    <value>Favor inserir {0} entre {1} e {2] caracteres.</value>
+  <data name="FALHA_AO_REALIZAR_A_OPERACAO" xml:space="preserve">
+    <value>Falha ao realizar a operação.</value>
+  </data>
+  <data name="OPERACAO_REALIZADA_COM_SUCESSO" xml:space="preserve">
+    <value>Operação realizada com sucesso.</value>
+  </data>
+  <data name="O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES" xml:space="preserve">
+    <value>A senha deve ter entre {0} e {1} caracteres</value>
   </data>
   <data name="O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA" xml:space="preserve">
     <value>O campo {0} é uma informação obrigatória.</value>
   </data>
   <data name="O_CAMPO_X0_E_INVALIDO" xml:space="preserve">
     <value>O campo {0} é inválido.</value>
+  </data>
+  <data name="X0_ALTERADA_COM_SUCESSO" xml:space="preserve">
+    <value>{0} alterada com sucesso.</value>
+  </data>
+  <data name="X0_ALTERADO_COM_SUCESSO" xml:space="preserve">
+    <value>{0} alterado com sucesso.</value>
+  </data>
+  <data name="X0_CADASTRADA_COM_SUCESSO" xml:space="preserve">
+    <value>{0} cadastrada com sucesso.</value>
+  </data>
+  <data name="X0_CADASTRADO_COM_SUCESSO" xml:space="preserve">
+    <value>{0} cadastrado com sucesso.</value>
+  </data>
+  <data name="X0_EXCLUIDA_COM_SUCESSO" xml:space="preserve">
+    <value>{0} {1} excluída com sucesso.</value>
+  </data>
+  <data name="X0_EXCLUIDO_COM_SUCESSO" xml:space="preserve">
+    <value>{0} excluído com sucesso.</value>
+  </data>
+  <data name="X0_JA_CADASTRADA" xml:space="preserve">
+    <value>{0) já cadastrada.</value>
+  </data>
+  <data name="X0_JA_CADASTRADO" xml:space="preserve">
+    <value>{0} já cadastrado.</value>
+  </data>
+  <data name="X0_NAO_ENCONTRADA" xml:space="preserve">
+    <value>{0} não encontrada.</value>
+  </data>
+  <data name="X0_NAO_ENCONTRADO" xml:space="preserve">
+    <value>{0} não encontrado.</value>
+  </data>
+  <data name="X0_X1_ALTERADA_COM_SUCESSO" xml:space="preserve">
+    <value>{0} {1} alterada com sucesso.</value>
+  </data>
+  <data name="X0_X1_ALTERADO_COM_SUCESSO" xml:space="preserve">
+    <value>{0} {1} alterado com sucesso.</value>
+  </data>
+  <data name="X0_X1_CADASTRADA_COM_SUCESSO" xml:space="preserve">
+    <value>{0} {1} cadastrada com sucesso.</value>
+  </data>
+  <data name="X0_X1_CADASTRADO_COM_SUCESSO" xml:space="preserve">
+    <value>{0} {1} cadastrado com sucesso.</value>
+  </data>
+  <data name="X0_X1_EXCLUIDA_COM_SUCESSO" xml:space="preserve">
+    <value>{0} {1} excluída com sucesso.</value>
+  </data>
+  <data name="X0_X1_EXCLUIDO_COM_SUCESSO" xml:space="preserve">
+    <value>{0} {1} excluído com sucesso.</value>
   </data>
 </root>

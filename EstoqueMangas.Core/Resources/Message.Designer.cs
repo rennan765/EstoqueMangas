@@ -61,15 +61,6 @@ namespace EstoqueMangas.Core.Resources {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a A senha deve ter entre {0} e {1} caracteres.
-        /// </summary>
-        internal static string A_SENHA_DEVE_TER_ENTRE_X0_E_X1_CARACTERES {
-            get {
-                return ResourceManager.GetString("A_SENHA_DEVE_TER_ENTRE_X0_E_X1_CARACTERES", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O campo {0} é inválido. Favor inserir um número maior que {1}..
         /// </summary>
         internal static string CAMPO_X0_INVALIDO_FAVOR_INSERIR_NUMERO_MAIOR_QUE_X1 {
@@ -79,11 +70,20 @@ namespace EstoqueMangas.Core.Resources {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Favor inserir {0} entre {1} e {2] caracteres..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Falha ao realizar a operação..
         /// </summary>
-        internal static string FAVOR_INSERIR_X0_ENTRE_X1_E_X2_CARACTERES {
+        internal static string FALHA_AO_REALIZAR_A_OPERACAO {
             get {
-                return ResourceManager.GetString("FAVOR_INSERIR_X0_ENTRE_X1_E_X2_CARACTERES", resourceCulture);
+                return ResourceManager.GetString("FALHA_AO_REALIZAR_A_OPERACAO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A senha deve ter entre {0} e {1} caracteres.
+        /// </summary>
+        internal static string O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES {
+            get {
+                return ResourceManager.GetString("O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES", resourceCulture);
             }
         }
         
@@ -102,6 +102,159 @@ namespace EstoqueMangas.Core.Resources {
         internal static string O_CAMPO_X0_E_INVALIDO {
             get {
                 return ResourceManager.GetString("O_CAMPO_X0_E_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Operação realizada com sucesso..
+        /// </summary>
+        internal static string OPERACAO_REALIZADA_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("OPERACAO_REALIZADA_COM_SUCESSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} alterada com sucesso..
+        /// </summary>
+        internal static string X0_ALTERADA_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("X0_ALTERADA_COM_SUCESSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} alterado com sucesso..
+        /// </summary>
+        internal static string X0_ALTERADO_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("X0_ALTERADO_COM_SUCESSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} cadastrada com sucesso..
+        /// </summary>
+        internal static string X0_CADASTRADA_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("X0_CADASTRADA_COM_SUCESSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} cadastrado com sucesso..
+        /// </summary>
+        internal static string X0_CADASTRADO_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("X0_CADASTRADO_COM_SUCESSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} excluída com sucesso..
+        /// </summary>
+        internal static string X0_EXCLUIDA_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("X0_EXCLUIDA_COM_SUCESSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} excluído com sucesso..
+        /// </summary>
+        internal static string X0_EXCLUIDO_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("X0_EXCLUIDO_COM_SUCESSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0) já cadastrada..
+        /// </summary>
+        internal static string X0_JA_CADASTRADA {
+            get {
+                return ResourceManager.GetString("X0_JA_CADASTRADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} já cadastrado..
+        /// </summary>
+        internal static string X0_JA_CADASTRADO {
+            get {
+                return ResourceManager.GetString("X0_JA_CADASTRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} não encontrada..
+        /// </summary>
+        internal static string X0_NAO_ENCONTRADA {
+            get {
+                return ResourceManager.GetString("X0_NAO_ENCONTRADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} não encontrado..
+        /// </summary>
+        internal static string X0_NAO_ENCONTRADO {
+            get {
+                return ResourceManager.GetString("X0_NAO_ENCONTRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} alterada com sucesso..
+        /// </summary>
+        internal static string X0_X1_ALTERADA_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("X0_X1_ALTERADA_COM_SUCESSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} alterado com sucesso..
+        /// </summary>
+        internal static string X0_X1_ALTERADO_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("X0_X1_ALTERADO_COM_SUCESSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} cadastrada com sucesso..
+        /// </summary>
+        internal static string X0_X1_CADASTRADA_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("X0_X1_CADASTRADA_COM_SUCESSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} cadastrado com sucesso..
+        /// </summary>
+        internal static string X0_X1_CADASTRADO_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("X0_X1_CADASTRADO_COM_SUCESSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} excluída com sucesso..
+        /// </summary>
+        internal static string X0_X1_EXCLUIDA_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("X0_X1_EXCLUIDA_COM_SUCESSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} excluído com sucesso..
+        /// </summary>
+        internal static string X0_X1_EXCLUIDO_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("X0_X1_EXCLUIDO_COM_SUCESSO", resourceCulture);
             }
         }
     }

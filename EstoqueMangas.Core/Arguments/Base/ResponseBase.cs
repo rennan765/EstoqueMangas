@@ -1,5 +1,6 @@
 ﻿using System;
 using EstoqueMangas.Core.Interfaces.Arguments;
+using EstoqueMangas.Core.Resources;
 
 namespace EstoqueMangas.Core.Arguments.Base
 {
@@ -16,7 +17,7 @@ namespace EstoqueMangas.Core.Arguments.Base
 
         public ResponseBase(Boolean validacao)
         {
-            this.Mensagem = (validacao ? "Operação realizada com sucesso." : "Falha ao realizar a operação.");
+            this.Mensagem = (validacao ? Message.OPERACAO_REALIZADA_COM_SUCESSO : Message.FALHA_AO_REALIZAR_A_OPERACAO);
         }
         #endregion 
     }
