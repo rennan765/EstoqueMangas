@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using EstoqueMangas.Core.Entities;
 using EstoqueMangas.Core.Interfaces.Repositores;
 
@@ -6,42 +7,51 @@ namespace EstoqueMangas.Infra.Persistence.Repositories
 {
     public class RepositoryUsuario : IRepositoryUsuario
     {
-        #region Construtores
-        public RepositoryUsuario()
-        {
+        #region Propriedades
+        private readonly EstoqueMangasContext _context;
+        #endregion 
 
+        #region Construtores
+        public RepositoryUsuario(EstoqueMangasContext context)
+        {
+            this._context = context;
         }
         #endregion 
 
         #region Métodos
         public Usuario ObterPorId(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.Usuarios.Find(id);
         }
 
         public Usuario Adicionar(Usuario usuario)
         {
-            throw new NotImplementedException();
+            _context.Usuarios.Add(usuario);
+            _context.SaveChanges();
+            return usuario;
         }
 
         public Usuario Autenticar(string email, string senha)
         {
-            throw new NotImplementedException();
+            return _context.Usuarios.Where(u => u.Email.ToString() == email && u.Senha == senha).First();
         }
 
         public Usuario Editar(Usuario usuario)
         {
-            throw new NotImplementedException();
+            _context.Usuarios.Update(usuario);
+            _context.SaveChanges();
+            return usuario;
         }
 
         public void Excluir(Guid id)
         {
-            throw new NotImplementedException();
+            _context.Usuarios.Remove(_context.Usuarios.Find(id));
+            _context.SaveChanges();
         }
 
         public bool EmailDisponivel(string email)
         {
-            throw new NotImplementedException();
+            return !_context.Usuarios.Any(u => u.Email.ToString() == email);
         }
         #endregion 
     }
