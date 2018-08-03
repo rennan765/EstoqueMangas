@@ -45,6 +45,14 @@ namespace EstoqueMangas.Infra.Persistence
                 e.ToTable("TB_USUARIO");
                 e.HasKey(u => u.Id)
                     .HasName("ID");
+                e.Property(u => u.Nome.PrimeiroNome)
+                    .HasColumnName("PRIMEIRO_NOME")
+                    .HasColumnType("varchar").HasMaxLength(50)
+                    .IsRequired();
+                e.Property(u => u.Nome.UltimoNome)
+                    .HasColumnName("ULTIMO_NOME")
+                    .HasColumnType("varchar").HasMaxLength(50)
+                    .IsRequired();
                 e.Property(u => u.Email.EnderecoEmail)
                     .HasColumnName("ENDERECO_EMAIL")
                     .HasColumnType("varchar").HasMaxLength(150)
