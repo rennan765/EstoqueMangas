@@ -132,8 +132,8 @@ namespace EstoqueMangas.Core.Entities
 
             if (IsValid())
             {
-                this.TelefoneFixo = new Telefone(request.DddFixo.ToInt(), request.TelefoneFixo, TipoTelefone.Fixo);
-                this.TelefoneCelular = new Telefone(request.DddCelular.ToInt(), request.TelefoneCelular, TipoTelefone.Celular);   
+                this.TelefoneFixo = new Telefone(request.DddFixo.ToInt(), request.TelefoneFixo);
+                this.TelefoneCelular = new Telefone(request.DddCelular.ToInt(), request.TelefoneCelular);   
             }
         }
         #endregion 

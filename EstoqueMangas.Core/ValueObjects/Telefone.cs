@@ -10,15 +10,13 @@ namespace EstoqueMangas.Core.ValueObjects
         #region Propriedades
         public int Ddd { get; private set; }
         public string Numero { get; private set; }
-        public TipoTelefone TipoTelefone { get; private set; }
         #endregion
 
         #region Construtores
-        public Telefone(int ddd, string numero, TipoTelefone tipoTelefone)
+        public Telefone(int ddd, string numero)
         {
             this.Ddd = ddd;
             this.Numero = numero;
-            this.TipoTelefone = tipoTelefone;
 
             new AddNotifications<Telefone>(this)
                 .IfNullOrEmpty(tel => tel.Ddd.ToString(), Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Ddd"))
