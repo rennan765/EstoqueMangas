@@ -10,7 +10,6 @@
     <Compile Remove="Interfaces\Build\IBuild.cs" />
     <Compile Remove="Interfaces\Services\IServiceJogador.cs" />
     <Compile Remove="Repositories\RepositoryUsuario.cs" />
-    <Compile Remove="Enuns\TipoTelefone.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.1.0" />

@@ -124,21 +124,31 @@ namespace EstoqueMangas.Core.Entities
             this.Nome = new Nome(request.PrimeiroNome, request.UltimoNome);
             this.Email = new Email(request.Email);
             this.Status = status;
+            this.EditarTelefone(TipoTelefone.Fixo, request.DddFixo, request.TelefoneFixo);
+            this.EditarTelefone(TipoTelefone.Celular, request.DddCelular, request.TelefoneCelular);
+        }
 
-            if (!request.DddFixo.IsNumeric())
+        private void EditarTelefone(TipoTelefone tipoTelefone, string ddd, string numero)
+        {
+            if (!string.IsNullOrEmpty(ddd) && !string.IsNullOrEmpty(numero))
             {
-                AddNotification("TelefoneFixo", Message.O_CAMPO_X0_E_INVALIDO.ToFormat("Ddd do Telefone Fixo"));
-            }
+                if(ddd.IsNumeric())
+                {
+                    string tipo = (tipoTelefone == TipoTelefone.Fixo ? "Telefone Fixo" : "Telefone Felular");
+                    AddNotification(tipo, Message.O_CAMPO_X0_E_INVALIDO.ToFormat($"Ddd do {tipo}"));
+                }
 
-            if (!request.DddCelular.IsNumeric())
-            {
-                AddNotification("TelefoneFixo", Message.O_CAMPO_X0_E_INVALIDO.ToFormat("Ddd do Telefone Celular"));
-            }
-
-            if (IsValid())
-            {
-                this.TelefoneFixo = new Telefone(request.DddFixo.ToInt(), request.TelefoneFixo);
-                this.TelefoneCelular = new Telefone(request.DddCelular.ToInt(), request.TelefoneCelular);   
+                if (IsValid())
+                {
+                    if (tipoTelefone == TipoTelefone.Fixo)
+                    {
+                        this.TelefoneFixo = new Telefone(ddd.ToInt(), numero);
+                    }
+                    else
+                    {
+                        this.TelefoneCelular = new Telefone(ddd.ToInt(), numero);
+                    }
+                }
             }
         }
         #endregion 
