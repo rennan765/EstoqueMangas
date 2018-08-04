@@ -22,6 +22,11 @@ namespace EstoqueMangas.Core.Entities
         #endregion
 
         #region Construtores
+        public Usuario()
+        {
+
+        }
+
         public Usuario(Nome nome, Email email, Telefone telefoneFixo, Telefone telefoneCelular, string senha)
         {
             this.Nome = nome;
