@@ -2,6 +2,7 @@
 using EstoqueMangas.Core.Entities;
 using EstoqueMangas.Core.ValueObjects;
 using Microsoft.EntityFrameworkCore;
+using prmToolkit.NotificationPattern;
 
 namespace EstoqueMangas.Infra.Persistence
 {
@@ -29,9 +30,18 @@ namespace EstoqueMangas.Infra.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            this.ConfiguraUsuario(modelBuilder);
+            this.Mapeamento(modelBuilder);
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        private void Mapeamento(ModelBuilder modelBuilder)
+        {
+            //Ignora classe de notificações
+            modelBuilder.Ignore<Notification>();
+
+            //Mapeamento da classe Usuario
+            this.ConfiguraUsuario(modelBuilder);
         }
 
         private void ConfiguraUsuario(ModelBuilder modelBuilder)
