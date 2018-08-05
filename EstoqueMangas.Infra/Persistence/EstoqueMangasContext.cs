@@ -1,6 +1,5 @@
-﻿using System;
-using EstoqueMangas.Core.Entities;
-using EstoqueMangas.Core.ValueObjects;
+﻿using EstoqueMangas.Domain.Entities;
+using EstoqueMangas.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using prmToolkit.NotificationPattern;
 

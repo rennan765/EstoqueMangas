@@ -1,9 +1,10 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstoqueMangas.Core", "EstoqueMangas.Core\EstoqueMangas.Core.csproj", "{FD3832F4-29C0-4B73-BF2C-4FA4984E0BC8}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EstoqueMangas.Domain", "EstoqueMangas.Core\EstoqueMangas.Domain.csproj", "{FD3832F4-29C0-4B73-BF2C-4FA4984E0BC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstoqueMangas.Infra", "EstoqueMangas.Infra\EstoqueMangas.Infra.csproj", "{9E880FE6-955F-46F2-A6AA-4DC83B6D391F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EstoqueMangas.Infra", "EstoqueMangas.Infra\EstoqueMangas.Infra.csproj", "{9E880FE6-955F-46F2-A6AA-4DC83B6D391F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,5 +20,11 @@ Global
 		{9E880FE6-955F-46F2-A6AA-4DC83B6D391F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E880FE6-955F-46F2-A6AA-4DC83B6D391F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E880FE6-955F-46F2-A6AA-4DC83B6D391F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03BF58B8-9DB9-43C0-AFAA-1CF64EE9C13D}
 	EndGlobalSection
 EndGlobal

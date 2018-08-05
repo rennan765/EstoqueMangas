@@ -1,8 +1,8 @@
 ﻿using System;
-using EstoqueMangas.Core.Interfaces.Arguments;
+using EstoqueMangas.Domain.Interfaces.Arguments;
 using prmToolkit.NotificationPattern;
 
-namespace EstoqueMangas.Core.Interfaces.Services.Base
+namespace EstoqueMangas.Domain.Interfaces.Services.Base
 {
     public interface IService
     {

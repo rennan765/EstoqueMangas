@@ -1,13 +1,13 @@
 ﻿using System;
-using EstoqueMangas.Core.Arguments;
-using EstoqueMangas.Core.Enuns;
-using EstoqueMangas.Core.Extensions;
-using EstoqueMangas.Core.Resources;
-using EstoqueMangas.Core.ValueObjects;
+using EstoqueMangas.Domain.Arguments;
+using EstoqueMangas.Domain.Enuns;
+using EstoqueMangas.Domain.Extensions;
+using EstoqueMangas.Domain.Resources;
+using EstoqueMangas.Domain.ValueObjects;
 using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
 
-namespace EstoqueMangas.Core.Entities
+namespace EstoqueMangas.Domain.Entities
 {
     public class Usuario : Notifiable
     {

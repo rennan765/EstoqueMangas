@@ -19,7 +19,7 @@ namespace EstoqueMangas.Infra.Migrations
                 .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("EstoqueMangas.Core.Entities.Usuario", b =>
+            modelBuilder.Entity("EstoqueMangas.Domain.Entities.Usuario", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -38,9 +38,9 @@ namespace EstoqueMangas.Infra.Migrations
                     b.ToTable("TB_USUARIO");
                 });
 
-            modelBuilder.Entity("EstoqueMangas.Core.Entities.Usuario", b =>
+            modelBuilder.Entity("EstoqueMangas.Domain.Entities.Usuario", b =>
                 {
-                    b.OwnsOne("EstoqueMangas.Core.ValueObjects.Email", "Email", b1 =>
+                    b.OwnsOne("EstoqueMangas.Domain.ValueObjects.Email", "Email", b1 =>
                         {
                             b1.Property<Guid?>("UsuarioId");
 
@@ -51,13 +51,13 @@ namespace EstoqueMangas.Infra.Migrations
 
                             b1.ToTable("TB_USUARIO");
 
-                            b1.HasOne("EstoqueMangas.Core.Entities.Usuario")
+                            b1.HasOne("EstoqueMangas.Domain.Entities.Usuario")
                                 .WithOne("Email")
-                                .HasForeignKey("EstoqueMangas.Core.ValueObjects.Email", "UsuarioId")
+                                .HasForeignKey("EstoqueMangas.Domain.ValueObjects.Email", "UsuarioId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
 
-                    b.OwnsOne("EstoqueMangas.Core.ValueObjects.Nome", "Nome", b1 =>
+                    b.OwnsOne("EstoqueMangas.Domain.ValueObjects.Nome", "Nome", b1 =>
                         {
                             b1.Property<Guid?>("UsuarioId");
 
@@ -73,13 +73,13 @@ namespace EstoqueMangas.Infra.Migrations
 
                             b1.ToTable("TB_USUARIO");
 
-                            b1.HasOne("EstoqueMangas.Core.Entities.Usuario")
+                            b1.HasOne("EstoqueMangas.Domain.Entities.Usuario")
                                 .WithOne("Nome")
-                                .HasForeignKey("EstoqueMangas.Core.ValueObjects.Nome", "UsuarioId")
+                                .HasForeignKey("EstoqueMangas.Domain.ValueObjects.Nome", "UsuarioId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
 
-                    b.OwnsOne("EstoqueMangas.Core.ValueObjects.Telefone", "TelefoneCelular", b1 =>
+                    b.OwnsOne("EstoqueMangas.Domain.ValueObjects.Telefone", "TelefoneCelular", b1 =>
                         {
                             b1.Property<Guid>("UsuarioId");
 
@@ -93,13 +93,13 @@ namespace EstoqueMangas.Infra.Migrations
 
                             b1.ToTable("TB_USUARIO");
 
-                            b1.HasOne("EstoqueMangas.Core.Entities.Usuario")
+                            b1.HasOne("EstoqueMangas.Domain.Entities.Usuario")
                                 .WithOne("TelefoneCelular")
-                                .HasForeignKey("EstoqueMangas.Core.ValueObjects.Telefone", "UsuarioId")
+                                .HasForeignKey("EstoqueMangas.Domain.ValueObjects.Telefone", "UsuarioId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
 
-                    b.OwnsOne("EstoqueMangas.Core.ValueObjects.Telefone", "TelefoneFixo", b1 =>
+                    b.OwnsOne("EstoqueMangas.Domain.ValueObjects.Telefone", "TelefoneFixo", b1 =>
                         {
                             b1.Property<Guid>("UsuarioId");
 
@@ -113,9 +113,9 @@ namespace EstoqueMangas.Infra.Migrations
 
                             b1.ToTable("TB_USUARIO");
 
-                            b1.HasOne("EstoqueMangas.Core.Entities.Usuario")
+                            b1.HasOne("EstoqueMangas.Domain.Entities.Usuario")
                                 .WithOne("TelefoneFixo")
-                                .HasForeignKey("EstoqueMangas.Core.ValueObjects.Telefone", "UsuarioId")
+                                .HasForeignKey("EstoqueMangas.Domain.ValueObjects.Telefone", "UsuarioId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
                 });

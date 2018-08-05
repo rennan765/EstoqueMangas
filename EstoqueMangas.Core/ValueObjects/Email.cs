@@ -1,8 +1,8 @@
-﻿using EstoqueMangas.Core.Resources;
+﻿using EstoqueMangas.Domain.Resources;
 using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
 
-namespace EstoqueMangas.Core.ValueObjects
+namespace EstoqueMangas.Domain.ValueObjects
 {
     public class Email : Notifiable
     {

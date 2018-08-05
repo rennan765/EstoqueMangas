@@ -1,4 +1,4 @@
-﻿namespace EstoqueMangas.Core.Interfaces.Arguments
+﻿namespace EstoqueMangas.Domain.Interfaces.Arguments
 {
     public interface IResponse
     {

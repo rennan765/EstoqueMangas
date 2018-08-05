@@ -1,8 +1,8 @@
 ﻿using System;
-using EstoqueMangas.Core.Enuns;
-using EstoqueMangas.Core.ValueObjects;
+using EstoqueMangas.Domain.Enuns;
+using EstoqueMangas.Domain.ValueObjects;
 
-namespace EstoqueMangas.Core.Entities.Build
+namespace EstoqueMangas.Domain.Entities.Build
 {
     public class UsuarioBuild : IDisposable
     {

@@ -1,4 +1,4 @@
-﻿namespace EstoqueMangas.Core.Enuns
+﻿namespace EstoqueMangas.Domain.Enuns
 {
     public enum TipoTelefone
     {

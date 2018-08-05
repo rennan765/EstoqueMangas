@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using EstoqueMangas.Core.Resources;
-using EstoqueMangas.Core.ValueObjects;
+using EstoqueMangas.Domain.Resources;
+using EstoqueMangas.Domain.ValueObjects;
 using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
 
-namespace EstoqueMangas.Core.Entities
+namespace EstoqueMangas.Domain.Entities
 {
     public class Editora : Notifiable
     {

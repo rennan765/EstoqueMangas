@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using EstoqueMangas.Core.Entities.Join;
-using EstoqueMangas.Core.ValueObjects;
+using EstoqueMangas.Domain.Entities.Join;
+using EstoqueMangas.Domain.ValueObjects;
 using prmToolkit.NotificationPattern;
 
-namespace EstoqueMangas.Core.Entities
+namespace EstoqueMangas.Domain.Entities
 {
     public class Autor : Notifiable
     {

@@ -1,8 +1,8 @@
 ﻿using System;
-using EstoqueMangas.Core.Entities;
-using EstoqueMangas.Core.Interfaces.Repositores.Base;
+using EstoqueMangas.Domain.Entities;
+using EstoqueMangas.Domain.Interfaces.Repositores.Base;
 
-namespace EstoqueMangas.Core.Interfaces.Repositores
+namespace EstoqueMangas.Domain.Interfaces.Repositores
 {
     public interface IRepositoryUsuario : IRepository
     {

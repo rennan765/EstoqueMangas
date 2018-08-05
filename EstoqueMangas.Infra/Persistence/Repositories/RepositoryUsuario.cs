@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using EstoqueMangas.Core.Entities;
-using EstoqueMangas.Core.Interfaces.Repositores;
+using EstoqueMangas.Domain.Entities;
+using EstoqueMangas.Domain.Interfaces.Repositores;
 
 namespace EstoqueMangas.Infra.Persistence.Repositories
 {

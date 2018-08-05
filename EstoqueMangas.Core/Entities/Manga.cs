@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using EstoqueMangas.Core.Entities.Join;
+using EstoqueMangas.Domain.Entities.Join;
 using prmToolkit.NotificationPattern;
 
-namespace EstoqueMangas.Core.Entities
+namespace EstoqueMangas.Domain.Entities
 {
     public class Manga : Notifiable
     {

@@ -1,10 +1,10 @@
 ﻿using System;
-using EstoqueMangas.Core.Extensions;
-using EstoqueMangas.Core.Resources;
+using EstoqueMangas.Domain.Extensions;
+using EstoqueMangas.Domain.Resources;
 using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
 
-namespace EstoqueMangas.Core.ValueObjects
+namespace EstoqueMangas.Domain.ValueObjects
 {
     public class Endereco : Notifiable
     {

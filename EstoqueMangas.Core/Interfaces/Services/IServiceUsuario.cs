@@ -1,8 +1,8 @@
 ﻿using System;
-using EstoqueMangas.Core.Interfaces.Arguments;
-using EstoqueMangas.Core.Interfaces.Services.Base;
+using EstoqueMangas.Domain.Interfaces.Arguments;
+using EstoqueMangas.Domain.Interfaces.Services.Base;
 
-namespace EstoqueMangas.Core.Interfaces.Services
+namespace EstoqueMangas.Domain.Interfaces.Services
 {
     public interface IServiceUsuario : IService
     {

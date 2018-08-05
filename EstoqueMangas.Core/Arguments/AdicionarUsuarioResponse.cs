@@ -1,8 +1,8 @@
 ﻿using System;
-using EstoqueMangas.Core.Entities;
-using EstoqueMangas.Core.Interfaces.Arguments;
+using EstoqueMangas.Domain.Entities;
+using EstoqueMangas.Domain.Interfaces.Arguments;
 
-namespace EstoqueMangas.Core.Arguments.Base
+namespace EstoqueMangas.Domain.Arguments.Base
 {
     public class AdicionarUsuarioResponse : ResponseBase, IResponse
     {

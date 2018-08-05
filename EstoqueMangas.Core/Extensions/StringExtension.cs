@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace EstoqueMangas.Core.Extensions
+namespace EstoqueMangas.Domain.Extensions
 {
     public static class StringExtension
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace EstoqueMangas.Core.Entities.Join
+namespace EstoqueMangas.Domain.Entities.Join
 {
     public class AutorManga
     {

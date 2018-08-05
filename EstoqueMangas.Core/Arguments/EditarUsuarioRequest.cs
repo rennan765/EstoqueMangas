@@ -1,7 +1,7 @@
 ﻿using System;
-using EstoqueMangas.Core.Interfaces.Arguments;
+using EstoqueMangas.Domain.Interfaces.Arguments;
 
-namespace EstoqueMangas.Core.Arguments
+namespace EstoqueMangas.Domain.Arguments
 {
     public class EditarUsuarioRequest : IRequest
     {

@@ -1,8 +1,8 @@
 ﻿using System;
-using EstoqueMangas.Core.Interfaces.Arguments;
-using EstoqueMangas.Core.Resources;
+using EstoqueMangas.Domain.Interfaces.Arguments;
+using EstoqueMangas.Domain.Resources;
 
-namespace EstoqueMangas.Core.Arguments.Base
+namespace EstoqueMangas.Domain.Arguments.Base
 {
     public class ResponseBase : IResponse
     {

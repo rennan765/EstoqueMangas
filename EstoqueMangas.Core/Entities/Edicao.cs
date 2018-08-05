@@ -1,9 +1,9 @@
 ﻿using System;
-using EstoqueMangas.Core.Resources;
+using EstoqueMangas.Domain.Resources;
 using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
 
-namespace EstoqueMangas.Core.Entities
+namespace EstoqueMangas.Domain.Entities
 {
     public class Edicao : Notifiable
     {

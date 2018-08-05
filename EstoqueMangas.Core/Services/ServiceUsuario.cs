@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using EstoqueMangas.Core.Arguments;
-using EstoqueMangas.Core.Arguments.Base;
-using EstoqueMangas.Core.Entities;
-using EstoqueMangas.Core.Entities.Build;
-using EstoqueMangas.Core.Interfaces.Arguments;
-using EstoqueMangas.Core.Interfaces.Repositores;
-using EstoqueMangas.Core.Interfaces.Repositores.Base;
-using EstoqueMangas.Core.Interfaces.Services;
-using EstoqueMangas.Core.Resources;
+using EstoqueMangas.Domain.Arguments;
+using EstoqueMangas.Domain.Arguments.Base;
+using EstoqueMangas.Domain.Entities;
+using EstoqueMangas.Domain.Entities.Build;
+using EstoqueMangas.Domain.Interfaces.Arguments;
+using EstoqueMangas.Domain.Interfaces.Repositores;
+using EstoqueMangas.Domain.Interfaces.Repositores.Base;
+using EstoqueMangas.Domain.Interfaces.Services;
+using EstoqueMangas.Domain.Resources;
 using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
 
-namespace EstoqueMangas.Core.Services
+namespace EstoqueMangas.Domain.Services
 {
     public class ServiceUsuario : Notifiable, IServiceUsuario
     {
