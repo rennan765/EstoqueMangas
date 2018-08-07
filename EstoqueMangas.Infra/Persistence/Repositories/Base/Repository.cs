@@ -34,7 +34,9 @@ namespace EstoqueMangas.Infra.Persistence.Repositories.Base
 
         public IEnumerable<TEntity> AdicionarLista(IEnumerable<TEntity> listaEntidade)
         {
-            throw new NotImplementedException();
+            _context.Set<TEntity>().AddRange(listaEntidade);
+
+            return listaEntidade;
         }
 
         public TEntity Editar(TEntity entidade)
@@ -66,22 +68,52 @@ namespace EstoqueMangas.Infra.Persistence.Repositories.Base
 
         public IQueryable<TEntity> ListarEOrdenarPor<TKey>(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, TKey>> ordem, bool asc = true, params Expression<Func<TEntity, object>>[] propriedades)
         {
-            throw new NotImplementedException();
+            var query = _context.Set<TEntity>();
+
+            if (propriedades.Any())
+            {
+                foreach (var propriedade in propriedades)
+                {
+                    query.Include(propriedade);
+                }
+            }
+
+            return (asc ? query.Where(where).OrderBy(ordem) : query.Where(where).OrderByDescending(ordem));
         }
 
         public IQueryable<TEntity> ListarOrdenandoPor<TKey>(Expression<Func<TEntity, TKey>> ordem, bool asc = true, params Expression<Func<TEntity, object>>[] propriedades)
         {
-            throw new NotImplementedException();
+            return (asc ? Listar(propriedades).OrderBy(ordem) : Listar(propriedades).OrderByDescending(ordem));
         }
 
         public IQueryable<TEntity> ListarPor(Expression<Func<TEntity, bool>> where, params Expression<Func<TEntity, object>>[] propriedades)
         {
-            throw new NotImplementedException();
+            var query = _context.Set<TEntity>();
+
+            if (propriedades.Any())
+            {
+                foreach (var propriedade in propriedades)
+                {
+                    query.Include(propriedade);
+                }
+            }
+
+            return query.Where(where);
         }
 
         public TEntity ObterPor(Expression<Func<TEntity, bool>> where, params Expression<Func<TEntity, object>>[] propriedades)
         {
-            throw new NotImplementedException();
+            var query = _context.Set<TEntity>();
+
+            if (propriedades.Any())
+            {
+                foreach (var propriedade in propriedades)
+                {
+                    query.Include(propriedade);
+                }
+            }
+
+            return query.Where(where).FirstOrDefault();
         }
 
         public TEntity ObterPorId(Guid id, params Expression<Func<TEntity, object>>[] propriedades)

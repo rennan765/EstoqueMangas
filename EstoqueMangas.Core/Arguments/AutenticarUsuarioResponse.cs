@@ -2,10 +2,11 @@
 using EstoqueMangas.Domain.Arguments.Base;
 using EstoqueMangas.Domain.Entities;
 using EstoqueMangas.Domain.Interfaces.Arguments;
+using EstoqueMangas.Domain.Resources;
 
 namespace EstoqueMangas.Domain.Arguments
 {
-    public class AutenticarUsuarioResponse : ResponseBase, IResponse
+    public class AutenticarUsuarioResponse : Response, IResponse
     {
         #region Propriedades
         public Guid Id { get; set; }
@@ -26,7 +27,7 @@ namespace EstoqueMangas.Domain.Arguments
             {
                 Id = entidade.Id,
                 NomeCompleto = entidade.Nome.ToString(),
-                Mensagem = "Operação realizada com sucesso"
+                Mensagem = Message.OPERACAO_REALIZADA_COM_SUCESSO
             };
         } 
         #endregion

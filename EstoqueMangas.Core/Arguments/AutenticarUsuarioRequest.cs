@@ -1,5 +1,4 @@
-﻿using System;
-namespace EstoqueMangas.Domain.Arguments
+﻿namespace EstoqueMangas.Domain.Arguments
 {
     public class AutenticarUsuarioRequest
     {

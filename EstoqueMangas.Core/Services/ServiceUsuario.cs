@@ -44,7 +44,7 @@ namespace EstoqueMangas.Domain.Services
 
                 if (IsValid())
                 {
-                    usuario = _repository.Autenticar(usuario.Email.EnderecoEmail, usuario.Senha);
+                    usuario = _repository.ObterPor(u => u.Email.ToString() == usuario.Email.ToString() && u.Senha == usuario.Senha);
 
                     if (!(usuario is null))
                     {
@@ -83,7 +83,7 @@ namespace EstoqueMangas.Domain.Services
 
                 if (IsValid())
                 {
-                    if (_repository.EmailDisponivel(usuario.Email.ToString()))
+                    if (!_repository.Existe(u => u.Email.ToString() == usuario.Email.ToString()))
                     {
                         usuario.Adicionar();
                         usuario = _repository.Adicionar(usuario);
@@ -117,7 +117,7 @@ namespace EstoqueMangas.Domain.Services
 
                 if (!(usuario is null))
                 {
-                    if (_repository.EmailDisponivel(editarUsuarioRequest.Email))
+                    if (!_repository.Existe(u => u.Id.ToString() != usuario.Id.ToString() && u.Email.ToString() == usuario.Email.ToString()))
                     {
                         usuario.Editar(editarUsuarioRequest, usuario.Status);
                         AddNotifications(usuario);
@@ -153,7 +153,8 @@ namespace EstoqueMangas.Domain.Services
 
         public IResponse Excluir(Guid id)
         {
-            throw new NotImplementedException();
+            _repository.Remover(_repository.ObterPorId(id));
+            return new Response(true);
         } 
 
         private void NotificarRequestNulo()
