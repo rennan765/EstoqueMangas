@@ -21,7 +21,7 @@ namespace EstoqueMangas.Domain.Services
         #endregion
 
         #region Construtores
-        public ServiceUsuario(IRepository repository)
+        public ServiceUsuario(IRepository<Usuario, Guid> repository)
         {
             this._repository = (IRepositoryUsuario)repository;
         }
