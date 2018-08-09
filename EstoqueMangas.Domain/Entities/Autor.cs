@@ -20,6 +20,13 @@ namespace EstoqueMangas.Domain.Entities
 
             AddNotifications(this.NomeAutor);
         }
+        #endregion
+
+        #region Métodos
+        public void IncluirMangas(IList<AutorManga> mangas)
+        {
+            this.Mangas = mangas;
+        }
         #endregion 
     }
 }

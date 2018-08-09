@@ -10,7 +10,7 @@ namespace EstoqueMangas.Domain.Entities
 {
     public class Manga : Entity
     {
-        
+
         #region Propriedades
         public string Titulo { get; private set; }
         public IList<AutorManga> Autores { get; private set; }
@@ -43,5 +43,12 @@ namespace EstoqueMangas.Domain.Entities
             AddNotifications(this.Editora);
         }
         #endregion
+
+        #region Métodos
+        public void IncluirAutores(IList<AutorManga> autores)
+        {
+            this.Autores = autores;
+        }
+        #endregion 
     }
 }
