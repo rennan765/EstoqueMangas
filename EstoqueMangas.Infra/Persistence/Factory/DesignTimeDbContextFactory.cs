@@ -1,5 +1,6 @@
 ﻿//using System;
 //using System.IO;
+using EstoqueMangas.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 //using Microsoft.Extensions.Configuration;
@@ -16,7 +17,7 @@ namespace EstoqueMangas.Infra.Persistence.Factory
                 //.Build();
             //var connectionString = configuration.GetConnectionString("DefaultConnection");
             var builder = new DbContextOptionsBuilder<EstoqueMangasContext>();
-            builder.UseMySql("Server=localhost;User Id=root;Password=root;Database=EstoqueMangas");
+            builder.UseMySql(Settings.MySqlConnectionString());
             return new EstoqueMangasContext(builder.Options);
         }
     }

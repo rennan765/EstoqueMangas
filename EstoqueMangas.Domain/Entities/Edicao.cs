@@ -16,6 +16,11 @@ namespace EstoqueMangas.Domain.Entities
         #endregion
 
         #region Construtores
+        public Edicao() : base()
+        {
+
+        }
+
         public Edicao(Guid mangaId, Manga manga, string edicaoManga, int numero)
         {
             this.MangaId = mangaId;

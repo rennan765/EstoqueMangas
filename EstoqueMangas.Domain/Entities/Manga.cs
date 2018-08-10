@@ -21,7 +21,7 @@ namespace EstoqueMangas.Domain.Entities
         #endregion
 
         #region Construtores
-        public Manga()
+        public Manga() : base()
         {
             this.Autores = new List<AutorManga>();
             this.Edicoes = new List<Edicao>();

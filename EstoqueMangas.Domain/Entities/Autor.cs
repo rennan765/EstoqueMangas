@@ -13,6 +13,11 @@ namespace EstoqueMangas.Domain.Entities
         #endregion
 
         #region Construtores
+        public Autor() : base()
+        {
+
+        }
+
         public Autor(Nome nomeAutor) : base()
         {
             this.NomeAutor = nomeAutor;

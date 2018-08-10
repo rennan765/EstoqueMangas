@@ -23,5 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EstoqueMangas.Domain\EstoqueMangas.Domain.csproj" />
+    <ProjectReference Include="..\EstoqueMangas.Shared\EstoqueMangas.Shared.csproj" />
   </ItemGroup>
 </Project>
