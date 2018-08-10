@@ -1,4 +1,5 @@
 ﻿using EstoqueMangas.Domain.Entities;
+using EstoqueMangas.Domain.Entities.Join;
 using EstoqueMangas.Domain.ValueObjects;
 using EstoqueMangas.Infra.Persistence.Map;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,11 @@ namespace EstoqueMangas.Infra.Persistence
     {
         #region Propriedades
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Manga> Mangas { get; set;} 
+        public DbSet<Autor> Autores { get; set;} 
+        public DbSet<AutorManga> AutoresMangas { get; set;} 
+        public DbSet<Editora> Editoras { get; set;} 
+        public DbSet<Edicao> Edicao { get; set;} 
         #endregion 
 
         #region Construtores

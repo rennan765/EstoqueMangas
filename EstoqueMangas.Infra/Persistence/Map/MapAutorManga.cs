@@ -22,6 +22,8 @@ namespace EstoqueMangas.Infra.Persistence.Map
             builder.HasOne(am => am.Manga)
                    .WithMany(m => m.Autores)
                    .HasForeignKey(am => am.MangaId);
+
+            builder.Ignore(am => am.Id);
         }
     }
 }
