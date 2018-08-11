@@ -70,6 +70,15 @@ namespace EstoqueMangas.Domain.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Houve um erro interno no servidor. Se o problema persistir, favor entrar em contato com o administrador do sistema. Erro interno: &quot;{0]&quot;..
+        /// </summary>
+        internal static string ERRO_INTERNO {
+            get {
+                return ResourceManager.GetString("ERRO_INTERNO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Falha ao realizar a operação..
         /// </summary>
         internal static string FALHA_AO_REALIZAR_A_OPERACAO {

@@ -120,6 +120,9 @@
   <data name="CAMPO_X0_INVALIDO_FAVOR_INSERIR_NUMERO_MAIOR_QUE_X1" xml:space="preserve">
     <value>O campo {0} é inválido. Favor inserir um número maior que {1}.</value>
   </data>
+  <data name="ERRO_INTERNO" xml:space="preserve">
+    <value>Houve um erro interno no servidor. Se o problema persistir, favor entrar em contato com o administrador do sistema. Erro interno: "{0]".</value>
+  </data>
   <data name="FALHA_AO_REALIZAR_A_OPERACAO" xml:space="preserve">
     <value>Falha ao realizar a operação.</value>
   </data>
