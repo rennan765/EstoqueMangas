@@ -116,11 +116,11 @@ namespace EstoqueMangas.Domain.Entities
                 {
                     if (tipoTelefone == TipoTelefone.Fixo)
                     {
-                        this.TelefoneFixo = new Telefone(ddd.ToInt(), numero);
+                        this.TelefoneFixo = new Telefone(ddd, numero);
                     }
                     else
                     {
-                        this.TelefoneCelular = new Telefone(ddd.ToInt(), numero);
+                        this.TelefoneCelular = new Telefone(ddd, numero);
                     }
                 }
             }

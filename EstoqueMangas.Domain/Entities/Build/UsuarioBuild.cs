@@ -62,12 +62,12 @@ namespace EstoqueMangas.Domain.Entities.Build
 
             if (!string.IsNullOrEmpty(this.TelefoneFixo))
             {
-                telefoneFixo = new Telefone(Convert.ToInt32(this.DddFixo), this.TelefoneFixo);
+                telefoneFixo = new Telefone(this.DddFixo, this.TelefoneFixo);
             }
 
             if (!string.IsNullOrEmpty(this.TelefoneFixo))
             {
-                telefoneCelular = new Telefone(Convert.ToInt32(this.DddCelular), this.TelefoneCelular);
+                telefoneCelular = new Telefone(this.DddCelular, this.TelefoneCelular);
             }
 
             return new Usuario(nome, email, telefoneFixo, telefoneCelular, this.Senha, this.Status);
@@ -87,12 +87,12 @@ namespace EstoqueMangas.Domain.Entities.Build
 
             if (!string.IsNullOrEmpty(this.TelefoneFixo))
             {
-                telefoneFixo = new Telefone(Convert.ToInt32(this.DddFixo), this.TelefoneFixo);
+                telefoneFixo = new Telefone(this.DddFixo, this.TelefoneFixo);
             }
 
             if (!string.IsNullOrEmpty(this.TelefoneFixo))
             {
-                telefoneCelular = new Telefone(Convert.ToInt32(this.DddCelular), this.TelefoneCelular);
+                telefoneCelular = new Telefone(this.DddCelular, this.TelefoneCelular);
             }
 
             return new Usuario(nome, email, telefoneFixo, telefoneCelular, this.Senha);

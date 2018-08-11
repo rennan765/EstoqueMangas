@@ -20,6 +20,8 @@ namespace EstoqueMangas.Infra.Persistence.Map
                    .WithOne(m => m.Editora);
 
             //ValueObjects
+            builder.Ignore(e => e.Endereco);
+
             builder.OwnsOne<Endereco>(e => e.Endereco, endereco => 
             {
                 endereco.Property(e => e.Logradouro)
@@ -35,7 +37,7 @@ namespace EstoqueMangas.Infra.Persistence.Map
                 endereco.Property(e => e.Complemento)
                         .HasColumnName("COMPLEMENTO")
                         .HasMaxLength(50)
-                        .HasDefaultValue("");;
+                        .HasDefaultValue("");
 
                 endereco.Property(e => e.Bairro)
                         .HasColumnName("BAIRRO")

@@ -37,6 +37,8 @@
     <Folder Include="Arguments\" />
     <Folder Include="Arguments\Base\" />
     <Folder Include="Entities\Base\" />
+    <Folder Include="Arguments\Request\" />
+    <Folder Include="Arguments\Response\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\Message.Designer.cs">

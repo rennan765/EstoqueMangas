@@ -17,6 +17,8 @@ namespace EstoqueMangas.Infra.Persistence.Map
                    .HasName("ID");
 
             //ValueObjects
+            builder.Ignore(a => a.NomeAutor);
+
             builder.OwnsOne<Nome>(n => n.NomeAutor, nom =>
             {
                 nom.Property(n => n.PrimeiroNome)

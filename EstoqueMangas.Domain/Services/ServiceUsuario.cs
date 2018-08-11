@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using EstoqueMangas.Domain.Arguments;
 using EstoqueMangas.Domain.Arguments.Base;
 using EstoqueMangas.Domain.Entities;

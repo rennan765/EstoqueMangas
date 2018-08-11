@@ -27,6 +27,10 @@ namespace EstoqueMangas.Infra.Persistence.Map
              .IsRequired();
 
             //ValueObjects
+            builder.Ignore(u => u.Email)
+                   .Ignore(u => u.TelefoneFixo)
+                   .Ignore(u => u.TelefoneCelular);
+
             builder.OwnsOne<Email>(e => e.Email, ema =>
             {
                 ema.Property(e => e.EnderecoEmail)

@@ -1,6 +1,9 @@
-﻿namespace EstoqueMangas.Domain.Arguments
+﻿using EstoqueMangas.Domain.Arguments.Base;
+using EstoqueMangas.Domain.Interfaces.Arguments;
+
+namespace EstoqueMangas.Domain.Arguments
 {
-    public class AutenticarUsuarioRequest
+    public class AutenticarUsuarioRequest : Request, IRequest
     {
         #region Propriedades
         public string Email { get; set; }
