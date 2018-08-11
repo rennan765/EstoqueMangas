@@ -6,7 +6,7 @@ using EstoqueMangas.Domain.Resources;
 using Microsoft.AspNetCore.Mvc;
 using prmToolkit.NotificationPattern.Extensions;
 
-namespace EstoqueMangas.Api.Controllers
+namespace EstoqueMangas.Api.Controllers.Base
 {
     public class ControllerBase : Controller
     {

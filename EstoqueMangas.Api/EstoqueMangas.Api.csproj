@@ -8,6 +8,7 @@
     <Folder Include="wwwroot\" />
     <Folder Include="Security\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Controllers\Base\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,5 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EstoqueMangas.Infra\EstoqueMangas.Infra.csproj" />
+    <ProjectReference Include="..\EstoqueMangas.Domain\EstoqueMangas.Domain.csproj" />
   </ItemGroup>
 </Project>

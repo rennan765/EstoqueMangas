@@ -22,7 +22,7 @@ namespace EstoqueMangas.Domain.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Message {
+    public class Message {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -63,7 +63,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O campo {0} é inválido. Favor inserir um número maior que {1}..
         /// </summary>
-        internal static string CAMPO_X0_INVALIDO_FAVOR_INSERIR_NUMERO_MAIOR_QUE_X1 {
+        public static string CAMPO_X0_INVALIDO_FAVOR_INSERIR_NUMERO_MAIOR_QUE_X1 {
             get {
                 return ResourceManager.GetString("CAMPO_X0_INVALIDO_FAVOR_INSERIR_NUMERO_MAIOR_QUE_X1", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Houve um erro interno no servidor. Se o problema persistir, favor entrar em contato com o administrador do sistema. Erro interno: &quot;{0]&quot;..
         /// </summary>
-        internal static string ERRO_INTERNO {
+        public static string ERRO_INTERNO {
             get {
                 return ResourceManager.GetString("ERRO_INTERNO", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Falha ao realizar a operação..
         /// </summary>
-        internal static string FALHA_AO_REALIZAR_A_OPERACAO {
+        public static string FALHA_AO_REALIZAR_A_OPERACAO {
             get {
                 return ResourceManager.GetString("FALHA_AO_REALIZAR_A_OPERACAO", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a A senha deve ter entre {0} e {1} caracteres.
         /// </summary>
-        internal static string O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES {
+        public static string O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES {
             get {
                 return ResourceManager.GetString("O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O campo {0} é uma informação obrigatória..
         /// </summary>
-        internal static string O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA {
+        public static string O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA {
             get {
                 return ResourceManager.GetString("O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O campo {0} é inválido..
         /// </summary>
-        internal static string O_CAMPO_X0_E_INVALIDO {
+        public static string O_CAMPO_X0_E_INVALIDO {
             get {
                 return ResourceManager.GetString("O_CAMPO_X0_E_INVALIDO", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Operação realizada com sucesso..
         /// </summary>
-        internal static string OPERACAO_REALIZADA_COM_SUCESSO {
+        public static string OPERACAO_REALIZADA_COM_SUCESSO {
             get {
                 return ResourceManager.GetString("OPERACAO_REALIZADA_COM_SUCESSO", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} alterada com sucesso..
         /// </summary>
-        internal static string X0_ALTERADA_COM_SUCESSO {
+        public static string X0_ALTERADA_COM_SUCESSO {
             get {
                 return ResourceManager.GetString("X0_ALTERADA_COM_SUCESSO", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} alterado com sucesso..
         /// </summary>
-        internal static string X0_ALTERADO_COM_SUCESSO {
+        public static string X0_ALTERADO_COM_SUCESSO {
             get {
                 return ResourceManager.GetString("X0_ALTERADO_COM_SUCESSO", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} cadastrada com sucesso..
         /// </summary>
-        internal static string X0_CADASTRADA_COM_SUCESSO {
+        public static string X0_CADASTRADA_COM_SUCESSO {
             get {
                 return ResourceManager.GetString("X0_CADASTRADA_COM_SUCESSO", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} cadastrado com sucesso..
         /// </summary>
-        internal static string X0_CADASTRADO_COM_SUCESSO {
+        public static string X0_CADASTRADO_COM_SUCESSO {
             get {
                 return ResourceManager.GetString("X0_CADASTRADO_COM_SUCESSO", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} excluída com sucesso..
         /// </summary>
-        internal static string X0_EXCLUIDA_COM_SUCESSO {
+        public static string X0_EXCLUIDA_COM_SUCESSO {
             get {
                 return ResourceManager.GetString("X0_EXCLUIDA_COM_SUCESSO", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} excluído com sucesso..
         /// </summary>
-        internal static string X0_EXCLUIDO_COM_SUCESSO {
+        public static string X0_EXCLUIDO_COM_SUCESSO {
             get {
                 return ResourceManager.GetString("X0_EXCLUIDO_COM_SUCESSO", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0) já cadastrada..
         /// </summary>
-        internal static string X0_JA_CADASTRADA {
+        public static string X0_JA_CADASTRADA {
             get {
                 return ResourceManager.GetString("X0_JA_CADASTRADA", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} já cadastrado..
         /// </summary>
-        internal static string X0_JA_CADASTRADO {
+        public static string X0_JA_CADASTRADO {
             get {
                 return ResourceManager.GetString("X0_JA_CADASTRADO", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} não encontrada..
         /// </summary>
-        internal static string X0_NAO_ENCONTRADA {
+        public static string X0_NAO_ENCONTRADA {
             get {
                 return ResourceManager.GetString("X0_NAO_ENCONTRADA", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} não encontrado..
         /// </summary>
-        internal static string X0_NAO_ENCONTRADO {
+        public static string X0_NAO_ENCONTRADO {
             get {
                 return ResourceManager.GetString("X0_NAO_ENCONTRADO", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} alterada com sucesso..
         /// </summary>
-        internal static string X0_X1_ALTERADA_COM_SUCESSO {
+        public static string X0_X1_ALTERADA_COM_SUCESSO {
             get {
                 return ResourceManager.GetString("X0_X1_ALTERADA_COM_SUCESSO", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} alterado com sucesso..
         /// </summary>
-        internal static string X0_X1_ALTERADO_COM_SUCESSO {
+        public static string X0_X1_ALTERADO_COM_SUCESSO {
             get {
                 return ResourceManager.GetString("X0_X1_ALTERADO_COM_SUCESSO", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} cadastrada com sucesso..
         /// </summary>
-        internal static string X0_X1_CADASTRADA_COM_SUCESSO {
+        public static string X0_X1_CADASTRADA_COM_SUCESSO {
             get {
                 return ResourceManager.GetString("X0_X1_CADASTRADA_COM_SUCESSO", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} cadastrado com sucesso..
         /// </summary>
-        internal static string X0_X1_CADASTRADO_COM_SUCESSO {
+        public static string X0_X1_CADASTRADO_COM_SUCESSO {
             get {
                 return ResourceManager.GetString("X0_X1_CADASTRADO_COM_SUCESSO", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} excluída com sucesso..
         /// </summary>
-        internal static string X0_X1_EXCLUIDA_COM_SUCESSO {
+        public static string X0_X1_EXCLUIDA_COM_SUCESSO {
             get {
                 return ResourceManager.GetString("X0_X1_EXCLUIDA_COM_SUCESSO", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace EstoqueMangas.Domain.Resources {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0} {1} excluído com sucesso..
         /// </summary>
-        internal static string X0_X1_EXCLUIDO_COM_SUCESSO {
+        public static string X0_X1_EXCLUIDO_COM_SUCESSO {
             get {
                 return ResourceManager.GetString("X0_X1_EXCLUIDO_COM_SUCESSO", resourceCulture);
             }
