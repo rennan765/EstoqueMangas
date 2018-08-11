@@ -1,36 +1,35 @@
 ﻿using System;
+using EstoqueMangas.Domain.Arguments.Base;
 using EstoqueMangas.Domain.Entities;
 using EstoqueMangas.Domain.Interfaces.Arguments;
 using EstoqueMangas.Domain.Resources;
 
-namespace EstoqueMangas.Domain.Arguments.Base
+namespace EstoqueMangas.Domain.Arguments.UsuarioArguments
 {
-    public class AdicionarUsuarioResponse : Response, IResponse
+    public class AutenticarUsuarioResponse : Response, IResponse
     {
         #region Propriedades
         public Guid Id { get; set; }
         public string NomeCompleto { get; set; }
-        public string Email { get; set; }
         #endregion
 
         #region Construtores
-        public AdicionarUsuarioResponse()
+        public AutenticarUsuarioResponse()
         {
 
         }
-        #endregion
+        #endregion 
 
         #region Métodos
-        public static explicit operator AdicionarUsuarioResponse(Usuario entidade)
+        public static explicit operator AutenticarUsuarioResponse(Usuario entidade)
         {
-            return new AdicionarUsuarioResponse()
+            return new AutenticarUsuarioResponse()
             {
                 Id = entidade.Id,
                 NomeCompleto = entidade.Nome.ToString(),
-                Email = entidade.Email.ToString(),
                 Mensagem = Message.OPERACAO_REALIZADA_COM_SUCESSO
             };
-        }
+        } 
         #endregion
     }
 }

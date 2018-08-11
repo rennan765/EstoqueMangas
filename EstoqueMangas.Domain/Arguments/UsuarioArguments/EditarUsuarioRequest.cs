@@ -1,11 +1,13 @@
-﻿using EstoqueMangas.Domain.Arguments.Base;
+﻿using System;
 using EstoqueMangas.Domain.Interfaces.Arguments;
+using EstoqueMangas.Domain.Arguments.Base;
 
-namespace EstoqueMangas.Domain.Arguments
+namespace EstoqueMangas.Domain.Arguments.UsuarioArguments
 {
-    public class AdicionarUsuarioRequest : Request, IRequest
+    public class EditarUsuarioRequest : Request, IRequest
     {
         #region Propriedades
+        public Guid Id { get; set; }
         public string PrimeiroNome { get; set; }
         public string UltimoNome { get; set; }
         public string Email { get; set; }
@@ -13,13 +15,12 @@ namespace EstoqueMangas.Domain.Arguments
         public string TelefoneFixo { get; set; }
         public string DddCelular { get; set; }
         public string TelefoneCelular { get; set; }
-        public string Senha { get; set; }
         #endregion
 
         #region Construtores
-        public AdicionarUsuarioRequest()
+        public EditarUsuarioRequest()
         {
-
+            
         }
         #endregion 
     }

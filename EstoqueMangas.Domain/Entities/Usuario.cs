@@ -1,4 +1,4 @@
-﻿using EstoqueMangas.Domain.Arguments;
+﻿using EstoqueMangas.Domain.Arguments.UsuarioArguments;
 using EstoqueMangas.Domain.Entities.Base;
 using EstoqueMangas.Domain.Enuns;
 using EstoqueMangas.Domain.Extensions;

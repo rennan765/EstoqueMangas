@@ -1,7 +1,7 @@
 ﻿using EstoqueMangas.Domain.Arguments.Base;
 using EstoqueMangas.Domain.Interfaces.Arguments;
 
-namespace EstoqueMangas.Domain.Arguments
+namespace EstoqueMangas.Domain.Arguments.UsuarioArguments
 {
     public class AutenticarUsuarioRequest : Request, IRequest
     {

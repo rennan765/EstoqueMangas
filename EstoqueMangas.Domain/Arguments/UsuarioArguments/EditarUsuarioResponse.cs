@@ -4,7 +4,7 @@ using EstoqueMangas.Domain.Entities;
 using EstoqueMangas.Domain.Interfaces.Arguments;
 using EstoqueMangas.Domain.Resources;
 
-namespace EstoqueMangas.Domain.Arguments
+namespace EstoqueMangas.Domain.Arguments.UsuarioArguments
 {
     public class EditarUsuarioResponse : Response, IResponse
     {

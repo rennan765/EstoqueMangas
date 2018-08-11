@@ -1,5 +1,5 @@
 ﻿using System;
-using EstoqueMangas.Domain.Arguments;
+using EstoqueMangas.Domain.Arguments.UsuarioArguments;
 using EstoqueMangas.Domain.Arguments.Base;
 using EstoqueMangas.Domain.Entities;
 using EstoqueMangas.Domain.Entities.Build;
