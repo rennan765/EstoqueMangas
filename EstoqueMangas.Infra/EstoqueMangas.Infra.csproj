@@ -21,6 +21,7 @@
     <Folder Include="Persistence\Factory\" />
     <Folder Include="Persistence\Repositories\Base\" />
     <Folder Include="Persistence\Map\" />
+    <Folder Include="Transactions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EstoqueMangas.Domain\EstoqueMangas.Domain.csproj" />

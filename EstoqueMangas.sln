@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstoqueMangas.Domain", "Est
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstoqueMangas.Shared", "EstoqueMangas.Shared\EstoqueMangas.Shared.csproj", "{5944B8E0-4ACB-4CEF-9DEC-7BA8B9C2440A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstoqueMangas.Api", "EstoqueMangas.Api\EstoqueMangas.Api.csproj", "{E0BCAE0E-DFCF-4D19-8DA0-DA3B7C34A2E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{5944B8E0-4ACB-4CEF-9DEC-7BA8B9C2440A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5944B8E0-4ACB-4CEF-9DEC-7BA8B9C2440A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5944B8E0-4ACB-4CEF-9DEC-7BA8B9C2440A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0BCAE0E-DFCF-4D19-8DA0-DA3B7C34A2E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0BCAE0E-DFCF-4D19-8DA0-DA3B7C34A2E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0BCAE0E-DFCF-4D19-8DA0-DA3B7C34A2E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0BCAE0E-DFCF-4D19-8DA0-DA3B7C34A2E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
