@@ -15,6 +15,11 @@ namespace EstoqueMangas.Infra.Persistence.Map
             builder.HasKey(u => u.Id)
              .HasName("ID");
 
+            builder.Property(m => m.Titulo)
+                   .HasColumnName("TITULO")
+                   .HasMaxLength(500)
+                   .IsRequired();
+
             builder.Property(u => u.AnoLancamento)
              .HasColumnName("ANO_LANCAMENTO")
              .HasMaxLength(4)

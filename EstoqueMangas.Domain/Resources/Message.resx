@@ -130,7 +130,7 @@
     <value>Operação realizada com sucesso.</value>
   </data>
   <data name="O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES" xml:space="preserve">
-    <value>A senha deve ter entre {0} e {1} caracteres</value>
+    <value>O campo {0} deve ter entre {1} e {2} caracteres</value>
   </data>
   <data name="O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA" xml:space="preserve">
     <value>O campo {0} é uma informação obrigatória.</value>
@@ -151,7 +151,7 @@
     <value>{0} cadastrado com sucesso.</value>
   </data>
   <data name="X0_EXCLUIDA_COM_SUCESSO" xml:space="preserve">
-    <value>{0} {1} excluída com sucesso.</value>
+    <value>{0} excluída com sucesso.</value>
   </data>
   <data name="X0_EXCLUIDO_COM_SUCESSO" xml:space="preserve">
     <value>{0} excluído com sucesso.</value>

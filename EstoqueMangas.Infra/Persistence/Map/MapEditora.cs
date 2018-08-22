@@ -16,6 +16,11 @@ namespace EstoqueMangas.Infra.Persistence.Map
             builder.HasKey(e => e.Id)
                    .HasName("ID");
 
+            builder.Property(e => e.Nome)
+                   .HasColumnName("NOME")
+                   .HasMaxLength(200)
+                   .IsRequired();
+
             builder.HasMany(e => e.Mangas)
                    .WithOne(m => m.Editora);
 

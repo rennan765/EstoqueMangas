@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EstoqueMangas.Infra.Migrations
 {
     [DbContext(typeof(EstoqueMangasContext))]
-    [Migration("20180811135443_Inicial")]
+    [Migration("20180822233313_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,7 +63,10 @@ namespace EstoqueMangas.Infra.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnName("NOME")
+                        .HasMaxLength(200);
 
                     b.HasKey("Id")
                         .HasName("ID");
@@ -95,7 +98,10 @@ namespace EstoqueMangas.Infra.Migrations
 
                     b.Property<Guid>("EditoraId");
 
-                    b.Property<string>("Titulo");
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasColumnName("TITULO")
+                        .HasMaxLength(500);
 
                     b.HasKey("Id")
                         .HasName("ID");

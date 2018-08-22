@@ -2,21 +2,19 @@
 using System.Threading.Tasks;
 using EstoqueMangas.Domain.Interfaces.Services.Base;
 using EstoqueMangas.Domain.Interfaces.Transactions;
-using EstoqueMangas.Domain.Resources;
 using Microsoft.AspNetCore.Mvc;
-using prmToolkit.NotificationPattern.Extensions;
 
 namespace EstoqueMangas.Api.Controllers.Base
 {
-    public class ControllerBase : Controller
+    public class BaseController : Controller
     {
         #region Atributos
         private readonly IUnitOfWork _unit;
         private IService _service;
         #endregion
 
-        #region Construtores
-        public ControllerBase(IUnitOfWork unit)
+        #region Construtoresß
+        public BaseController(IUnitOfWork unit)
         {
             this._unit = unit;
         }
@@ -37,7 +35,7 @@ namespace EstoqueMangas.Api.Controllers.Base
                 }
                 catch (Exception e)
                 {
-                    return BadRequest(Message.ERRO_INTERNO.ToFormat(e.Message));
+                    return BadRequest($"Houve um erro interno no servidor. Se o problema persistir, favor entrar em contato com o administrador do sistema. Erro interno: {e.Message}");
                 }
             }
             else

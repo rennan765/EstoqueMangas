@@ -25,7 +25,7 @@ namespace EstoqueMangas.Infra.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Nome = table.Column<string>(nullable: true),
+                    NOME = table.Column<string>(maxLength: 200, nullable: false),
                     LOGRADOURO = table.Column<string>(maxLength: 100, nullable: false),
                     NUMERO = table.Column<string>(maxLength: 10, nullable: true, defaultValue: ""),
                     COMPLEMENTO = table.Column<string>(maxLength: 50, nullable: true, defaultValue: ""),
@@ -66,7 +66,7 @@ namespace EstoqueMangas.Infra.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Titulo = table.Column<string>(nullable: true),
+                    TITULO = table.Column<string>(maxLength: 500, nullable: false),
                     ANO_LANCAMENTO = table.Column<int>(maxLength: 4, nullable: false),
                     EditoraId = table.Column<Guid>(nullable: false)
                 },
@@ -112,8 +112,7 @@ namespace EstoqueMangas.Infra.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     MangaId = table.Column<Guid>(nullable: false),
                     EDICAO_MANGA = table.Column<string>(nullable: false, defaultValue: ""),
-                    NUMERO = table.Column<int>(nullable: false),
-                    MangaId1 = table.Column<Guid>(nullable: true)
+                    NUMERO = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -124,12 +123,6 @@ namespace EstoqueMangas.Infra.Migrations
                         principalTable: "TB_MANGA",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TB_EDICAO_TB_MANGA_MangaId1",
-                        column: x => x.MangaId1,
-                        principalTable: "TB_MANGA",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -141,11 +134,6 @@ namespace EstoqueMangas.Infra.Migrations
                 name: "IX_TB_EDICAO_MangaId",
                 table: "TB_EDICAO",
                 column: "MangaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TB_EDICAO_MangaId1",
-                table: "TB_EDICAO",
-                column: "MangaId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TB_MANGA_EditoraId",

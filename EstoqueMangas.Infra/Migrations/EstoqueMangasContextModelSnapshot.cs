@@ -61,7 +61,10 @@ namespace EstoqueMangas.Infra.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnName("NOME")
+                        .HasMaxLength(200);
 
                     b.HasKey("Id")
                         .HasName("ID");
@@ -93,7 +96,10 @@ namespace EstoqueMangas.Infra.Migrations
 
                     b.Property<Guid>("EditoraId");
 
-                    b.Property<string>("Titulo");
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasColumnName("TITULO")
+                        .HasMaxLength(500);
 
                     b.HasKey("Id")
                         .HasName("ID");

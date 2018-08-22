@@ -38,7 +38,17 @@ namespace EstoqueMangas.Domain.Entities
                 .IfNullOrEmpty(u => u.Senha, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Senha"))
                 .IfNullOrInvalidLength(u => u.Senha, 8, 32, Message.O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES.ToFormat("Senha", "8", "32"));
 
-            AddNotifications(this.Nome, this.Email, this.TelefoneFixo, this.TelefoneCelular);
+            AddNotifications(this.Nome, this.Email);
+
+            if (!(this.TelefoneFixo is null))
+            {
+                AddNotifications(this.TelefoneFixo);
+            }
+
+            if (!(this.TelefoneCelular is null))
+            {
+                AddNotifications(this.TelefoneCelular);
+            }
 
             if (IsValid())
             {
@@ -61,7 +71,17 @@ namespace EstoqueMangas.Domain.Entities
                 .IfNullOrInvalidLength(u => u.Senha, 8, 32, Message.O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES.ToFormat("Senha", "8", "32"))
                 .IfEnumInvalid(u => u.Status, Message.O_CAMPO_X0_E_INVALIDO.ToFormat("Status"));
 
-            AddNotifications(this.Nome, this.Email, this.TelefoneFixo, this.TelefoneCelular);
+            AddNotifications(this.Nome, this.Email);
+
+            if (!(this.TelefoneFixo is null))
+            {
+                AddNotifications(this.TelefoneFixo);
+            }
+
+            if (!(this.TelefoneCelular is null))
+            {
+                AddNotifications(this.TelefoneCelular);
+            }
 
             if (IsValid())
             {
@@ -93,11 +113,11 @@ namespace EstoqueMangas.Domain.Entities
             this.Status = StatusUsuario.AguardandoAprovacao;
         }
 
-        public void Editar(EditarUsuarioRequest request, StatusUsuario status)
+        public void Editar(EditarUsuarioRequest request)
         {
             this.Nome = new Nome(request.PrimeiroNome, request.UltimoNome);
             this.Email = new Email(request.Email);
-            this.Status = status;
+            this.Status = (StatusUsuario)request.StatusUsuario;
             this.EditarTelefone(TipoTelefone.Fixo, request.DddFixo, request.TelefoneFixo);
             this.EditarTelefone(TipoTelefone.Celular, request.DddCelular, request.TelefoneCelular);
         }

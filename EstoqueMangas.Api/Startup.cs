@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EstoqueMangas.Api.Security;
+using EstoqueMangas.Domain.Entities.Base;
 using EstoqueMangas.Domain.Interfaces.Repositores;
+using EstoqueMangas.Domain.Interfaces.Repositores.Base;
 using EstoqueMangas.Domain.Interfaces.Services;
+using EstoqueMangas.Domain.Interfaces.Services.Base;
 using EstoqueMangas.Domain.Interfaces.Transactions;
 using EstoqueMangas.Domain.Services;
 using EstoqueMangas.Infra.Persistence;
 using EstoqueMangas.Infra.Persistence.Repositories;
+using EstoqueMangas.Infra.Persistence.Repositories.Base;
 using EstoqueMangas.Infra.Transactions;
+using EstoqueMangas.Shared;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -30,8 +36,11 @@ namespace EstoqueMangas.Api
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //Adiciona o contexto
+            services.AddDbContext<EstoqueMangasContext>(options => options.UseMySql(Settings.MySQLConnectionString()));
+
             //Adiciona a injeção de dependencia
-            services.AddScoped<EstoqueMangasContext, EstoqueMangasContext>();
+            //services.AddScoped<EstoqueMangasContext, EstoqueMangasContext>();
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
@@ -39,6 +48,8 @@ namespace EstoqueMangas.Api
             services.AddTransient<IServiceUsuario, ServiceUsuario>();
 
             //Repositories
+            //services.AddTransient<IRepository<Entity,Guid>, Repository<Entity,Guid>>();
+
             services.AddTransient<IRepositoryUsuario, RepositoryUsuario>()
                 .AddTransient<IRepositoryAutor, RepositoryAutor>()
                 .AddTransient<IRepositoryManga, RepositoryManga>()
@@ -124,7 +135,8 @@ namespace EstoqueMangas.Api
             //services.AddMvc();
 
             //Aplicando documentação com swagger
-            services.AddSwaggerGen(x => {
+            services.AddSwaggerGen(x => 
+            {
                 x.SwaggerDoc("v1", new Info { Title = "EstoqueMangas", Version = "v1" });
             });
         }
@@ -137,7 +149,8 @@ namespace EstoqueMangas.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(x => {
+            app.UseCors(x => 
+            {
                 x.AllowAnyHeader();
                 x.AllowAnyMethod();
                 x.AllowAnyOrigin();

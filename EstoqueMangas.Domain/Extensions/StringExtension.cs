@@ -32,7 +32,12 @@ namespace EstoqueMangas.Domain.Extensions
 
             foreach (var datachar in datachars)
             {
-                isnumeric = isnumeric ? char.IsDigit(datachar) : isnumeric;
+                isnumeric = char.IsDigit(datachar);
+                    
+                if (!isnumeric)
+                {
+                    break;
+                }
             }
                 
             return isnumeric;

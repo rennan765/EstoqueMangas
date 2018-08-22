@@ -1,6 +1,5 @@
 ﻿using EstoqueMangas.Domain.Entities;
 using EstoqueMangas.Domain.Entities.Join;
-using EstoqueMangas.Domain.ValueObjects;
 using EstoqueMangas.Infra.Persistence.Map;
 using Microsoft.EntityFrameworkCore;
 using prmToolkit.NotificationPattern;
@@ -19,9 +18,14 @@ namespace EstoqueMangas.Infra.Persistence
         #endregion 
 
         #region Construtores
+        public EstoqueMangasContext()
+        {
+
+        }
+
         public EstoqueMangasContext(DbContextOptions<EstoqueMangasContext> options) : base(options)
         {
-            
+
         }
         #endregion
 
@@ -36,6 +40,7 @@ namespace EstoqueMangas.Infra.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             this.Mapeamento(modelBuilder);
 
             base.OnModelCreating(modelBuilder);
@@ -46,7 +51,7 @@ namespace EstoqueMangas.Infra.Persistence
             //Ignora classe de notificações
             modelBuilder.Ignore<Notification>();
 
-            //Mapeamento da classe Usuario
+            //Mapeamento das classes
             modelBuilder.ApplyConfiguration(new MapUsuario());
             modelBuilder.ApplyConfiguration(new MapAutor());
             modelBuilder.ApplyConfiguration(new MapManga());

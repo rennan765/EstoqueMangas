@@ -16,7 +16,7 @@ namespace EstoqueMangas.Domain.ValueObjects
             this.EnderecoEmail = enderecoEmail;
 
             new AddNotifications<Email>(this)
-                .IfNotEmail(e => e.EnderecoEmail, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("E-mail"))
+                .IfNullOrEmpty(e => e.EnderecoEmail, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("E-mail"))
                 .IfNotEmail(e => e.EnderecoEmail, Message.O_CAMPO_X0_E_INVALIDO.ToFormat("E-mail"));
         }
         #endregion

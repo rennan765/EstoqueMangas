@@ -20,9 +20,9 @@ namespace EstoqueMangas.Domain.Services
         #endregion
 
         #region Construtores
-        public ServiceUsuario(IRepository<Usuario, Guid> repository)
+        public ServiceUsuario(IRepositoryUsuario repository)
         {
-            this._repository = (IRepositoryUsuario)repository;
+            this._repository = repository;
         }
         #endregion
 
@@ -118,7 +118,7 @@ namespace EstoqueMangas.Domain.Services
                 {
                     if (!_repository.Existe(u => u.Id.ToString() != usuario.Id.ToString() && u.Email.ToString() == usuario.Email.ToString()))
                     {
-                        usuario.Editar(editarUsuarioRequest, usuario.Status);
+                        usuario.Editar(editarUsuarioRequest);
                         AddNotifications(usuario);
 
                         if(IsValid())
@@ -155,6 +155,21 @@ namespace EstoqueMangas.Domain.Services
             _repository.Remover(_repository.ObterPorId(id));
             return new Response(true);
         } 
+
+        public IResponse ObterPorId(Guid id)
+        {
+            var usuario = _repository.ObterPorId(id);
+
+            if (!(usuario is null))
+            {
+                return (ObterUsuarioResponse)usuario;
+            }
+            else
+            {
+                AddNotification("Usuario", Message.X0_NAO_ENCONTRADO.ToFormat("Usuario"));
+                return null;
+            }
+        }
 
         private void NotificarRequestNulo()
         {

@@ -8,18 +8,23 @@ namespace EstoqueMangas.Domain.Entities.Build
     {
 
         #region Propriedades
-        public string PrimeiroNome { get; private set; }
-        public string UltimoNome { get; private set; }
-        public string Email { get; private set; }
-        public string DddFixo { get; private set; }
-        public string TelefoneFixo { get; private set; }
-        public string DddCelular { get; private set; }
-        public string TelefoneCelular { get; private set; }
-        public string Senha { get; private set; }
-        public StatusUsuario Status { get; private set; }
+        public string PrimeiroNome { get; set; }
+        public string UltimoNome { get; set; }
+        public string Email { get; set; }
+        public string DddFixo { get; set; }
+        public string TelefoneFixo { get; set; }
+        public string DddCelular { get; set; }
+        public string TelefoneCelular { get; set; }
+        public string Senha { get; set; }
+        public StatusUsuario Status { get; set; }
         #endregion
 
         #region Construtores
+        public UsuarioBuild()
+        {
+
+        }
+
         public UsuarioBuild(string primeiroNome, string ultimoNome, string email, string dddFixo, string telefoneFixo, string dddCelular, string telefoneCelular, string senha, StatusUsuario statusUsuario)
         {
             this.PrimeiroNome = primeiroNome;
@@ -65,7 +70,7 @@ namespace EstoqueMangas.Domain.Entities.Build
                 telefoneFixo = new Telefone(this.DddFixo, this.TelefoneFixo);
             }
 
-            if (!string.IsNullOrEmpty(this.TelefoneFixo))
+            if (!string.IsNullOrEmpty(this.TelefoneCelular))
             {
                 telefoneCelular = new Telefone(this.DddCelular, this.TelefoneCelular);
             }
@@ -90,7 +95,7 @@ namespace EstoqueMangas.Domain.Entities.Build
                 telefoneFixo = new Telefone(this.DddFixo, this.TelefoneFixo);
             }
 
-            if (!string.IsNullOrEmpty(this.TelefoneFixo))
+            if (!string.IsNullOrEmpty(this.TelefoneCelular))
             {
                 telefoneCelular = new Telefone(this.DddCelular, this.TelefoneCelular);
             }

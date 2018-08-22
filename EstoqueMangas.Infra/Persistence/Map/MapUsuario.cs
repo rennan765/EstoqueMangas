@@ -12,7 +12,6 @@ namespace EstoqueMangas.Infra.Persistence.Map
             //Nome da tabela
             builder.ToTable("TB_USUARIO");
 
-
             //Campos simples
             builder.HasKey(u => u.Id)
              .HasName("ID");
@@ -27,7 +26,8 @@ namespace EstoqueMangas.Infra.Persistence.Map
              .IsRequired();
 
             //ValueObjects
-            builder.Ignore(u => u.Email)
+            builder.Ignore(u => u.Nome)
+                   .Ignore(u => u.Email)
                    .Ignore(u => u.TelefoneFixo)
                    .Ignore(u => u.TelefoneCelular);
 
