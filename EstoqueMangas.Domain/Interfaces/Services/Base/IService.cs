@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using EstoqueMangas.Domain.Interfaces.Arguments;
 using prmToolkit.NotificationPattern;
 
@@ -10,5 +11,6 @@ namespace EstoqueMangas.Domain.Interfaces.Services.Base
         IResponse Editar(IRequest request);
         IResponse Excluir(Guid id);
         IResponse ObterPorId(Guid id);
+        IEnumerable<IResponse> Listar();
     }
 }

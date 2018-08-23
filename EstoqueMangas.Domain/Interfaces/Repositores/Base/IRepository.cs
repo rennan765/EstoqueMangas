@@ -17,7 +17,7 @@ namespace EstoqueMangas.Domain.Interfaces.Repositores.Base
 
         bool Existe(Expression<Func<TEntity, bool>> where);
 
-        IQueryable<TEntity> Listar(Expression<Func<TEntity, object>>[] propriedades);
+        IQueryable<TEntity> Listar(params Expression<Func<TEntity, object>>[] propriedades);
 
         IQueryable<TEntity> ListarOrdenandoPor<TKey>(Expression<Func<TEntity, TKey>> ordem, bool asc = true, params Expression<Func<TEntity, object>>[] propriedades);
 

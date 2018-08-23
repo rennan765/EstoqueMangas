@@ -8,6 +8,7 @@ namespace EstoqueMangas.Domain.Arguments.UsuarioArguments
     public class ObterUsuarioResponse : Response, IResponse
     {
         #region Propriedades
+        public Guid Id { get; set; }
         public string NomeCompleto { get; set; }
         public string PrimeiroNone { get; set; }
         public string UltimoNome { get; set; }
@@ -33,6 +34,7 @@ namespace EstoqueMangas.Domain.Arguments.UsuarioArguments
         {
             return new ObterUsuarioResponse()
             {
+                Id = entidade.Id,
                 NomeCompleto = entidade.Nome.ToString(),
                 PrimeiroNone = entidade.Nome.PrimeiroNome,
                 UltimoNome = entidade.Nome.UltimoNome,

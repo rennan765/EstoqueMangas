@@ -10,6 +10,8 @@ using EstoqueMangas.Domain.Interfaces.Services;
 using EstoqueMangas.Domain.Resources;
 using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EstoqueMangas.Domain.Services
 {
@@ -169,6 +171,11 @@ namespace EstoqueMangas.Domain.Services
                 AddNotification("Usuario", Message.X0_NAO_ENCONTRADO.ToFormat("Usuario"));
                 return null;
             }
+        }
+
+        public IEnumerable<IResponse> Listar()
+        {
+            return _repository.Listar().ToList().Select(usuario => (ObterUsuarioResponse)usuario).ToList();
         }
 
         private void NotificarRequestNulo()

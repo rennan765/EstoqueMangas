@@ -53,6 +53,36 @@ namespace EstoqueMangas.Api.Controllers
                 return await ResponseExceptionAsync(e);
             }
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("api/v1/Usuario/Listar")]
+        public async Task<IActionResult> Listar()
+        {
+            try
+            {
+                return await ResponseAsync(_serviceUsuario.Listar(), _serviceUsuario);
+            }
+            catch (Exception e)
+            {
+                return await ResponseExceptionAsync(e);
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpDelete]
+        [Route("api/v1/Usuario/Remover/{idUsuario}")]
+        public async Task<IActionResult> Remover(Guid idUsuario)
+        {
+            try
+            {
+                return await ResponseAsync(_serviceUsuario.Excluir(idUsuario), _serviceUsuario);
+            }
+            catch (Exception e)
+            {
+                return await ResponseExceptionAsync(e);
+            }
+        }
         #endregion 
     }
 }
