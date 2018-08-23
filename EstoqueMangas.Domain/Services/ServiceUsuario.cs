@@ -47,14 +47,7 @@ namespace EstoqueMangas.Domain.Services
                 {
                     usuario = _repository.ObterPor(u => u.Email.ToString() == usuario.Email.ToString() && u.Senha == usuario.Senha);
 
-                    if (!(usuario is null))
-                    {
-                        return (AutenticarUsuarioResponse)usuario;
-                    }
-                    else
-                    {
-                        return null;
-                    }
+                    return (!(usuario is null)) ? (AutenticarUsuarioResponse)usuario : null;
                 }
                 else
                 {
@@ -118,7 +111,7 @@ namespace EstoqueMangas.Domain.Services
 
                 if (!(usuario is null))
                 {
-                    if (!_repository.Existe(u => u.Id.ToString() != usuario.Id.ToString() && u.Email.ToString() == usuario.Email.ToString()))
+                    if (!_repository.Existe(u => u.Id.ToString() != editarUsuarioRequest.Id.ToString() && u.Email.ToString() == editarUsuarioRequest.Email.ToString()))
                     {
                         usuario.Editar(editarUsuarioRequest);
                         AddNotifications(usuario);
