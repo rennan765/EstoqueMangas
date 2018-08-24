@@ -47,7 +47,15 @@ namespace EstoqueMangas.Domain.Services
                 {
                     usuario = _repository.ObterPor(u => u.Email.ToString() == usuario.Email.ToString() && u.Senha == usuario.Senha);
 
-                    return (!(usuario is null)) ? (AutenticarUsuarioResponse)usuario : null;
+                    if (!(usuario is null))
+                    {
+                        return (AutenticarUsuarioResponse)usuario;
+                    }
+                    else 
+                    {
+                        AddNotification("Usuário", "Nome de usuário e/ou senha incorretos.");
+                        return null;
+                    }
                 }
                 else
                 {

@@ -62,18 +62,8 @@ namespace EstoqueMangas.Domain.Entities.Build
         {
             var nome = new Nome(this.PrimeiroNome, this.UltimoNome);
             var email = new Email(this.Email);
-            Telefone telefoneFixo = null;
-            Telefone telefoneCelular = null;
-
-            if (!string.IsNullOrEmpty(this.TelefoneFixo))
-            {
-                telefoneFixo = new Telefone(this.DddFixo, this.TelefoneFixo);
-            }
-
-            if (!string.IsNullOrEmpty(this.TelefoneCelular))
-            {
-                telefoneCelular = new Telefone(this.DddCelular, this.TelefoneCelular);
-            }
+            var telefoneFixo = new Telefone(this.DddFixo, this.TelefoneFixo);
+            var telefoneCelular = new Telefone(this.DddCelular, this.TelefoneCelular);
 
             return new Usuario(nome, email, telefoneFixo, telefoneCelular, this.Senha, this.Status);
         }
@@ -87,8 +77,8 @@ namespace EstoqueMangas.Domain.Entities.Build
         {
             var nome = new Nome(this.PrimeiroNome, this.UltimoNome);
             var email = new Email(this.Email);
-            Telefone telefoneFixo = null;
-            Telefone telefoneCelular = null;
+            var telefoneFixo = new Telefone(this.DddFixo, this.TelefoneFixo);
+            var telefoneCelular = new Telefone(this.DddCelular, this.TelefoneCelular);
 
             if (!string.IsNullOrEmpty(this.TelefoneFixo))
             {

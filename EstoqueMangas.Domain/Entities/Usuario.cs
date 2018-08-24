@@ -118,32 +118,8 @@ namespace EstoqueMangas.Domain.Entities
             this.Nome = new Nome(request.PrimeiroNome, request.UltimoNome);
             this.Email = new Email(request.Email);
             this.Status = (StatusUsuario)request.StatusUsuario;
-            this.EditarTelefone(TipoTelefone.Fixo, request.DddFixo, request.TelefoneFixo);
-            this.EditarTelefone(TipoTelefone.Celular, request.DddCelular, request.TelefoneCelular);
-        }
-
-        private void EditarTelefone(TipoTelefone tipoTelefone, string ddd, string numero)
-        {
-            if (!string.IsNullOrEmpty(ddd) && !string.IsNullOrEmpty(numero))
-            {
-                if(ddd.IsNumeric())
-                {
-                    string tipo = (tipoTelefone == TipoTelefone.Fixo ? "Telefone Fixo" : "Telefone Felular");
-                    AddNotification(tipo, Message.O_CAMPO_X0_E_INVALIDO.ToFormat($"Ddd do {tipo}"));
-                }
-
-                if (IsValid())
-                {
-                    if (tipoTelefone == TipoTelefone.Fixo)
-                    {
-                        this.TelefoneFixo = new Telefone(ddd, numero);
-                    }
-                    else
-                    {
-                        this.TelefoneCelular = new Telefone(ddd, numero);
-                    }
-                }
-            }
+            this.TelefoneFixo = new Telefone(request.DddFixo, request.TelefoneFixo);
+            this.TelefoneCelular = new Telefone(request.DddCelular, request.TelefoneCelular);
         }
         #endregion 
     }
