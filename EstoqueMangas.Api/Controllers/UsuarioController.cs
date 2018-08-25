@@ -6,6 +6,8 @@ using EstoqueMangas.Domain.Interfaces.Transactions;
 using EstoqueMangas.Api.Controllers.Base;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace EstoqueMangas.Api.Controllers
 {
@@ -13,51 +15,19 @@ namespace EstoqueMangas.Api.Controllers
     {
         #region Atributos
         private readonly IServiceUsuario _serviceUsuario;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private AutenticarUsuarioResponse _usuarioLogado;
         #endregion
 
         #region Construtores
-        public UsuarioController(IServiceUsuario serviceUsuario, IUnitOfWork unitOfWork) : base(unitOfWork)
+        public UsuarioController(IServiceUsuario serviceUsuario, IHttpContextAccessor httpContextAccessor, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            _serviceUsuario = serviceUsuario;
+            this._serviceUsuario = serviceUsuario;
+            this._httpContextAccessor = httpContextAccessor;
         }
         #endregion
 
         #region Métodos
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("api/v1/Usuario/Autenticar")]
-        public async Task<IActionResult> Adicionar([FromBody]AutenticarUsuarioRequest request)
-        {
-            try
-            {
-                //Gerar o token (a implementar)
-
-                return await ResponseAsync(_serviceUsuario.Autenticar(request), _serviceUsuario);
-            }
-            catch (Exception e)
-            {
-                return await ResponseExceptionAsync(e);
-            }
-
-        }
-
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("api/v1/Usuario/Adicionar")]
-        public async Task<IActionResult> Adicionar([FromBody]AdicionarUsuarioRequest request)
-        {
-            try
-            {
-                return await ResponseAsync(_serviceUsuario.Adicionar(request), _serviceUsuario);
-            }
-            catch (Exception e)
-            {
-                return await ResponseExceptionAsync(e);
-            }
-
-        }
-
-        [AllowAnonymous]
         [HttpPut]
         [Route("api/v1/Usuario/Alterar")]
         public async Task<IActionResult> Editar([FromBody]EditarUsuarioRequest request)
@@ -72,7 +42,6 @@ namespace EstoqueMangas.Api.Controllers
             }
         }
 
-        [AllowAnonymous]
         [HttpDelete]
         [Route("api/v1/Usuario/Remover/{idUsuario}")]
         public async Task<IActionResult> Remover(Guid idUsuario)
@@ -87,7 +56,6 @@ namespace EstoqueMangas.Api.Controllers
             }
         }
 
-        [AllowAnonymous]
         [HttpGet]
         [Route("api/v1/Usuario/ObterPorId/{idUsuario}")]
         public async Task<IActionResult> ObterPorId(Guid idUsuario)
@@ -102,9 +70,9 @@ namespace EstoqueMangas.Api.Controllers
             }
         }
 
-        [AllowAnonymous]
         [HttpGet]
         [Route("api/v1/Usuario/Listar")]
+        [AllowAnonymous]
         public async Task<IActionResult> Listar()
         {
             try
@@ -116,6 +84,30 @@ namespace EstoqueMangas.Api.Controllers
                 return await ResponseExceptionAsync(e);
             }
         }
+
+        //[HttpGet]
+        //[Route("api/v1/Usuario/Teste/{idUsuario}")]
+        ////[Authorize("Bearer")]
+        //[AllowAnonymous]
+        //public string Teste(Guid idUsuario)
+        //{
+        //    try
+        //    {
+        //        var response = ObterUsuarioLogado();
+
+        //        return "ok";
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return e.Message;
+        //    }
+        //}
+
+        //private AutenticarUsuarioResponse ObterUsuarioLogado()
+        //{
+        //    string usuarioClaims = _httpContextAccessor.HttpContext.User.FindFirst("Usuario").Value;
+        //    return JsonConvert.DeserializeObject<AutenticarUsuarioResponse>(usuarioClaims);
+        //}
         #endregion 
     }
 }

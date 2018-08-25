@@ -6,5 +6,6 @@ namespace EstoqueMangas.Domain.Interfaces.Services
     public interface IServiceUsuario : IService
     {
         IResponse Autenticar(IRequest request);
+        IResponse AlterarSenha(IRequest request);
     }
 }

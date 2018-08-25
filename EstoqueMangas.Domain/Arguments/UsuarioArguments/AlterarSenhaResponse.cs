@@ -6,30 +6,30 @@ using EstoqueMangas.Domain.Resources;
 
 namespace EstoqueMangas.Domain.Arguments.UsuarioArguments
 {
-    public class AutenticarUsuarioResponse : Response, IResponse
+    public class AlterarSenhaResponse : Response, IResponse
     {
         #region Propriedades
         public Guid Id { get; set; }
         public string Email { get; set; }
         #endregion
 
-        #region Construtores
-        public AutenticarUsuarioResponse()
+        #region Construtores 
+        public AlterarSenhaResponse()
         {
 
         }
-        #endregion 
+        #endregion
 
         #region Métodos
-        public static explicit operator AutenticarUsuarioResponse(Usuario entidade)
+        public static explicit operator AlterarSenhaResponse(Usuario entidade)
         {
-            return new AutenticarUsuarioResponse()
+            return new AlterarSenhaResponse()
             {
                 Id = entidade.Id,
                 Email = entidade.Email.ToString(),
                 Mensagem = Message.OPERACAO_REALIZADA_COM_SUCESSO
             };
-        } 
-        #endregion
+        }
+        #endregion 
     }
 }

@@ -120,7 +120,53 @@ namespace EstoqueMangas.Domain.Entities
             this.Status = (StatusUsuario)request.StatusUsuario;
             this.TelefoneFixo = new Telefone(request.DddFixo, request.TelefoneFixo);
             this.TelefoneCelular = new Telefone(request.DddCelular, request.TelefoneCelular);
+
+            new AddNotifications<Usuario>(this)
+                .IfEnumInvalid(u => u.Status, Message.O_CAMPO_X0_E_INVALIDO.ToFormat("Status"));
+
+            AddNotifications(this.Nome, this.Email, this.TelefoneFixo, this.TelefoneCelular);
         }
-        #endregion 
+
+        public void AlterarSenha(AlterarSenhaRequest request)
+        {
+            if (this.Email.ToString() != request.Email)
+            {
+                AddNotification("E-mail", Message.O_CAMPO_X0_E_INVALIDO.ToFormat("E-mail"));
+            }
+
+            if (request.NovaSenha.ValidateLength(8, 32))
+            {
+                AddNotification("Senha", Message.O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES.ToFormat("Senha", "8", "32"));
+            }
+
+            if (IsValid())
+            {
+                this.Senha = request.NovaSenha.ToHash();
+            }
+        }
+
+        public string ObterStatusUsuario()
+        {
+            string statusUsuario;
+
+            switch (this.Status)
+            {
+                case StatusUsuario.AguardandoAprovacao:
+                    statusUsuario = "Aguardando aprovação";
+                    break;
+                case StatusUsuario.Ativo:
+                    statusUsuario = "Ativo";
+                    break;
+                case StatusUsuario.Bloqueado:
+                    statusUsuario = "Bloqueado";
+                    break;
+                default:
+                    statusUsuario = "";
+                    break;
+            }
+
+            return statusUsuario;
+        }
+        #endregion
     }
 }

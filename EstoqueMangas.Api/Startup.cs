@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using EstoqueMangas.Api.Security;
-using EstoqueMangas.Domain.Entities.Base;
 using EstoqueMangas.Domain.Interfaces.Repositores;
-using EstoqueMangas.Domain.Interfaces.Repositores.Base;
 using EstoqueMangas.Domain.Interfaces.Services;
-using EstoqueMangas.Domain.Interfaces.Services.Base;
 using EstoqueMangas.Domain.Interfaces.Transactions;
 using EstoqueMangas.Domain.Services;
 using EstoqueMangas.Infra.Persistence;
 using EstoqueMangas.Infra.Persistence.Repositories;
-using EstoqueMangas.Infra.Persistence.Repositories.Base;
 using EstoqueMangas.Infra.Transactions;
 using EstoqueMangas.Shared;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -40,7 +33,7 @@ namespace EstoqueMangas.Api
             services.AddDbContext<EstoqueMangasContext>(options => options.UseMySql(Settings.MySQLConnectionString()));
 
             //Adiciona a injeção de dependencia
-            //services.AddScoped<EstoqueMangasContext, EstoqueMangasContext>();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
@@ -48,8 +41,6 @@ namespace EstoqueMangas.Api
             services.AddTransient<IServiceUsuario, ServiceUsuario>();
 
             //Repositories
-            //services.AddTransient<IRepository<Entity,Guid>, Repository<Entity,Guid>>();
-
             services.AddTransient<IRepositoryUsuario, RepositoryUsuario>()
                 .AddTransient<IRepositoryAutor, RepositoryAutor>()
                 .AddTransient<IRepositoryManga, RepositoryManga>()
@@ -117,27 +108,13 @@ namespace EstoqueMangas.Api
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
-            //Para todas as requisições serem necessaria o token, para um endpoint não exisgir o token
-            //deve colocar o [AllowAnonymous]
-            //Caso remova essa linha, para todas as requisições que precisar de token, deve colocar
-            //o atributo [Authorize("Bearer")]
-            services.AddMvc(config =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
-                    .RequireAuthenticatedUser().Build();
-
-                config.Filters.Add(new AuthorizeFilter(policy));
-            });
-
             services.AddCors();
-
-            //services.AddMvc();
 
             //Aplicando documentação com swagger
             services.AddSwaggerGen(x => 
             {
                 x.SwaggerDoc("v1", new Info { Title = "EstoqueMangas", Version = "v1" });
+                x.OperationFilter<AddRequiredHeaderParameter>();
             });
         }
 
@@ -156,11 +133,12 @@ namespace EstoqueMangas.Api
                 x.AllowAnyOrigin();
             });
 
+            app.UseAuthentication();
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(c => 
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "StolenCar - V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "EstoqueMangas - V1");
             });
 
         }

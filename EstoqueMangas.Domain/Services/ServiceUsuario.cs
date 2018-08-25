@@ -12,6 +12,7 @@ using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
 using System.Collections.Generic;
 using System.Linq;
+using EstoqueMangas.Domain.Enuns;
 
 namespace EstoqueMangas.Domain.Services
 {
@@ -49,7 +50,16 @@ namespace EstoqueMangas.Domain.Services
 
                     if (!(usuario is null))
                     {
-                        return (AutenticarUsuarioResponse)usuario;
+                        if (usuario.Status == StatusUsuario.Ativo)
+                        {
+                            return (AutenticarUsuarioResponse)usuario;
+                        }
+                        else
+                        {
+                            AddNotification("Status", $"Não foi possível efetuar o login. Status do usuário: {usuario.ObterStatusUsuario()}.");
+                            return null;
+                        }
+
                     }
                     else 
                     {
@@ -59,6 +69,41 @@ namespace EstoqueMangas.Domain.Services
                 }
                 else
                 {
+                    return null;
+                }
+            }
+            else
+            {
+                NotificarRequestNulo();
+                return null;
+            }
+        }
+
+        public IResponse AlterarSenha(IRequest request)
+        {
+            if (!(request is null))
+            {
+                AlterarSenhaRequest alterarSenhaRequest = (AlterarSenhaRequest)request;
+                var usuario = _repository.ObterPor(u => u.Email.ToString() == alterarSenhaRequest.Email);
+
+                if (!(usuario is null))
+                {
+                    usuario.AlterarSenha(alterarSenhaRequest);
+                    AddNotifications(usuario);
+
+                    if(IsValid())
+                    {
+                        _repository.Editar(usuario);
+                        return (AlterarSenhaResponse)usuario;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    AddNotification("Usuario", Message.X0_NAO_ENCONTRADO.ToFormat("Usuario"));
                     return null;
                 }
             }

@@ -47,5 +47,10 @@ namespace EstoqueMangas.Domain.Extensions
         {
             return Convert.ToInt32(texto);
         }
+
+        public static bool ValidateLength(this string texto, int minLength, int maxLength)
+        {
+            return texto.Length >= minLength && texto.Length <= maxLength;
+        }
     }
 }
