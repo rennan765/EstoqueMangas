@@ -4,7 +4,7 @@ using EstoqueMangas.Domain.ValueObjects;
 
 namespace EstoqueMangas.Domain.Entities.Build
 {
-    public class UsuarioBuild : IDisposable
+    public class UsuarioBuild
     {
 
         #region Propriedades
@@ -91,23 +91,6 @@ namespace EstoqueMangas.Domain.Entities.Build
             }
 
             return new Usuario(nome, email, telefoneFixo, telefoneCelular, this.Senha);
-        }
-
-        private void LimpaCampos()
-        {
-            this.PrimeiroNome = null;
-            this.UltimoNome = null;
-            this.Email = null;
-            this.DddFixo = null;
-            this.TelefoneFixo = null;
-            this.DddCelular = null;
-            this.TelefoneCelular = null;
-            this.Senha = null;
-        }
-
-        public void Dispose()
-        {
-            this.LimpaCampos();
         }
         #endregion 
     }

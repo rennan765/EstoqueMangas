@@ -35,12 +35,8 @@ namespace EstoqueMangas.Domain.Services
             if (!(request is null))
             {
                 AutenticarUsuarioRequest autenticarUsuarioRequest = (AutenticarUsuarioRequest)request;
-                Usuario usuario = null;
-
-                using (var usuarioBuild = new UsuarioBuild(autenticarUsuarioRequest.Email, autenticarUsuarioRequest.Senha))
-                {
-                    usuario = usuarioBuild.BuildAutenticar();
-                }
+                Usuario usuario = new UsuarioBuild(autenticarUsuarioRequest.Email, autenticarUsuarioRequest.Senha)
+                    .BuildAutenticar();
 
                 AddNotifications(usuario);
 
@@ -119,12 +115,8 @@ namespace EstoqueMangas.Domain.Services
             if (!(request is null))
             {
                 AdicionarUsuarioRequest adicionarUsuarioRequest = (AdicionarUsuarioRequest)request;
-                Usuario usuario = null;
-
-                using (var usuarioBuild = new UsuarioBuild(adicionarUsuarioRequest.PrimeiroNome, adicionarUsuarioRequest.UltimoNome, adicionarUsuarioRequest.Email, adicionarUsuarioRequest.DddFixo, adicionarUsuarioRequest.TelefoneFixo, adicionarUsuarioRequest.DddCelular, adicionarUsuarioRequest.TelefoneCelular, adicionarUsuarioRequest.Senha))
-                {
-                    usuario = usuarioBuild.BuildAdicionar();
-                }
+                Usuario usuario = new UsuarioBuild(adicionarUsuarioRequest.PrimeiroNome, adicionarUsuarioRequest.UltimoNome, adicionarUsuarioRequest.Email, adicionarUsuarioRequest.DddFixo, adicionarUsuarioRequest.TelefoneFixo, adicionarUsuarioRequest.DddCelular, adicionarUsuarioRequest.TelefoneCelular, adicionarUsuarioRequest.Senha)
+                    .BuildAdicionar();
 
                 AddNotifications(usuario);
 
