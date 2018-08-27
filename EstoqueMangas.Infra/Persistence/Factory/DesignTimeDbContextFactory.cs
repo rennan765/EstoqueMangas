@@ -1,4 +1,4 @@
-﻿using EstoqueMangas.Shared;
+﻿using EstoqueMangas.Shared.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
@@ -9,8 +9,7 @@ namespace EstoqueMangas.Infra.Persistence.Factory
         public EstoqueMangasContext CreateDbContext(string[] args)
         {
             var builder = new DbContextOptionsBuilder<EstoqueMangasContext>();
-            builder.UseMySql(Settings.MySQLConnectionString());
-            //builder.UseSqlServer(Settings.SQLServerConnectionString());
+            builder.UseMySql(ConnectionStrings.MySQL());
 
             return new EstoqueMangasContext(builder.Options);
         }

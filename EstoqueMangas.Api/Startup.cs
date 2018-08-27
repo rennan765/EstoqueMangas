@@ -7,7 +7,7 @@ using EstoqueMangas.Domain.Services;
 using EstoqueMangas.Infra.Persistence;
 using EstoqueMangas.Infra.Persistence.Repositories;
 using EstoqueMangas.Infra.Transactions;
-using EstoqueMangas.Shared;
+using EstoqueMangas.Shared.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -30,7 +30,7 @@ namespace EstoqueMangas.Api
         public void ConfigureServices(IServiceCollection services)
         {
             //Adiciona o contexto
-            services.AddDbContext<EstoqueMangasContext>(options => options.UseMySql(Settings.MySQLConnectionString()));
+            services.AddDbContext<EstoqueMangasContext>(options => options.UseMySql(ConnectionStrings.MySQL()));
 
             //Adiciona a injeção de dependencia
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();

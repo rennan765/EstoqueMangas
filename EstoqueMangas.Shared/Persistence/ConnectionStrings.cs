@@ -1,14 +1,14 @@
-﻿namespace EstoqueMangas.Shared
+﻿namespace EstoqueMangas.Shared.Persistence
 {
-    public static class Settings
+    public static class ConnectionStrings
     {
         #region Métodos
-        public static string MySQLConnectionString()
+        public static string MySQL()
         {
             return "Server=localhost;User Id=root;Password=root;Database=EstoqueMangas";
         }
 
-        public static string SQLServerConnectionString()
+        public static string SQLServer()
         {
             return "Data Source=localhost;Initial Catalog=EstoqueMangas;Integrated Security=True;";
         }
