@@ -10,4 +10,7 @@
   <ItemGroup>
     <Folder Include="Persistence\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Security\SimmetricKey.cs" />
+  </ItemGroup>
 </Project>

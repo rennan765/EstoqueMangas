@@ -72,7 +72,6 @@ namespace EstoqueMangas.Api.Controllers
 
         [HttpGet]
         [Route("api/v1/Usuario/Listar")]
-        [AllowAnonymous]
         public async Task<IActionResult> Listar()
         {
             try
