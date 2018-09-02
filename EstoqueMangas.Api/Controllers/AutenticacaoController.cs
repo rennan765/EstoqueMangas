@@ -9,6 +9,7 @@ using EstoqueMangas.Domain.Arguments.UsuarioArguments;
 using EstoqueMangas.Domain.Interfaces.Services;
 using EstoqueMangas.Domain.Interfaces.Transactions;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -19,12 +20,14 @@ namespace EstoqueMangas.Api.Controllers
     {
         #region Propriedades
         private readonly IServiceUsuario _serviceUsuario;
+        private readonly IHttpContextAccessor _httpContextAcessor;
         #endregion
 
         #region Construtores
-        public AutenticacaoController(IServiceUsuario serviceUsuario, IUnitOfWork unitOfWork) : base(unitOfWork)
+        public AutenticacaoController(IServiceUsuario serviceUsuario, IHttpContextAccessor httpContextAccessor, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             this._serviceUsuario = serviceUsuario;
+            this._httpContextAcessor = httpContextAccessor;
         }
         #endregion
 
@@ -62,6 +65,8 @@ namespace EstoqueMangas.Api.Controllers
                 });
 
                 var token = handler.WriteToken(securityToken);
+
+                this._httpContextAcessor.HttpContext.User.AddIdentity(identity);
 
                 return new
                 {

@@ -34,6 +34,8 @@ namespace EstoqueMangas.Api.Controllers
         {
             try
             {
+                AtualizarUsuarioLogado();
+
                 return await ResponseAsync(_serviceUsuario.Editar(request), _serviceUsuario);
             }
             catch (Exception e)
@@ -48,6 +50,8 @@ namespace EstoqueMangas.Api.Controllers
         {
             try
             {
+                AtualizarUsuarioLogado();
+
                 return await ResponseAsync(_serviceUsuario.Excluir(idUsuario), _serviceUsuario);
             }
             catch (Exception e)
@@ -62,6 +66,8 @@ namespace EstoqueMangas.Api.Controllers
         {
             try
             {
+                AtualizarUsuarioLogado();
+
                 return await ResponseAsync(_serviceUsuario.ObterPorId(idUsuario), _serviceUsuario);
             }
             catch (Exception e)
@@ -76,6 +82,8 @@ namespace EstoqueMangas.Api.Controllers
         {
             try
             {
+                AtualizarUsuarioLogado();
+
                 return await ResponseAsync(_serviceUsuario.Listar(), _serviceUsuario);
             }
             catch (Exception e)
@@ -84,29 +92,10 @@ namespace EstoqueMangas.Api.Controllers
             }
         }
 
-        //[HttpGet]
-        //[Route("api/v1/Usuario/Teste/{idUsuario}")]
-        ////[Authorize("Bearer")]
-        //[AllowAnonymous]
-        //public string Teste(Guid idUsuario)
-        //{
-        //    try
-        //    {
-        //        var response = ObterUsuarioLogado();
-
-        //        return "ok";
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return e.Message;
-        //    }
-        //}
-
-        //private AutenticarUsuarioResponse ObterUsuarioLogado()
-        //{
-        //    string usuarioClaims = _httpContextAccessor.HttpContext.User.FindFirst("Usuario").Value;
-        //    return JsonConvert.DeserializeObject<AutenticarUsuarioResponse>(usuarioClaims);
-        //}
+        private void AtualizarUsuarioLogado()
+        {
+            this._usuarioLogado = JsonConvert.DeserializeObject<AutenticarUsuarioResponse>(_httpContextAccessor.HttpContext.User.FindFirst("Usuario").Value);
+        }
         #endregion 
     }
 }
