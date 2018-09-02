@@ -134,7 +134,7 @@ namespace EstoqueMangas.Domain.Entities
                 AddNotification("E-mail", Message.O_CAMPO_X0_E_INVALIDO.ToFormat("E-mail"));
             }
 
-            if (request.NovaSenha.ValidateLength(8, 32))
+            if (!request.NovaSenha.ValidateLength(8, 32))
             {
                 AddNotification("Senha", Message.O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES.ToFormat("Senha", "8", "32"));
             }

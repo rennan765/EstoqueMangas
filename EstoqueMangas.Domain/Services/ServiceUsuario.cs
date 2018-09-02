@@ -1,11 +1,9 @@
 ﻿using System;
 using EstoqueMangas.Domain.Arguments.UsuarioArguments;
 using EstoqueMangas.Domain.Arguments.Base;
-using EstoqueMangas.Domain.Entities;
 using EstoqueMangas.Domain.Entities.Build;
 using EstoqueMangas.Domain.Interfaces.Arguments;
 using EstoqueMangas.Domain.Interfaces.Repositores;
-using EstoqueMangas.Domain.Interfaces.Repositores.Base;
 using EstoqueMangas.Domain.Interfaces.Services;
 using EstoqueMangas.Domain.Resources;
 using prmToolkit.NotificationPattern;
@@ -35,7 +33,10 @@ namespace EstoqueMangas.Domain.Services
             if (!(request is null))
             {
                 AutenticarUsuarioRequest autenticarUsuarioRequest = (AutenticarUsuarioRequest)request;
-                Usuario usuario = new UsuarioBuild(autenticarUsuarioRequest.Email, autenticarUsuarioRequest.Senha)
+
+                var usuario = new UsuarioBuild()
+                    .AdicionarEmail(autenticarUsuarioRequest.Email)
+                    .AdicionarSenha(autenticarUsuarioRequest.Senha)
                     .BuildAutenticar();
 
                 AddNotifications(usuario);
@@ -80,6 +81,7 @@ namespace EstoqueMangas.Domain.Services
             if (!(request is null))
             {
                 AlterarSenhaRequest alterarSenhaRequest = (AlterarSenhaRequest)request;
+
                 var usuario = _repository.ObterPor(u => u.Email.ToString() == alterarSenhaRequest.Email);
 
                 if (!(usuario is null))
@@ -115,7 +117,13 @@ namespace EstoqueMangas.Domain.Services
             if (!(request is null))
             {
                 AdicionarUsuarioRequest adicionarUsuarioRequest = (AdicionarUsuarioRequest)request;
-                Usuario usuario = new UsuarioBuild(adicionarUsuarioRequest.PrimeiroNome, adicionarUsuarioRequest.UltimoNome, adicionarUsuarioRequest.Email, adicionarUsuarioRequest.DddFixo, adicionarUsuarioRequest.TelefoneFixo, adicionarUsuarioRequest.DddCelular, adicionarUsuarioRequest.TelefoneCelular, adicionarUsuarioRequest.Senha)
+
+                var usuario = new UsuarioBuild()
+                    .AdicionarNome(adicionarUsuarioRequest.PrimeiroNome, adicionarUsuarioRequest.UltimoNome)
+                    .AdicionarEmail(adicionarUsuarioRequest.Email)
+                    .AdicionarTelefoneFixo(adicionarUsuarioRequest.DddFixo, adicionarUsuarioRequest.TelefoneFixo)
+                    .AdicionarTelefoneCelular(adicionarUsuarioRequest.DddCelular, adicionarUsuarioRequest.TelefoneCelular)
+                    .AdicionarSenha(adicionarUsuarioRequest.Senha)
                     .BuildAdicionar();
 
                 AddNotifications(usuario);
@@ -152,7 +160,7 @@ namespace EstoqueMangas.Domain.Services
             {
                 EditarUsuarioRequest editarUsuarioRequest = (EditarUsuarioRequest)request;
 
-                Usuario usuario = _repository.ObterPorId(editarUsuarioRequest.Id);
+                var usuario = _repository.ObterPorId(editarUsuarioRequest.Id);
 
                 if (!(usuario is null))
                 {
@@ -192,8 +200,18 @@ namespace EstoqueMangas.Domain.Services
 
         public IResponse Excluir(Guid id)
         {
-            _repository.Remover(_repository.ObterPorId(id));
-            return new Response(true);
+            var usuario = _repository.ObterPorId(id);
+
+            if (!(usuario is null))
+            {
+                _repository.Remover(usuario);
+                return new Response(true);
+            }
+            else
+            {
+                AddNotification("Usuario", Message.X0_NAO_ENCONTRADO.ToFormat("Usuario"));
+                return null;
+            }
         } 
 
         public IResponse ObterPorId(Guid id)

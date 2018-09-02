@@ -58,14 +58,60 @@ namespace EstoqueMangas.Domain.Entities.Build
         #endregion
 
         #region Métodos
+        public UsuarioBuild AdicionarNome(string primeiroNome, string ultimoNome)
+        {
+            this.PrimeiroNome = primeiroNome;
+            this.UltimoNome = ultimoNome;
+
+            return this;
+        }
+
+        public UsuarioBuild AdicionarEmail(string email)
+        {
+            this.Email = email;
+
+            return this;
+        }
+
+        public UsuarioBuild AdicionarTelefoneFixo(string dddFixo, string numeroFixo)
+        {
+            this.DddFixo = dddFixo;
+            this.TelefoneFixo = numeroFixo;
+
+            return this;
+        }
+
+        public UsuarioBuild AdicionarTelefoneCelular(string dddCelular, string numeroCelular)
+        {
+            this.DddCelular = dddCelular;
+            this.TelefoneCelular = numeroCelular;
+
+            return this;
+        }
+
+        public UsuarioBuild AdicionarSenha(string senha)
+        {
+            this.Senha = senha;
+
+            return this;
+        }
+
+        public UsuarioBuild AdicionarStatus(StatusUsuario status)
+        {
+            this.Status = status;
+
+            return this;
+        }
+
         public Usuario BuildCompleto()
         {
-            var nome = new Nome(this.PrimeiroNome, this.UltimoNome);
-            var email = new Email(this.Email);
-            var telefoneFixo = new Telefone(this.DddFixo, this.TelefoneFixo);
-            var telefoneCelular = new Telefone(this.DddCelular, this.TelefoneCelular);
-
-            return new Usuario(nome, email, telefoneFixo, telefoneCelular, this.Senha, this.Status);
+            return new Usuario(
+                new Nome(this.PrimeiroNome, this.UltimoNome),
+                new Email(this.Email),
+                new Telefone(this.DddFixo, this.TelefoneFixo),
+                new Telefone(this.DddCelular, this.TelefoneCelular), 
+                this.Senha, 
+                this.Status);
         }
 
         public Usuario BuildAutenticar()
@@ -75,22 +121,12 @@ namespace EstoqueMangas.Domain.Entities.Build
 
         public Usuario BuildAdicionar()
         {
-            var nome = new Nome(this.PrimeiroNome, this.UltimoNome);
-            var email = new Email(this.Email);
-            var telefoneFixo = new Telefone(this.DddFixo, this.TelefoneFixo);
-            var telefoneCelular = new Telefone(this.DddCelular, this.TelefoneCelular);
-
-            if (!string.IsNullOrEmpty(this.TelefoneFixo))
-            {
-                telefoneFixo = new Telefone(this.DddFixo, this.TelefoneFixo);
-            }
-
-            if (!string.IsNullOrEmpty(this.TelefoneCelular))
-            {
-                telefoneCelular = new Telefone(this.DddCelular, this.TelefoneCelular);
-            }
-
-            return new Usuario(nome, email, telefoneFixo, telefoneCelular, this.Senha);
+            return new Usuario(
+                new Nome(this.PrimeiroNome, this.UltimoNome),
+                new Email(this.Email),
+                new Telefone(this.DddFixo, this.TelefoneFixo),
+                new Telefone(this.DddCelular, this.TelefoneCelular), 
+                this.Senha);
         }
         #endregion 
     }
