@@ -1,16 +1,34 @@
-﻿namespace EstoqueMangas.Shared.Persistence
+﻿using System.IO;
+using Microsoft.Extensions.Configuration;
+
+namespace EstoqueMangas.Shared.Persistence
 {
-    public static class ConnectionStrings
+    public class ConnectionStrings
     {
-        #region Métodos
-        public static string MySQL()
+        #region Atributos
+        private readonly IConfiguration _configuration;
+        #endregion
+
+        #region Construtores
+        public ConnectionStrings()
         {
-            return "Server=localhost;User Id=root;Password=root;Database=EstoqueMangas";
+            var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json");
+
+            _configuration = builder.Build();
+        }
+        #endregion 
+
+        #region Métodos
+        public string MySQL()
+        {
+            return _configuration["ConnectionStrings:MySQL"];
         }
 
-        public static string SQLServer()
+        public string SQLServer()
         {
-            return "Data Source=localhost;Initial Catalog=EstoqueMangas;Integrated Security=True;";
+            return _configuration["ConnectionStrings:SQLServer"];
         }
         #endregion 
     }

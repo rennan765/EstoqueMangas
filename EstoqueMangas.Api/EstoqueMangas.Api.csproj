@@ -22,4 +22,10 @@
     <ProjectReference Include="..\EstoqueMangas.Infra\EstoqueMangas.Infra.csproj" />
     <ProjectReference Include="..\EstoqueMangas.Domain\EstoqueMangas.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="appsettings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="appsettings.json" />
+  </ItemGroup>
 </Project>

@@ -30,7 +30,7 @@ namespace EstoqueMangas.Api
         public void ConfigureServices(IServiceCollection services)
         {
             //Adiciona o contexto
-            services.AddDbContext<EstoqueMangasContext>(options => options.UseMySql(ConnectionStrings.MySQL()));
+            services.AddDbContext<EstoqueMangasContext>(options => options.UseMySql(new ConnectionStrings().MySQL()));
 
             //Adiciona a injeção de dependencia
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
