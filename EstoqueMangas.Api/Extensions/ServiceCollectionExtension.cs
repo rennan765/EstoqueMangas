@@ -11,8 +11,14 @@ using Swashbuckle.AspNetCore.Swagger;
 
 namespace EstoqueMangas.Api.Extensions
 {
+    /// <summary>
+    /// Classe para implementar os métodos de extensão de configuração dos serviços.
+    /// </summary>
     public static class ServiceCollectionExtension
     {
+        /// <summary>
+        /// Configuração do token
+        /// </summary>
         public static IServiceCollection ConfigurarToken(this IServiceCollection services, string audience, string issuer)
         {
             //Configuração do Token
@@ -65,6 +71,9 @@ namespace EstoqueMangas.Api.Extensions
             return services;
         }
 
+        /// <summary>
+        /// Configuração do Swagger
+        /// </summary>
         public static IServiceCollection ConfigurarSwagger(this IServiceCollection services)
         {
             //Aplicando documentação com swagger
@@ -116,6 +125,9 @@ namespace EstoqueMangas.Api.Extensions
             return services;
         }
     
+        /// <summary>
+        /// Configuração do MVC
+        /// </summary>
         public static IServiceCollection ConfigurarMvc(this IServiceCollection services)
         {
             //Para todas as requisições serem necessaria o token, para um endpoint não exisgir o token
