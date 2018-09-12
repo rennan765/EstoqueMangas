@@ -3,6 +3,9 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace EstoqueMangas.Api.Security
 {
+    /// <summary>
+    /// Signing configurations.
+    /// </summary>
     public class SigningConfigurations
     {
         #region Atributos
@@ -14,10 +17,17 @@ namespace EstoqueMangas.Api.Security
         #endregion
 
         #region Propriedades
+        /// <summary>
+        /// Gets the signing credentials.
+        /// </summary>
+        /// <value>The signing credentials.</value>
         public SigningCredentials SigningCredentials { get; }
         #endregion
 
         #region Construtores
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:EstoqueMangas.Api.Security.SigningConfigurations"/> class.
+        /// </summary>
         public SigningConfigurations()
         {
             SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256); ;

@@ -16,6 +16,9 @@ using Newtonsoft.Json;
 
 namespace EstoqueMangas.Api.Controllers
 {
+    /// <summary>
+    /// Controller para autenticação e criação de usuários
+    /// </summary>
     public class AutenticacaoController : BaseController
     {
         #region Propriedades
@@ -24,6 +27,9 @@ namespace EstoqueMangas.Api.Controllers
         #endregion
 
         #region Construtores
+        /// <summary>
+        /// Construtor do controller.
+        /// </summary>
         public AutenticacaoController(IServiceUsuario serviceUsuario, IHttpContextAccessor httpContextAccessor, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             this._serviceUsuario = serviceUsuario;
@@ -32,9 +38,10 @@ namespace EstoqueMangas.Api.Controllers
         #endregion
 
         #region Métodos
-        [Route("api/v1/Autenticacao/Autenticar")]
-        [HttpPost]
-        [AllowAnonymous]
+        /// <summary>
+        /// Rota para autenticação do usuário.
+        /// </summary>
+        [Route("api/v1/Autenticacao/Autenticar"), HttpPost, AllowAnonymous]
         public object Autenticar([FromBody]AutenticarUsuarioRequest request, [FromServices]TokenConfigurations tokenConfigurations, [FromServices]SigningConfigurations signingConfigurations)
         {
             AutenticarUsuarioResponse response = (AutenticarUsuarioResponse)_serviceUsuario.Autenticar(request);
@@ -88,9 +95,10 @@ namespace EstoqueMangas.Api.Controllers
             }
         }
 
-        [Route("api/v1/Autenticacao/AlterarSenha")]
-        [HttpPost]
-        [AllowAnonymous]
+        /// <summary>
+        /// Rota de alterção de senha
+        /// </summary>
+        [Route("api/v1/Autenticacao/AlterarSenha"), HttpPost, AllowAnonymous]
         public async Task<IActionResult> AlterarSenha([FromBody]AlterarSenhaRequest request)
         {
             try
@@ -104,9 +112,10 @@ namespace EstoqueMangas.Api.Controllers
 
         }
 
-        [Route("api/v1/Usuario/Adicionar")]
-        [HttpPost]
-        [AllowAnonymous]
+        /// <summary>
+        /// Rota de criação de usuário
+        /// </summary>
+        [Route("api/v1/Usuario/Adicionar"), HttpPost, AllowAnonymous]
         public async Task<IActionResult> Adicionar([FromBody]AdicionarUsuarioRequest request)
         {
             try

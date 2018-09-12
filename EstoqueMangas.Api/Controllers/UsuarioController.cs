@@ -4,13 +4,15 @@ using EstoqueMangas.Domain.Arguments.UsuarioArguments;
 using EstoqueMangas.Domain.Interfaces.Services;
 using EstoqueMangas.Domain.Interfaces.Transactions;
 using EstoqueMangas.Api.Controllers.Base;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
 namespace EstoqueMangas.Api.Controllers
 {
+    /// <summary>
+    /// Controller para manipulação de usuários
+    /// </summary>
     public class UsuarioController : BaseController
     {
         #region Atributos
@@ -20,6 +22,9 @@ namespace EstoqueMangas.Api.Controllers
         #endregion
 
         #region Construtores
+        /// <summary>
+        /// Construtor do controller.
+        /// </summary>
         public UsuarioController(IServiceUsuario serviceUsuario, IHttpContextAccessor httpContextAccessor, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             this._serviceUsuario = serviceUsuario;
@@ -28,8 +33,10 @@ namespace EstoqueMangas.Api.Controllers
         #endregion
 
         #region Métodos
-        [HttpPut]
-        [Route("api/v1/Usuario/Alterar")]
+        /// <summary>
+        /// Rota de edição de usuário.
+        /// </summary>
+        [Route("api/v1/Usuario/Alterar"), HttpPut]
         public async Task<IActionResult> Editar([FromBody]EditarUsuarioRequest request)
         {
             try
@@ -44,8 +51,10 @@ namespace EstoqueMangas.Api.Controllers
             }
         }
 
-        [HttpDelete]
-        [Route("api/v1/Usuario/Remover/{idUsuario}")]
+        /// <summary>
+        /// Rota de edição de usuário.
+        /// </summary>
+        [Route("api/v1/Usuario/Remover/{idUsuario}"), HttpDelete]
         public async Task<IActionResult> Remover(Guid idUsuario)
         {
             try
@@ -60,8 +69,10 @@ namespace EstoqueMangas.Api.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("api/v1/Usuario/ObterPorId/{idUsuario}")]
+        /// <summary>
+        /// Rota para obter um usuário pelo ID.
+        /// </summary>
+        [Route("api/v1/Usuario/ObterPorId/{idUsuario}"), HttpGet]
         public async Task<IActionResult> ObterPorId(Guid idUsuario)
         {
             try
@@ -76,8 +87,10 @@ namespace EstoqueMangas.Api.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("api/v1/Usuario/Listar")]
+        /// <summary>
+        /// Rota para listar todos os usuários.
+        /// </summary>
+        [Route("api/v1/Usuario/Listar"), HttpGet]
         public async Task<IActionResult> Listar()
         {
             try
