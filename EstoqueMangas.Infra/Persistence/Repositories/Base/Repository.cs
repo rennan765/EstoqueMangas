@@ -17,7 +17,6 @@ namespace EstoqueMangas.Infra.Persistence.Repositories.Base
         #endregion
 
         #region Constutores
-
         public Repository(DbContext context)
         {
             this._context = context;

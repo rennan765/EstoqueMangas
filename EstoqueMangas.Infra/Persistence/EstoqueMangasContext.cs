@@ -30,6 +30,9 @@ namespace EstoqueMangas.Infra.Persistence
         #endregion
 
         #region Métodos
+        /// <summary>
+        /// Método para quando for necessário instanciar o contexto.
+        /// </summary>
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //    if (!optionsBuilder.IsConfigured)

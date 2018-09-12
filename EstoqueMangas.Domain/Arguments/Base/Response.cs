@@ -12,6 +12,7 @@ namespace EstoqueMangas.Domain.Arguments.Base
         #region Construtores
         public Response()
         {
+
         }
 
         public Response(bool validacao)
