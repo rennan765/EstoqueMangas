@@ -1,11 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using EstoqueMangas.Domain.Interfaces.Services.Base;
+﻿using EstoqueMangas.Domain.Interfaces.Services.Base;
 using EstoqueMangas.Domain.Interfaces.Transactions;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace EstoqueMangas.Api.Controllers.Base
 {
+    /// <inheritdoc />
     /// <summary>
     /// Controller de base, aonde ficam os métodos de resposta.
     /// </summary>
@@ -22,7 +23,7 @@ namespace EstoqueMangas.Api.Controllers.Base
         /// </summary>
         public BaseController(IUnitOfWork unit)
         {
-            this._unit = unit;
+            _unit = unit;
         }
         #endregion
 
@@ -61,6 +62,7 @@ namespace EstoqueMangas.Api.Controllers.Base
             return BadRequest(new { errors = ex.Message, exception = ex.ToString() });
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Dispose the specified disposing.
         /// </summary>

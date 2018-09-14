@@ -1,11 +1,10 @@
-﻿using System;
-using EstoqueMangas.Domain.Arguments.Base;
+﻿using EstoqueMangas.Domain.Arguments.Base;
 using EstoqueMangas.Domain.Entities;
-using EstoqueMangas.Domain.Interfaces.Arguments;
+using System;
 
 namespace EstoqueMangas.Domain.Arguments.UsuarioArguments
 {
-    public class ObterUsuarioResponse : Response, IResponse
+    public class ObterUsuarioResponse : Response
     {
         #region Propriedades
         public Guid Id { get; set; }
@@ -21,14 +20,7 @@ namespace EstoqueMangas.Domain.Arguments.UsuarioArguments
         public string NumeroTelefoneCelular { get; set; }
         public int Status { get; set; }
         #endregion
-
-        #region Construtores
-        public ObterUsuarioResponse()
-        {
-
-        }
-        #endregion
-
+        
         #region Métodos
         public static explicit operator ObterUsuarioResponse(Usuario entidade)
         {
@@ -49,6 +41,5 @@ namespace EstoqueMangas.Domain.Arguments.UsuarioArguments
             };
         }
         #endregion 
-
     }
 }

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using EstoqueMangas.Domain.Entities.Base;
+﻿using EstoqueMangas.Domain.Entities.Base;
 using EstoqueMangas.Domain.Resources;
 using EstoqueMangas.Domain.ValueObjects;
 using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
+using System.Collections.Generic;
 
 namespace EstoqueMangas.Domain.Entities
 {
@@ -18,17 +17,17 @@ namespace EstoqueMangas.Domain.Entities
         #endregion
 
         #region Editora
-        public Editora() : base()
+        public Editora()
         {
-            this.Mangas = new List<Manga>();
+            Mangas = new List<Manga>();
         }
 
-        public Editora(string nome, Endereco endereco, Telefone telefone, IList<Manga> mangas) : base()
+        public Editora(string nome, Endereco endereco, Telefone telefone, IList<Manga> mangas)
         {
-            this.Nome = nome;
-            this.Endereco = endereco;
-            this.Telefone = telefone;
-            this.Mangas = mangas;
+            Nome = nome;
+            Endereco = endereco;
+            Telefone = telefone;
+            Mangas = mangas;
 
             new AddNotifications<Editora>(this)
                 .IfNullOrEmpty(e => e.Nome, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Nome da Editora"));

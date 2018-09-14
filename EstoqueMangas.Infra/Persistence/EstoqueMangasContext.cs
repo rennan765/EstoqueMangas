@@ -30,26 +30,14 @@ namespace EstoqueMangas.Infra.Persistence
         #endregion
 
         #region Métodos
-        /// <summary>
-        /// Método para quando for necessário instanciar o contexto.
-        /// </summary>
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    if (!optionsBuilder.IsConfigured)
-        //    {
-        //        optionsBuilder.UseMySql("Server=localhost;User Id=estoque_mangas;Password=123qwe..;Database=EstoqueMangas");
-        //    }
-        //}
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-            this.Mapeamento(modelBuilder);
+            Mapeamento(modelBuilder);
 
             base.OnModelCreating(modelBuilder);
         }
 
-        private void Mapeamento(ModelBuilder modelBuilder)
+        private static void Mapeamento(ModelBuilder modelBuilder)
         {
             //Ignora classe de notificações
             modelBuilder.Ignore<Notification>();

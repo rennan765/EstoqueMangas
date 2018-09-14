@@ -1,9 +1,4 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Security.Principal;
-using System.Threading.Tasks;
-using EstoqueMangas.Api.Controllers.Base;
+﻿using EstoqueMangas.Api.Controllers.Base;
 using EstoqueMangas.Api.Security;
 using EstoqueMangas.Domain.Arguments.UsuarioArguments;
 using EstoqueMangas.Domain.Interfaces.Services;
@@ -13,9 +8,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Principal;
+using System.Threading.Tasks;
 
 namespace EstoqueMangas.Api.Controllers
 {
+    /// <inheritdoc />
     /// <summary>
     /// Controller para autenticação e criação de usuários
     /// </summary>
@@ -27,13 +28,14 @@ namespace EstoqueMangas.Api.Controllers
         #endregion
 
         #region Construtores
+        /// <inheritdoc />
         /// <summary>
         /// Construtor do controller.
         /// </summary>
         public AutenticacaoController(IServiceUsuario serviceUsuario, IHttpContextAccessor httpContextAccessor, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            this._serviceUsuario = serviceUsuario;
-            this._httpContextAcessor = httpContextAccessor;
+            _serviceUsuario = serviceUsuario;
+            _httpContextAcessor = httpContextAccessor;
         }
         #endregion
 
@@ -73,7 +75,7 @@ namespace EstoqueMangas.Api.Controllers
 
                 var token = handler.WriteToken(securityToken);
 
-                this._httpContextAcessor.HttpContext.User.AddIdentity(identity);
+                _httpContextAcessor.HttpContext.User.AddIdentity(identity);
 
                 return new
                 {

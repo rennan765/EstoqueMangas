@@ -21,14 +21,14 @@ namespace EstoqueMangas.Shared.Persistence
         #endregion 
 
         #region Métodos
-        public string MySQL()
+        public string MySql()
         {
-            return _configuration["ConnectionStrings:MySQL"];
+            return _configuration["ConnectionStrings:MySql"];
         }
 
-        public string SQLServer()
+        public string SqlServer()
         {
-            return _configuration["ConnectionStrings:SQLServer"];
+            return _configuration["ConnectionStrings:SqlServer"];
         }
         #endregion 
     }

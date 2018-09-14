@@ -1,5 +1,4 @@
 ﻿using EstoqueMangas.Domain.Entities;
-using EstoqueMangas.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -31,14 +30,14 @@ namespace EstoqueMangas.Infra.Persistence.Map
                    .Ignore(u => u.TelefoneFixo)
                    .Ignore(u => u.TelefoneCelular);
 
-            builder.OwnsOne<Email>(e => e.Email, ema =>
+            builder.OwnsOne(e => e.Email, ema =>
             {
                 ema.Property(e => e.EnderecoEmail)
                 .HasColumnName("ENDERECO_EMAIL")
                 .HasMaxLength(150)
                 .IsRequired();
             })
-                   .OwnsOne<Nome>(u => u.Nome, nom =>
+                .OwnsOne(u => u.Nome, nom =>
             {
                nom.Property(n => n.PrimeiroNome)
                   .HasColumnName("PRIMEIRO_NOME")
@@ -50,7 +49,7 @@ namespace EstoqueMangas.Infra.Persistence.Map
                   .HasMaxLength(50)
                   .IsRequired();
             })
-                   .OwnsOne<Telefone>(t => t.TelefoneFixo, tel =>
+                .OwnsOne(t => t.TelefoneFixo, tel =>
             {
                 tel.Property(t => t.Ddd)
                    .HasColumnName("DDD_TEL_FIXO")
@@ -60,7 +59,7 @@ namespace EstoqueMangas.Infra.Persistence.Map
                    .HasColumnName("NUMERO_TEL_FIXO")
                    .HasMaxLength(9);
             })
-                   .OwnsOne<Telefone>(t => t.TelefoneCelular, tel =>
+                .OwnsOne(t => t.TelefoneCelular, tel =>
             {
                 tel.Property(t => t.Ddd)
                    .HasColumnName("DDD_TEL_CELULAR")

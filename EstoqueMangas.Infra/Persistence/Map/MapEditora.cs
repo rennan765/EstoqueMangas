@@ -27,7 +27,7 @@ namespace EstoqueMangas.Infra.Persistence.Map
             //ValueObjects
             builder.Ignore(e => e.Endereco);
 
-            builder.OwnsOne<Endereco>(e => e.Endereco, endereco => 
+            builder.OwnsOne(e => e.Endereco, endereco => 
             {
                 endereco.Property(e => e.Logradouro)
                         .HasColumnName("LOGRADOURO")
@@ -64,7 +64,7 @@ namespace EstoqueMangas.Infra.Persistence.Map
                         .HasMaxLength(8)
                         .IsRequired();
             })
-                   .OwnsOne<Telefone>(t => t.Telefone, tel =>
+                .OwnsOne(t => t.Telefone, tel =>
             {
                 tel.Property(t => t.Ddd)
                    .HasColumnName("DDD_TELEFONE")

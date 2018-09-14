@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using EstoqueMangas.Api.Security;
+﻿using EstoqueMangas.Api.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 
 namespace EstoqueMangas.Api.Extensions
 {
@@ -29,7 +30,7 @@ namespace EstoqueMangas.Api.Extensions
             {
                 Audience = audience,
                 Issuer = issuer,
-                Seconds = int.Parse(TimeSpan.FromDays(1).TotalSeconds.ToString())
+                Seconds = int.Parse(TimeSpan.FromDays(1).TotalSeconds.ToString(CultureInfo.InvariantCulture))
 
             };
 
@@ -64,7 +65,7 @@ namespace EstoqueMangas.Api.Extensions
             services.AddAuthorization(auth =>
             {
                 auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
-                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                     .RequireAuthenticatedUser().Build());
             });
 
@@ -137,7 +138,7 @@ namespace EstoqueMangas.Api.Extensions
             services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder()
-                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                     .RequireAuthenticatedUser().Build();
 
                 config.Filters.Add(new AuthorizeFilter(policy));

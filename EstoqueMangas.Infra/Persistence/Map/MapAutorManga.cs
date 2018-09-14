@@ -1,5 +1,4 @@
-﻿using System;
-using EstoqueMangas.Domain.Entities.Join;
+﻿using EstoqueMangas.Domain.Entities.Join;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

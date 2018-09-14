@@ -1,24 +1,16 @@
-﻿using System;
-using EstoqueMangas.Domain.Arguments.Base;
+﻿using EstoqueMangas.Domain.Arguments.Base;
 using EstoqueMangas.Domain.Entities;
-using EstoqueMangas.Domain.Interfaces.Arguments;
 using EstoqueMangas.Domain.Resources;
+using System;
 
 namespace EstoqueMangas.Domain.Arguments.UsuarioArguments
 {
-    public class EditarUsuarioResponse : Response, IResponse
+    public class EditarUsuarioResponse : Response
     {
         #region Propriedades
         public Guid Id { get; set; }
         public string NomeCompleto { get; set; }
         public string Email { get; set; }
-        #endregion
-
-        #region Construtores
-        public EditarUsuarioResponse()
-        {
-
-        }
         #endregion
 
         #region Métodos

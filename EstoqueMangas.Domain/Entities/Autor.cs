@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using EstoqueMangas.Domain.Entities.Base;
+﻿using EstoqueMangas.Domain.Entities.Base;
 using EstoqueMangas.Domain.Entities.Join;
 using EstoqueMangas.Domain.ValueObjects;
+using System.Collections.Generic;
 
 namespace EstoqueMangas.Domain.Entities
 {
@@ -13,24 +13,24 @@ namespace EstoqueMangas.Domain.Entities
         #endregion
 
         #region Construtores
-        public Autor() : base()
+        public Autor()
         {
 
         }
 
-        public Autor(Nome nomeAutor) : base()
+        public Autor(Nome nomeAutor)
         {
-            this.NomeAutor = nomeAutor;
-            this.Mangas = new List<AutorManga>();
+            NomeAutor = nomeAutor;
+            Mangas = new List<AutorManga>();
 
-            AddNotifications(this.NomeAutor);
+            AddNotifications(NomeAutor);
         }
         #endregion
 
         #region Métodos
         public void IncluirMangas(IList<AutorManga> mangas)
         {
-            this.Mangas = mangas;
+            Mangas = mangas;
         }
         #endregion 
     }

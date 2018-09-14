@@ -1,5 +1,5 @@
-﻿using System;
-using prmToolkit.NotificationPattern;
+﻿using prmToolkit.NotificationPattern;
+using System;
 
 namespace EstoqueMangas.Domain.Entities.Base
 {
@@ -12,7 +12,7 @@ namespace EstoqueMangas.Domain.Entities.Base
         #region Construtores
         protected Entity()
         {
-            this.Id = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
         #endregion 
 

@@ -1,8 +1,8 @@
-﻿using System;
-using EstoqueMangas.Domain.Entities.Base;
+﻿using EstoqueMangas.Domain.Entities.Base;
 using EstoqueMangas.Domain.Resources;
 using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
+using System;
 
 namespace EstoqueMangas.Domain.Entities
 {
@@ -16,17 +16,17 @@ namespace EstoqueMangas.Domain.Entities
         #endregion
 
         #region Construtores
-        public Edicao() : base()
+        public Edicao()
         {
 
         }
 
         public Edicao(Guid mangaId, Manga manga, string edicaoManga, int numero)
         {
-            this.MangaId = mangaId;
-            this.Manga = manga;
-            this.EdicaoManga = edicaoManga;
-            this.Numero = numero;
+            MangaId = mangaId;
+            Manga = manga;
+            EdicaoManga = edicaoManga;
+            Numero = numero;
 
             new AddNotifications<Edicao>(this)
                 .IfNull(e => e.Manga, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Mangá"))

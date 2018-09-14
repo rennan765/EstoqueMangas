@@ -14,8 +14,8 @@ namespace EstoqueMangas.Domain.ValueObjects
         #region Construtores
         public Nome(string primeiroNome, string ultimoNome)
         {
-            this.PrimeiroNome = primeiroNome;
-            this.UltimoNome = ultimoNome;
+            PrimeiroNome = primeiroNome;
+            UltimoNome = ultimoNome;
 
             new AddNotifications<Nome>(this)
                 .IfNullOrEmpty(nom => nom.PrimeiroNome, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Primeiro Nome"))
@@ -26,7 +26,7 @@ namespace EstoqueMangas.Domain.ValueObjects
         #region Métodos
         public override string ToString()
         {
-            return $"{this.PrimeiroNome} {this.UltimoNome}";
+            return $"{PrimeiroNome} {UltimoNome}";
         }
         #endregion 
     }

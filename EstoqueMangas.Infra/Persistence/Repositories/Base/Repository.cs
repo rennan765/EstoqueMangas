@@ -1,10 +1,10 @@
-﻿using System;
+﻿using EstoqueMangas.Domain.Entities.Base;
+using EstoqueMangas.Domain.Interfaces.Repositores.Base;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using EstoqueMangas.Domain.Entities.Base;
-using EstoqueMangas.Domain.Interfaces.Repositores.Base;
-using Microsoft.EntityFrameworkCore;
 
 namespace EstoqueMangas.Infra.Persistence.Repositories.Base
 {
@@ -19,7 +19,7 @@ namespace EstoqueMangas.Infra.Persistence.Repositories.Base
         #region Constutores
         public Repository(DbContext context)
         {
-            this._context = context;
+            _context = context;
         }
         #endregion
 
@@ -119,7 +119,7 @@ namespace EstoqueMangas.Infra.Persistence.Repositories.Base
         {
             if (propriedades.Any())
             {
-                return this.Listar(propriedades).FirstOrDefault(e => e.Id.ToString() == id.ToString());
+                return Listar(propriedades).FirstOrDefault(e => e.Id.ToString() == id.ToString());
             }
             else
             {

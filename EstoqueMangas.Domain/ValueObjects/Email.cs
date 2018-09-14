@@ -13,7 +13,7 @@ namespace EstoqueMangas.Domain.ValueObjects
         #region Construtores
         public Email(string enderecoEmail)
         {
-            this.EnderecoEmail = enderecoEmail;
+            EnderecoEmail = enderecoEmail;
 
             new AddNotifications<Email>(this)
                 .IfNullOrEmpty(e => e.EnderecoEmail, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("E-mail"))
@@ -24,7 +24,7 @@ namespace EstoqueMangas.Domain.ValueObjects
         #region Métodos
         public override string ToString()
         {
-            return this.EnderecoEmail;
+            return EnderecoEmail;
         }
         #endregion 
     }

@@ -21,49 +21,49 @@ namespace EstoqueMangas.Domain.Entities
         #endregion
 
         #region Construtores
-        public Usuario() : base()
+        protected Usuario()
         {
 
         }
 
-        public Usuario(Nome nome, Email email, Telefone telefoneFixo, Telefone telefoneCelular, string senha) : base()
+        public Usuario(Nome nome, Email email, Telefone telefoneFixo, Telefone telefoneCelular, string senha)
         {
-            this.Nome = nome;
-            this.Email = email;
-            this.TelefoneFixo = telefoneFixo;
-            this.TelefoneCelular = telefoneCelular;
-            this.Senha = senha;
+            Nome = nome;
+            Email = email;
+            TelefoneFixo = telefoneFixo;
+            TelefoneCelular = telefoneCelular;
+            Senha = senha;
 
             new AddNotifications<Usuario>(this)
                 .IfNullOrEmpty(u => u.Senha, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Senha"))
                 .IfNullOrInvalidLength(u => u.Senha, 8, 32, Message.O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES.ToFormat("Senha", "8", "32"));
 
-            AddNotifications(this.Nome, this.Email);
+            AddNotifications(Nome, Email);
 
-            if (!(this.TelefoneFixo is null))
+            if (!(TelefoneFixo is null))
             {
-                AddNotifications(this.TelefoneFixo);
+                AddNotifications(TelefoneFixo);
             }
 
-            if (!(this.TelefoneCelular is null))
+            if (!(TelefoneCelular is null))
             {
-                AddNotifications(this.TelefoneCelular);
+                AddNotifications(TelefoneCelular);
             }
 
             if (IsValid())
             {
-                this.Senha = this.Senha.ToHash();
+                Senha = Senha.ToHash();
             }
         }
 
-        public Usuario(Nome nome, Email email, Telefone telefoneFixo, Telefone telefoneCelular, string senha, StatusUsuario statusUsuario) : base()
+        public Usuario(Nome nome, Email email, Telefone telefoneFixo, Telefone telefoneCelular, string senha, StatusUsuario statusUsuario)
         {
-            this.Nome = nome;
-            this.Email = email;
-            this.TelefoneFixo = telefoneFixo;
-            this.TelefoneCelular = telefoneCelular;
-            this.Senha = senha;
-            this.Status = statusUsuario;
+            Nome = nome;
+            Email = email;
+            TelefoneFixo = telefoneFixo;
+            TelefoneCelular = telefoneCelular;
+            Senha = senha;
+            Status = statusUsuario;
 
             new AddNotifications<Usuario>(this)
                 .IfNullOrEmpty(u => u.Senha, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("E-mail"))
@@ -71,38 +71,38 @@ namespace EstoqueMangas.Domain.Entities
                 .IfNullOrInvalidLength(u => u.Senha, 8, 32, Message.O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES.ToFormat("Senha", "8", "32"))
                 .IfEnumInvalid(u => u.Status, Message.O_CAMPO_X0_E_INVALIDO.ToFormat("Status"));
 
-            AddNotifications(this.Nome, this.Email);
+            AddNotifications(Nome, Email);
 
-            if (!(this.TelefoneFixo is null))
+            if (!(TelefoneFixo is null))
             {
-                AddNotifications(this.TelefoneFixo);
+                AddNotifications(TelefoneFixo);
             }
 
-            if (!(this.TelefoneCelular is null))
+            if (!(TelefoneCelular is null))
             {
-                AddNotifications(this.TelefoneCelular);
+                AddNotifications(TelefoneCelular);
             }
 
             if (IsValid())
             {
-                this.Senha = this.Senha.ToHash();
+                Senha = Senha.ToHash();
             }
         }
 
-        public Usuario(Email email, string senha) : base()
+        public Usuario(Email email, string senha)
         {
-            this.Email = email;
-            this.Senha = senha;
+            Email = email;
+            Senha = senha;
 
             new AddNotifications<Usuario>(this)
                 .IfNullOrEmpty(u => u.Senha, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Senha"))
                 .IfNullOrInvalidLength(u => u.Senha, 8, 32, Message.O_CAMPO_X0_DEVE_TER_ENTRE_X1_E_X2_CARACTERES.ToFormat("Senha", "8", "32"));
 
-            AddNotifications(this.Email);
+            AddNotifications(Email);
 
             if (IsValid())
             {
-                this.Senha = this.Senha.ToHash();
+                Senha = Senha.ToHash();
             }
         }
         #endregion
@@ -110,26 +110,26 @@ namespace EstoqueMangas.Domain.Entities
         #region Métodos
         public void Adicionar()
         {
-            this.Status = StatusUsuario.AguardandoAprovacao;
+            Status = StatusUsuario.AguardandoAprovacao;
         }
 
         public void Editar(EditarUsuarioRequest request)
         {
-            this.Nome = new Nome(request.PrimeiroNome, request.UltimoNome);
-            this.Email = new Email(request.Email);
-            this.Status = (StatusUsuario)request.StatusUsuario;
-            this.TelefoneFixo = new Telefone(request.DddFixo, request.TelefoneFixo);
-            this.TelefoneCelular = new Telefone(request.DddCelular, request.TelefoneCelular);
+            Nome = new Nome(request.PrimeiroNome, request.UltimoNome);
+            Email = new Email(request.Email);
+            Status = (StatusUsuario)request.StatusUsuario;
+            TelefoneFixo = new Telefone(request.DddFixo, request.TelefoneFixo);
+            TelefoneCelular = new Telefone(request.DddCelular, request.TelefoneCelular);
 
             new AddNotifications<Usuario>(this)
                 .IfEnumInvalid(u => u.Status, Message.O_CAMPO_X0_E_INVALIDO.ToFormat("Status"));
 
-            AddNotifications(this.Nome, this.Email, this.TelefoneFixo, this.TelefoneCelular);
+            AddNotifications(Nome, Email, TelefoneFixo, TelefoneCelular);
         }
 
         public void AlterarSenha(AlterarSenhaRequest request)
         {
-            if (this.Email.ToString() != request.Email)
+            if (Email.ToString() != request.Email)
             {
                 AddNotification("E-mail", Message.O_CAMPO_X0_E_INVALIDO.ToFormat("E-mail"));
             }
@@ -141,7 +141,7 @@ namespace EstoqueMangas.Domain.Entities
 
             if (IsValid())
             {
-                this.Senha = request.NovaSenha.ToHash();
+                Senha = request.NovaSenha.ToHash();
             }
         }
 
@@ -149,7 +149,7 @@ namespace EstoqueMangas.Domain.Entities
         {
             string statusUsuario;
 
-            switch (this.Status)
+            switch (Status)
             {
                 case StatusUsuario.AguardandoAprovacao:
                     statusUsuario = "Aguardando aprovação";

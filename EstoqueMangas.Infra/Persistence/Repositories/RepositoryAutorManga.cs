@@ -18,7 +18,7 @@ namespace EstoqueMangas.Infra.Persistence.Repositories
         #region Construtores
         public RepositoryAutorManga(EstoqueMangasContext context) : base(context)
         {
-            this._context = context;
+            _context = context;
         }
         #endregion
 
@@ -36,8 +36,7 @@ namespace EstoqueMangas.Infra.Persistence.Repositories
             }
 
             return query
-                .Where(am => am.AutorId.ToString() == autorId.ToString() && am.MangaId.ToString() == mangaId.ToString())
-                .FirstOrDefault();
+                .FirstOrDefault(am => am.AutorId.ToString() == autorId.ToString() && am.MangaId.ToString() == mangaId.ToString());
         }
 
         public IQueryable<Entity> ObterPorAutorId(Guid autorId, params Expression<Func<Entity, object>>[] propriedades)
@@ -52,9 +51,7 @@ namespace EstoqueMangas.Infra.Persistence.Repositories
                 }
             }
 
-            query.Where(am => am.AutorId.ToString() == autorId.ToString());
-
-            return query;
+            return query.Where(am => am.AutorId.ToString() == autorId.ToString());
         }
 
         public IQueryable<Entity> ObterPorMangaId(Guid mangaId, params Expression<Func<Entity, object>>[] propriedades)
@@ -69,9 +66,7 @@ namespace EstoqueMangas.Infra.Persistence.Repositories
                 }
             }
 
-            query.Where(am => am.MangaId.ToString() == mangaId.ToString());
-
-            return query;
+            return query.Where(am => am.MangaId.ToString() == mangaId.ToString());
         }
         #endregion 
     }

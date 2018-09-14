@@ -1,5 +1,5 @@
-﻿using System;
-using EstoqueMangas.Domain.Entities.Base;
+﻿using EstoqueMangas.Domain.Entities.Base;
+using System;
 
 namespace EstoqueMangas.Domain.Entities.Join
 {
@@ -13,7 +13,7 @@ namespace EstoqueMangas.Domain.Entities.Join
         #endregion
 
         #region Constutores
-        public AutorManga() : base()
+        public AutorManga()
         {
 
         }

@@ -1,5 +1,5 @@
-﻿using System.Text;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace EstoqueMangas.Api.Security
 {
@@ -9,11 +9,11 @@ namespace EstoqueMangas.Api.Security
     public class SigningConfigurations
     {
         #region Atributos
-        private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SECRET_KEY));
+        private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
         #endregion
 
         #region Constantes
-        private const string SECRET_KEY = "c1f51f42-5727-4d15-b787-c6bbbb645024";
+        private const string SecretKey = "c1f51f42-5727-4d15-b787-c6bbbb645024";
         #endregion
 
         #region Propriedades
@@ -30,7 +30,7 @@ namespace EstoqueMangas.Api.Security
         /// </summary>
         public SigningConfigurations()
         {
-            SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256); ;
+            SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256);
         }
         #endregion 
     }

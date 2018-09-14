@@ -9,7 +9,7 @@ namespace EstoqueMangas.Infra.Persistence.Factory
         public EstoqueMangasContext CreateDbContext(string[] args)
         {
             var builder = new DbContextOptionsBuilder<EstoqueMangasContext>();
-            builder.UseMySql(new ConnectionStrings().MySQL());
+            builder.UseMySql(new ConnectionStrings().MySql());
 
             return new EstoqueMangasContext(builder.Options);
         }

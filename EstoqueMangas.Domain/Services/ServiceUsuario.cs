@@ -1,16 +1,16 @@
-﻿using System;
+﻿using EstoqueMangas.Domain.Arguments.Base;
 using EstoqueMangas.Domain.Arguments.UsuarioArguments;
-using EstoqueMangas.Domain.Arguments.Base;
 using EstoqueMangas.Domain.Entities.Build;
+using EstoqueMangas.Domain.Enuns;
 using EstoqueMangas.Domain.Interfaces.Arguments;
 using EstoqueMangas.Domain.Interfaces.Repositores;
 using EstoqueMangas.Domain.Interfaces.Services;
 using EstoqueMangas.Domain.Resources;
 using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using EstoqueMangas.Domain.Enuns;
 
 namespace EstoqueMangas.Domain.Services
 {
@@ -23,7 +23,7 @@ namespace EstoqueMangas.Domain.Services
         #region Construtores
         public ServiceUsuario(IRepositoryUsuario repository)
         {
-            this._repository = repository;
+            _repository = repository;
         }
         #endregion
 

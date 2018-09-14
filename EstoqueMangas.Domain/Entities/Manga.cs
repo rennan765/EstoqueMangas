@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using EstoqueMangas.Domain.Entities.Base;
+﻿using EstoqueMangas.Domain.Entities.Base;
 using EstoqueMangas.Domain.Entities.Join;
 using EstoqueMangas.Domain.Resources;
 using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
+using System;
+using System.Collections.Generic;
 
 namespace EstoqueMangas.Domain.Entities
 {
@@ -21,33 +21,33 @@ namespace EstoqueMangas.Domain.Entities
         #endregion
 
         #region Construtores
-        public Manga() : base()
+        public Manga()
         {
-            this.Autores = new List<AutorManga>();
-            this.Edicoes = new List<Edicao>();
+            Autores = new List<AutorManga>();
+            Edicoes = new List<Edicao>();
         }
 
-        public Manga(string titulo, IList<AutorManga> autores, int anoLancamento, Guid editoraId, Editora editora, IList<Edicao> edicoes) : base()
+        public Manga(string titulo, IList<AutorManga> autores, int anoLancamento, Guid editoraId, Editora editora, IList<Edicao> edicoes)
         {
-            this.Titulo = titulo;
-            this.Autores = autores;
-            this.AnoLancamento = anoLancamento;
-            this.EditoraId = editoraId;
-            this.Editora = editora;
-            this.Edicoes = edicoes;
+            Titulo = titulo;
+            Autores = autores;
+            AnoLancamento = anoLancamento;
+            EditoraId = editoraId;
+            Editora = editora;
+            Edicoes = edicoes;
 
             new AddNotifications<Manga>(this)
                 .IfNullOrWhiteSpace(m => m.Titulo)
                 .IfNull(e => e.Editora, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Editora"));
 
-            AddNotifications(this.Editora);
+            AddNotifications(Editora);
         }
         #endregion
 
         #region Métodos
         public void IncluirAutores(IList<AutorManga> autores)
         {
-            this.Autores = autores;
+            Autores = autores;
         }
         #endregion 
     }

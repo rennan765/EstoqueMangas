@@ -1,8 +1,8 @@
-﻿using System;
-using EstoqueMangas.Domain.Extensions;
+﻿using EstoqueMangas.Domain.Extensions;
 using EstoqueMangas.Domain.Resources;
 using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
+using System;
 
 namespace EstoqueMangas.Domain.ValueObjects
 {
@@ -22,13 +22,13 @@ namespace EstoqueMangas.Domain.ValueObjects
         #region Construtores
         public Endereco(string logradouro, string numero, string complemento, string bairro, string cidade, string estado, string cep)
         {
-            this.Logradouro = logradouro;
-            this.Numero = numero;
-            this.Complemento = complemento;
-            this.Bairro = bairro;
-            this.Cidade = cidade;
-            this.Estado = estado;
-            this.Cep = cep;
+            Logradouro = logradouro;
+            Numero = numero;
+            Complemento = complemento;
+            Bairro = bairro;
+            Cidade = cidade;
+            Estado = estado;
+            Cep = cep;
 
             new AddNotifications<Endereco>(this)
                 .IfNullOrEmpty(end => end.Logradouro, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Logradouro"))
@@ -39,9 +39,9 @@ namespace EstoqueMangas.Domain.ValueObjects
                 .IfNullOrEmpty(end => end.Estado, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Estado"))
                 .IfNullOrEmpty(end => end.Cep, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Cep"));
 
-            if (this.Numero.IsNumeric())
+            if (Numero.IsNumeric())
             {
-                if (Convert.ToInt64(this.Numero) >= 0)
+                if (Convert.ToInt64(Numero) >= 0)
                 {
                     AddNotification("Numero", Message.CAMPO_X0_INVALIDO_FAVOR_INSERIR_NUMERO_MAIOR_QUE_X1.ToFormat("Número", "0"));
                 }

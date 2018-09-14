@@ -2,11 +2,6 @@
 {
     public class Request
     {
-        #region Construtores
-        public Request()
-        {
 
-        }
-        #endregion
     }
 }

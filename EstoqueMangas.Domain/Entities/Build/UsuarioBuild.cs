@@ -1,12 +1,10 @@
-﻿using System;
-using EstoqueMangas.Domain.Enuns;
+﻿using EstoqueMangas.Domain.Enuns;
 using EstoqueMangas.Domain.ValueObjects;
 
 namespace EstoqueMangas.Domain.Entities.Build
 {
     public class UsuarioBuild
     {
-
         #region Propriedades
         public string PrimeiroNome { get; set; }
         public string UltimoNome { get; set; }
@@ -27,78 +25,78 @@ namespace EstoqueMangas.Domain.Entities.Build
 
         public UsuarioBuild(string primeiroNome, string ultimoNome, string email, string dddFixo, string telefoneFixo, string dddCelular, string telefoneCelular, string senha, StatusUsuario statusUsuario)
         {
-            this.PrimeiroNome = primeiroNome;
-            this.UltimoNome = ultimoNome;
-            this.Email = email;
-            this.DddFixo = dddFixo;
-            this.TelefoneFixo = telefoneFixo;
-            this.DddCelular = dddCelular;
-            this.TelefoneCelular = telefoneCelular;
-            this.Senha = senha;
-            this.Status = statusUsuario;
+            PrimeiroNome = primeiroNome;
+            UltimoNome = ultimoNome;
+            Email = email;
+            DddFixo = dddFixo;
+            TelefoneFixo = telefoneFixo;
+            DddCelular = dddCelular;
+            TelefoneCelular = telefoneCelular;
+            Senha = senha;
+            Status = statusUsuario;
         }
 
         public UsuarioBuild(string primeiroNome, string ultimoNome, string email, string dddFixo, string telefoneFixo, string dddCelular, string telefoneCelular, string senha)
         {
-            this.PrimeiroNome = primeiroNome;
-            this.UltimoNome = ultimoNome;
-            this.Email = email;
-            this.DddFixo = dddFixo;
-            this.TelefoneFixo = telefoneFixo;
-            this.DddCelular = dddCelular;
-            this.TelefoneCelular = telefoneCelular;
-            this.Senha = senha;
+            PrimeiroNome = primeiroNome;
+            UltimoNome = ultimoNome;
+            Email = email;
+            DddFixo = dddFixo;
+            TelefoneFixo = telefoneFixo;
+            DddCelular = dddCelular;
+            TelefoneCelular = telefoneCelular;
+            Senha = senha;
         }
 
         public UsuarioBuild(string email, string senha)
         {
-            this.Email = email;
-            this.Senha = senha;
+            Email = email;
+            Senha = senha;
         }
         #endregion
 
         #region Métodos
         public UsuarioBuild AdicionarNome(string primeiroNome, string ultimoNome)
         {
-            this.PrimeiroNome = primeiroNome;
-            this.UltimoNome = ultimoNome;
+            PrimeiroNome = primeiroNome;
+            UltimoNome = ultimoNome;
 
             return this;
         }
 
         public UsuarioBuild AdicionarEmail(string email)
         {
-            this.Email = email;
+            Email = email;
 
             return this;
         }
 
         public UsuarioBuild AdicionarTelefoneFixo(string dddFixo, string numeroFixo)
         {
-            this.DddFixo = dddFixo;
-            this.TelefoneFixo = numeroFixo;
+            DddFixo = dddFixo;
+            TelefoneFixo = numeroFixo;
 
             return this;
         }
 
         public UsuarioBuild AdicionarTelefoneCelular(string dddCelular, string numeroCelular)
         {
-            this.DddCelular = dddCelular;
-            this.TelefoneCelular = numeroCelular;
+            DddCelular = dddCelular;
+            TelefoneCelular = numeroCelular;
 
             return this;
         }
 
         public UsuarioBuild AdicionarSenha(string senha)
         {
-            this.Senha = senha;
+            Senha = senha;
 
             return this;
         }
 
         public UsuarioBuild AdicionarStatus(StatusUsuario status)
         {
-            this.Status = status;
+            Status = status;
 
             return this;
         }
@@ -106,27 +104,27 @@ namespace EstoqueMangas.Domain.Entities.Build
         public Usuario BuildCompleto()
         {
             return new Usuario(
-                new Nome(this.PrimeiroNome, this.UltimoNome),
-                new Email(this.Email),
-                new Telefone(this.DddFixo, this.TelefoneFixo),
-                new Telefone(this.DddCelular, this.TelefoneCelular), 
-                this.Senha, 
-                this.Status);
+                new Nome(PrimeiroNome, UltimoNome),
+                new Email(Email),
+                new Telefone(DddFixo, TelefoneFixo),
+                new Telefone(DddCelular, TelefoneCelular), 
+                Senha, 
+                Status);
         }
 
         public Usuario BuildAutenticar()
         {
-            return new Usuario(new Email(this.Email), this.Senha);
+            return new Usuario(new Email(Email), Senha);
         }
 
         public Usuario BuildAdicionar()
         {
             return new Usuario(
-                new Nome(this.PrimeiroNome, this.UltimoNome),
-                new Email(this.Email),
-                new Telefone(this.DddFixo, this.TelefoneFixo),
-                new Telefone(this.DddCelular, this.TelefoneCelular), 
-                this.Senha);
+                new Nome(PrimeiroNome, UltimoNome),
+                new Email(Email),
+                new Telefone(DddFixo, TelefoneFixo),
+                new Telefone(DddCelular, TelefoneCelular), 
+                Senha);
         }
         #endregion 
     }

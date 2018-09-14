@@ -1,5 +1,4 @@
 ﻿using EstoqueMangas.Domain.Entities;
-using EstoqueMangas.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -19,7 +18,7 @@ namespace EstoqueMangas.Infra.Persistence.Map
             //ValueObjects
             builder.Ignore(a => a.NomeAutor);
 
-            builder.OwnsOne<Nome>(n => n.NomeAutor, nom =>
+            builder.OwnsOne(n => n.NomeAutor, nom =>
             {
                 nom.Property(n => n.PrimeiroNome)
                   .HasColumnName("PRIMEIRO_NOME")

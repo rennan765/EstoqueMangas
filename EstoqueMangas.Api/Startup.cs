@@ -21,8 +21,8 @@ namespace EstoqueMangas.Api
     public class Startup
     {
         #region Atributos
-        private const string ISSUER = "c1f51f42";
-        private const string AUDIENCE = "c6bbbb645024";
+        private const string Issuer = "c1f51f42";
+        private const string Audience = "c6bbbb645024";
         #endregion
 
         #region Métodos
@@ -34,7 +34,7 @@ namespace EstoqueMangas.Api
         public void ConfigureServices(IServiceCollection services)
         {
             //Adiciona o contexto
-            services.AddDbContext<EstoqueMangasContext>(options => options.UseMySql(new ConnectionStrings().MySQL()));
+            services.AddDbContext<EstoqueMangasContext>(options => options.UseMySql(new ConnectionStrings().MySql()));
 
             //Adiciona a injeção de dependencia
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
@@ -52,7 +52,7 @@ namespace EstoqueMangas.Api
                 .AddTransient<IRepositoryEdicao, RepositoryEdicao>()
                 .AddTransient<IRepositoryEditora, RepositoryEditora>();
 
-            services.ConfigurarToken(AUDIENCE, ISSUER);
+            services.ConfigurarToken(Audience, Issuer);
 
             services.ConfigurarMvc();
 

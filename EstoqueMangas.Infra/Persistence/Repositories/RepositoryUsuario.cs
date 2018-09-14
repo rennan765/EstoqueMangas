@@ -14,7 +14,7 @@ namespace EstoqueMangas.Infra.Persistence.Repositories
         #region Construtores
         public RepositoryUsuario(EstoqueMangasContext context) : base(context) 
         {
-            this._context = context;
+            _context = context;
         }
         #endregion 
     }

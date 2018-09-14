@@ -17,12 +17,5 @@ namespace EstoqueMangas.Domain.Arguments.UsuarioArguments
         public string TelefoneCelular { get; set; }
         public int StatusUsuario { get; set; }
         #endregion
-
-        #region Construtores
-        public EditarUsuarioRequest()
-        {
-            
-        }
-        #endregion 
     }
 }

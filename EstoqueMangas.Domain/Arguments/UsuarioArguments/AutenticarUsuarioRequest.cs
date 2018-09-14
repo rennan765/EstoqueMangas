@@ -18,8 +18,8 @@ namespace EstoqueMangas.Domain.Arguments.UsuarioArguments
 
         public AutenticarUsuarioRequest(string email, string senha)
         {
-            this.Email = email;
-            this.Senha = senha;
+            Email = email;
+            Senha = senha;
         }
         #endregion
     }
