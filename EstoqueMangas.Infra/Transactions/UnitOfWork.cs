@@ -13,22 +13,19 @@ namespace EstoqueMangas.Infra.Transactions
         #region Construtores
         public UnitOfWork(EstoqueMangasContext context)
         {
-            this._context = context;
+            _context = context;
         }
         #endregion
 
         #region Métodos
         public void Commit()
         {
-            this._context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Incializar()
         {
-            if (this._context.Database.EnsureCreated())
-            {
-                this._context.Database.Migrate();
-            }
+            _context.Database.Migrate();
         }
         #endregion 
     }
