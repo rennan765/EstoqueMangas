@@ -1,4 +1,5 @@
-﻿using EstoqueMangas.Api.Extensions;
+﻿using System;
+using EstoqueMangas.Api.Extensions;
 using EstoqueMangas.Domain.Interfaces.Repositores;
 using EstoqueMangas.Domain.Interfaces.Services;
 using EstoqueMangas.Domain.Interfaces.Transactions;
@@ -65,7 +66,7 @@ namespace EstoqueMangas.Api
         /// <summary>
         /// Configure the specified app and env.
         /// </summary>
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -86,6 +87,9 @@ namespace EstoqueMangas.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "EstoqueMangas - V1");
             });
+
+            //Inicializa o banco de dados e migra pra versão mais recente.
+            serviceProvider.GetService<IUnitOfWork>().Incializar();
         }
         #endregion 
     }
