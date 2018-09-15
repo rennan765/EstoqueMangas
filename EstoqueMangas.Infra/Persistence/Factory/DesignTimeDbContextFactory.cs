@@ -8,8 +8,10 @@ namespace EstoqueMangas.Infra.Persistence.Factory
     {
         public EstoqueMangasContext CreateDbContext(string[] args)
         {
+            string connectionString = "Server = localhost; User Id = root; Password = root; Database = EstoqueMangas";
+
             var builder = new DbContextOptionsBuilder<EstoqueMangasContext>();
-            builder.UseMySql(new ConnectionStrings().MySql());
+            builder.UseMySql(connectionString);
 
             return new EstoqueMangasContext(builder.Options);
         }
