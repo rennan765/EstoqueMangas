@@ -1,5 +1,4 @@
-﻿using System;
-using EstoqueMangas.Api.Extensions;
+﻿using EstoqueMangas.Api.Extensions;
 using EstoqueMangas.Domain.Interfaces.Repositores;
 using EstoqueMangas.Domain.Interfaces.Services;
 using EstoqueMangas.Domain.Interfaces.Transactions;
@@ -13,6 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace EstoqueMangas.Api
 {
@@ -85,7 +85,7 @@ namespace EstoqueMangas.Api
             app.UseSwagger();
             app.UseSwaggerUI(c => 
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "EstoqueMangas - V1");
+                c.SwaggerEndpoint($"{(string.IsNullOrEmpty(c.RoutePrefix) ? "." : "..")}/swagger/v1/swagger.json", "EstoqueMangas - V1");
             });
 
             //Inicializa o banco de dados e migra pra versão mais recente.
