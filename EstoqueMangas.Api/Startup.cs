@@ -1,16 +1,7 @@
 ﻿using EstoqueMangas.Api.Extensions;
-using EstoqueMangas.Domain.Interfaces.Repositores;
-using EstoqueMangas.Domain.Interfaces.Services;
 using EstoqueMangas.Domain.Interfaces.Transactions;
-using EstoqueMangas.Domain.Services;
-using EstoqueMangas.Infra.Persistence;
-using EstoqueMangas.Infra.Persistence.Repositories;
-using EstoqueMangas.Infra.Transactions;
-using EstoqueMangas.Shared.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
