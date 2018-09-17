@@ -34,30 +34,14 @@ namespace EstoqueMangas.Api
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
-            //Adiciona o contexto
-            services.AddDbContext<EstoqueMangasContext>(options => options.UseMySql(new ConnectionStrings().MySql()));
 
-            //Adiciona a injeção de dependencia
-            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-
-            //Services
-            services.AddTransient<IServiceUsuario, ServiceUsuario>();
-
-            //Repositories
-            services.AddTransient<IRepositoryUsuario, RepositoryUsuario>()
-                .AddTransient<IRepositoryAutor, RepositoryAutor>()
-                .AddTransient<IRepositoryManga, RepositoryManga>()
-                .AddTransient<IRepositoryAutorManga, RepositoryAutorManga>()
-                .AddTransient<IRepositoryEdicao, RepositoryEdicao>()
-                .AddTransient<IRepositoryEditora, RepositoryEditora>();
-
-            services.ConfigurarToken(Audience, Issuer);
-
-            services.ConfigurarMvc();
-
-            services.ConfigurarSwagger();
+            services.ConfigurarContexto()
+                    .ConfigurarAcessorDeContexto()
+                    .ConfigurarServicos()
+                    .ConfigurarRepositorios()
+                    .ConfigurarToken(Audience, Issuer)
+                    .ConfigurarMvc()
+                    .ConfigurarSwagger();
 
             services.AddCors();
         }

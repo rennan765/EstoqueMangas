@@ -1,7 +1,17 @@
 ﻿using EstoqueMangas.Api.Security;
+using EstoqueMangas.Domain.Interfaces.Repositores;
+using EstoqueMangas.Domain.Interfaces.Services;
+using EstoqueMangas.Domain.Interfaces.Transactions;
+using EstoqueMangas.Domain.Services;
+using EstoqueMangas.Infra.Persistence;
+using EstoqueMangas.Infra.Persistence.Repositories;
+using EstoqueMangas.Infra.Transactions;
+using EstoqueMangas.Shared.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
@@ -17,6 +27,53 @@ namespace EstoqueMangas.Api.Extensions
     /// </summary>
     public static class ServiceCollectionExtension
     {
+        /// <summary>
+        /// Configuração do contexto
+        /// </summary>
+        public static IServiceCollection ConfigurarContexto(this IServiceCollection services)
+        {
+            //Adiciona o contexto
+            services.AddDbContext<EstoqueMangasContext>(options => options.UseMySql(new ConnectionStrings().MySql()));
+
+            return services;
+        }
+
+        /// <summary>
+        /// Configuração dos serviços
+        /// </summary>
+        public static IServiceCollection ConfigurarAcessorDeContexto(this IServiceCollection services)
+        {
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
+            return services;
+        }
+
+        /// <summary>
+        /// Configuração dos serviços
+        /// </summary>
+        public static IServiceCollection ConfigurarServicos(this IServiceCollection services)
+        {
+            services.AddTransient<IUnitOfWork, UnitOfWork>()
+                .AddTransient<IServiceUsuario, ServiceUsuario>();
+
+            return services;
+        }
+
+        /// <summary>
+        /// Configuração dos repositórios
+        /// </summary>
+        public static IServiceCollection ConfigurarRepositorios(this IServiceCollection services)
+        {
+            services.AddTransient<IRepositoryUsuario, RepositoryUsuario>()
+                .AddTransient<IRepositoryAutor, RepositoryAutor>()
+                .AddTransient<IRepositoryManga, RepositoryManga>()
+                .AddTransient<IRepositoryAutorManga, RepositoryAutorManga>()
+                .AddTransient<IRepositoryEdicao, RepositoryEdicao>()
+                .AddTransient<IRepositoryEditora, RepositoryEditora>();
+
+            return services;
+        }
+
         /// <summary>
         /// Configuração do token
         /// </summary>
