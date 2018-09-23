@@ -27,8 +27,8 @@ namespace EstoqueMangas.Api.Controllers
         /// </summary>
         public UsuarioController(IServiceUsuario serviceUsuario, IHttpContextAccessor httpContextAccessor, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            this._serviceUsuario = serviceUsuario;
-            this._httpContextAccessor = httpContextAccessor;
+            _serviceUsuario = serviceUsuario;
+            _httpContextAccessor = httpContextAccessor;
         }
         #endregion
 

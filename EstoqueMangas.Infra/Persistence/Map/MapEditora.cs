@@ -1,5 +1,4 @@
 ﻿using EstoqueMangas.Domain.Entities;
-using EstoqueMangas.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

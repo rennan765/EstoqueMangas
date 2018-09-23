@@ -30,7 +30,17 @@ namespace EstoqueMangas.Domain.ValueObjects
             Estado = estado;
             Cep = cep;
 
-            new AddNotifications<Endereco>(this)
+            Notificar();
+        }
+
+        private void Notificar()
+        {
+            //O endereço só será validado caso o mesmo tenha sido preenchido. 
+            //Caso o Logradouro, Número, Cidade e Cep estejam em branco, o sistema endente que o endereço não foi preenchido e não valida o mesmo.
+
+            if (!(string.IsNullOrEmpty(Logradouro) && string.IsNullOrEmpty(Numero) && string.IsNullOrEmpty(Cidade) && string.IsNullOrEmpty(Cep)))
+            {
+                new AddNotifications<Endereco>(this)
                 .IfNullOrEmpty(end => end.Logradouro, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Logradouro"))
                 .IfNullOrEmpty(end => end.Numero, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Número"))
                 .IfNullOrEmpty(end => end.Complemento, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Complemento"))
@@ -39,14 +49,14 @@ namespace EstoqueMangas.Domain.ValueObjects
                 .IfNullOrEmpty(end => end.Estado, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Estado"))
                 .IfNullOrEmpty(end => end.Cep, Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Cep"));
 
-            if (Numero.IsNumeric())
-            {
-                if (Convert.ToInt64(Numero) >= 0)
+                if (Numero.IsNumeric())
                 {
-                    AddNotification("Numero", Message.CAMPO_X0_INVALIDO_FAVOR_INSERIR_NUMERO_MAIOR_QUE_X1.ToFormat("Número", "0"));
+                    if (Convert.ToInt64(Numero) >= 0)
+                    {
+                        AddNotification("Numero", Message.CAMPO_X0_INVALIDO_FAVOR_INSERIR_NUMERO_MAIOR_QUE_X1.ToFormat("Número", "0"));
+                    }
                 }
             }
-
         }
         #endregion 
     }

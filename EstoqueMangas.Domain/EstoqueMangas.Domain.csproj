@@ -39,6 +39,7 @@
     <Folder Include="Entities\Base\" />
     <Folder Include="Arguments\UsuarioArguments\" />
     <Folder Include="Interfaces\Transactions\" />
+    <Folder Include="Arguments\EditoraArguments\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\Message.Designer.cs">
