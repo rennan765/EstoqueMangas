@@ -11,6 +11,9 @@ using Newtonsoft.Json;
 
 namespace EstoqueMangas.Api.Controllers
 {
+    /// <summary>
+    /// Controller para manipulação de editoras
+    /// </summary>
     public class EditoraController : BaseController
     {
         #region Atributos
@@ -31,6 +34,9 @@ namespace EstoqueMangas.Api.Controllers
         #endregion
 
         #region Métodos
+        /// <summary>
+        /// Rota de criação de editora.
+        /// </summary>
         [Route("api/v1/Editora/Adicionar"), HttpPost]
         public async Task<IActionResult> Adicionar([FromBody]AdicionarRequest request)
         {
@@ -46,6 +52,9 @@ namespace EstoqueMangas.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Rota de edição de editoras.
+        /// </summary>
         [Route("api/v1/Editora/Alterar"), HttpPut]
         public async Task<IActionResult> Editar([FromBody]EditarRequest request)
         {
@@ -61,6 +70,9 @@ namespace EstoqueMangas.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Rota de exclusão de editora.
+        /// </summary>
         [Route("api/v1/Editora/Remover/{idEditora}"), HttpDelete]
         public async Task<IActionResult> Remover([FromBody]Guid idEditora)
         {
@@ -76,6 +88,9 @@ namespace EstoqueMangas.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Rota para obter uma editora pelo ID.
+        /// </summary>
         [Route("api/v1/Editora/ObterPorId/{idEditora}"), HttpGet]
         public async Task<IActionResult> ObterPorId([FromBody]Guid idEditora)
         {
@@ -91,6 +106,9 @@ namespace EstoqueMangas.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Rota para listar todas as editoras.
+        /// </summary>
         [Route("api/v1/Editora/Listar"), HttpGet]
         public async Task<IActionResult> Listar()
         {

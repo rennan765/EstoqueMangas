@@ -52,7 +52,7 @@ namespace EstoqueMangas.Api.Controllers
         }
 
         /// <summary>
-        /// Rota de edição de usuário.
+        /// Rota de exclusão de usuário.
         /// </summary>
         [Route("api/v1/Usuario/Remover/{idUsuario}"), HttpDelete]
         public async Task<IActionResult> Remover(Guid idUsuario)

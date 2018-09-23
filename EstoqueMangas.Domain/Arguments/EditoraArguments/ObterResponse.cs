@@ -25,6 +25,7 @@ namespace EstoqueMangas.Domain.Arguments.EditoraArguments
         {
             return new ObterResponse()
             {
+                Id = entidade.Id,
                 Nome = entidade.Nome,
                 EnderecoLogradouro = !(entidade.Endereco is null) ? entidade.Endereco.Logradouro : "",
                 EnderecoNumero = !(entidade.Endereco is null) ? entidade.Endereco.Numero : "",

@@ -117,7 +117,7 @@ namespace EstoqueMangas.Api.Controllers
         /// <summary>
         /// Rota de criação de usuário
         /// </summary>
-        [Route("api/v1/Usuario/Adicionar"), HttpPost, AllowAnonymous]
+        [Route("api/v1/Autenticacao/Adicionar"), HttpPost, AllowAnonymous]
         public async Task<IActionResult> Adicionar([FromBody]AdicionarUsuarioRequest request)
         {
             try

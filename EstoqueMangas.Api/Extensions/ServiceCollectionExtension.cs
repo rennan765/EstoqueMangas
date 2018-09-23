@@ -54,7 +54,8 @@ namespace EstoqueMangas.Api.Extensions
         public static IServiceCollection ConfigurarServicos(this IServiceCollection services)
         {
             services.AddTransient<IUnitOfWork, UnitOfWork>()
-                .AddTransient<IServiceUsuario, ServiceUsuario>();
+                .AddTransient<IServiceUsuario, ServiceUsuario>()
+                .AddTransient<IServiceEditora, ServiceEditora>();
 
             return services;
         }
