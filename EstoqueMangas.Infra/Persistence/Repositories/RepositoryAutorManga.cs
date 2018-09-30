@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using EstoqueMangas.Domain.Entities;
 using EstoqueMangas.Domain.Entities.Base;
 using EstoqueMangas.Domain.Entities.Join;
 using EstoqueMangas.Domain.Interfaces.Repositores;
@@ -68,6 +69,11 @@ namespace EstoqueMangas.Infra.Persistence.Repositories
 
             return query.Where(am => am.MangaId.ToString() == mangaId.ToString());
         }
-        #endregion 
+
+        public void Remover(Autor autor)
+        {
+            _context.AutoresMangas.RemoveRange(_context.AutoresMangas.Where(am => am.AutorId == autor.Id).ToList());
+        }
+        #endregion
     }
 }
