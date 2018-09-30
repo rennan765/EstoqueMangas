@@ -49,6 +49,11 @@ namespace EstoqueMangas.Domain.Entities
         {
             Autores = autores;
         }
+
+        public void IncluirAutor(Autor autor)
+        {
+            Autores.Add(new AutorManga(autor));
+        }
         #endregion 
     }
 }

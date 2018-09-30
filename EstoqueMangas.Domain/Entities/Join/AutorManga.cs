@@ -13,10 +13,17 @@ namespace EstoqueMangas.Domain.Entities.Join
         #endregion
 
         #region Constutores
-        public AutorManga()
+        public AutorManga(Manga manga)
         {
-
+            MangaId = manga.Id;
+            Manga = manga;
         }
-        #endregion 
+
+        public AutorManga(Autor autor)
+        {
+            AutorId = autor.Id;
+            Autor = autor;
+        }
+        #endregion
     }
 }
