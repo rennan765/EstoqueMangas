@@ -55,7 +55,8 @@ namespace EstoqueMangas.Api.Extensions
         {
             services.AddTransient<IUnitOfWork, UnitOfWork>()
                 .AddTransient<IServiceUsuario, ServiceUsuario>()
-                .AddTransient<IServiceEditora, ServiceEditora>();
+                .AddTransient<IServiceEditora, ServiceEditora>()
+                .AddTransient<IServiceAutor, ServiceAutor>();
 
             return services;
         }
