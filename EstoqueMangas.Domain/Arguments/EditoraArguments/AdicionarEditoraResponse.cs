@@ -5,7 +5,7 @@ using EstoqueMangas.Domain.Resources;
 
 namespace EstoqueMangas.Domain.Arguments.EditoraArguments
 {
-    public class AdicionarResponse : Response
+    public class AdicionarEditoraResponse : Response
     {
         #region Propriedades
         public Guid Id { get; set; }
@@ -13,9 +13,9 @@ namespace EstoqueMangas.Domain.Arguments.EditoraArguments
         #endregion
 
         #region Métodos
-        public static explicit operator AdicionarResponse(Editora entidade)
+        public static explicit operator AdicionarEditoraResponse(Editora entidade)
         {
-            return new AdicionarResponse()
+            return new AdicionarEditoraResponse()
             {
                 Id = entidade.Id,
                 Nome = entidade.Nome,

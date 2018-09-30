@@ -61,7 +61,7 @@ namespace EstoqueMangas.Domain.Entities
             }
         }
 
-        public void Editar(EditarRequest request)
+        public void Editar(EditarEditoraRequest request)
         {
             Nome = request.Nome;
             Endereco = new Endereco(request.EnderecoLogradouro, request.EnderecoNumero, request.EnderecoComplemento, request.EnderecoBairro, request.EnderecoCidade, request.EnderecoEstado, request.EnderecoCep);

@@ -55,7 +55,7 @@ namespace EstoqueMangas.Domain.Entities
             }
         }
 
-        public void Editar(EditarRequest request)
+        public void Editar(EditarAutorRequest request)
         {
             NomeAutor = new Nome(request.PrimeiroNome, request.UltimoNome);
 

@@ -31,12 +31,12 @@ namespace EstoqueMangas.Domain.Services
         {
             if (!(request is null))
             {
-                AdicionarRequest adicionarRequest = (AdicionarRequest)request;
+                AdicionarEditoraRequest adicionarEditoraRequest = (AdicionarEditoraRequest)request;
 
                 var editora = new EditoraBuild()
-                    .AdicionarNome(adicionarRequest.Nome)
-                    .AdicionarEndereco(adicionarRequest.EnderecoLogradouro, adicionarRequest.EnderecoNumero, adicionarRequest.EnderecoComplemento, adicionarRequest.EnderecoBairro, adicionarRequest.EnderecoCidade, adicionarRequest.EnderecoEstado, adicionarRequest.EnderecoCep)
-                    .AdicionarTelefone(adicionarRequest.TelefoneDdd, adicionarRequest.TelefoneNumero)
+                    .AdicionarNome(adicionarEditoraRequest.Nome)
+                    .AdicionarEndereco(adicionarEditoraRequest.EnderecoLogradouro, adicionarEditoraRequest.EnderecoNumero, adicionarEditoraRequest.EnderecoComplemento, adicionarEditoraRequest.EnderecoBairro, adicionarEditoraRequest.EnderecoCidade, adicionarEditoraRequest.EnderecoEstado, adicionarEditoraRequest.EnderecoCep)
+                    .AdicionarTelefone(adicionarEditoraRequest.TelefoneDdd, adicionarEditoraRequest.TelefoneNumero)
                     .BuildAdicionar();
 
                 AddNotifications(editora);
@@ -46,7 +46,7 @@ namespace EstoqueMangas.Domain.Services
                     if (!_repository.Existe(e => e.Nome == editora.Nome))
                     {
                         editora = _repository.Adicionar(editora);
-                        return (AdicionarResponse)editora;
+                        return (AdicionarEditoraResponse)editora;
                     }
                     else
                     {
@@ -70,19 +70,19 @@ namespace EstoqueMangas.Domain.Services
         {
             if (!(request is null))
             {
-                EditarRequest editarRequest = (EditarRequest)request;
+                EditarEditoraRequest editarEditoraRequest = (EditarEditoraRequest)request;
 
-                var editora = _repository.ObterPorId(editarRequest.Id);
+                var editora = _repository.ObterPorId(editarEditoraRequest.Id);
 
                 if (!(editora is null))
                 {
-                    editora.Editar(editarRequest);
+                    editora.Editar(editarEditoraRequest);
                     AddNotifications(editora);
 
                     if (IsValid())
                     {
                         _repository.Editar(editora);
-                        return (EditarResponse)editora;
+                        return (EditarEditoraResponse)editora;
                     }
                     else
                     {
@@ -120,7 +120,7 @@ namespace EstoqueMangas.Domain.Services
 
         public IEnumerable<IResponse> Listar()
         {
-            return _repository.Listar().ToList().Select(editora => (ObterResponse)editora).ToList();
+            return _repository.Listar().ToList().Select(editora => (ObterEditoraResponse)editora).ToList();
         }
 
         public IResponse ObterPorId(Guid id)
@@ -129,7 +129,7 @@ namespace EstoqueMangas.Domain.Services
 
             if (!(editora is null))
             {
-                return (ObterResponse)editora;
+                return (ObterEditoraResponse)editora;
             }
             else
             {

@@ -38,7 +38,7 @@ namespace EstoqueMangas.Api.Controllers
         /// Rota de criação de editora.
         /// </summary>
         [Route("api/v1/Editora/Adicionar"), HttpPost]
-        public async Task<IActionResult> Adicionar([FromBody]AdicionarRequest request)
+        public async Task<IActionResult> Adicionar([FromBody]AdicionarEditoraRequest request)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace EstoqueMangas.Api.Controllers
         /// Rota de edição de editoras.
         /// </summary>
         [Route("api/v1/Editora/Alterar"), HttpPut]
-        public async Task<IActionResult> Editar([FromBody]EditarRequest request)
+        public async Task<IActionResult> Editar([FromBody]EditarEditoraRequest request)
         {
             try
             {

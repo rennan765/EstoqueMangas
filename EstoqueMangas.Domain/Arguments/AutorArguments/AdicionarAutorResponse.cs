@@ -6,7 +6,7 @@ using EstoqueMangas.Domain.Resources;
 
 namespace EstoqueMangas.Domain.Arguments.AutorArguments
 {
-    public class EditarResponse : Response, IResponse
+    public class AdicionarAutorResponse : Response, IResponse
     {
         #region Propriedades
         public Guid Id { get; set; }
@@ -14,12 +14,12 @@ namespace EstoqueMangas.Domain.Arguments.AutorArguments
         #endregion
 
         #region Métodos
-        public static explicit operator EditarResponse(Autor entidade)
+        public static explicit operator AdicionarAutorResponse(Autor entidade)
         {
-            return new EditarResponse()
+            return new AdicionarAutorResponse()
             {
                 Id = entidade.Id,
-                NomeCompleto = entidade.ToString(),
+                NomeCompleto = entidade.NomeAutor.ToString(),
                 Mensagem = Message.OPERACAO_REALIZADA_COM_SUCESSO
             };
         }

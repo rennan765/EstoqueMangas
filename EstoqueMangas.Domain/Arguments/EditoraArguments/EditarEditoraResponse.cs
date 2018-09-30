@@ -1,25 +1,24 @@
 ﻿using System;
 using EstoqueMangas.Domain.Arguments.Base;
 using EstoqueMangas.Domain.Entities;
-using EstoqueMangas.Domain.Interfaces.Arguments;
 using EstoqueMangas.Domain.Resources;
 
-namespace EstoqueMangas.Domain.Arguments.AutorArguments
+namespace EstoqueMangas.Domain.Arguments.EditoraArguments
 {
-    public class AdicionarResponse : Response, IResponse
+    public class EditarEditoraResponse : Response
     {
         #region Propriedades
         public Guid Id { get; set; }
-        public string NomeCompleto { get; set; }
+        public string Nome { get; set; }
         #endregion
 
         #region Métodos
-        public static explicit operator AdicionarResponse(Autor entidade)
+        public static explicit operator EditarEditoraResponse(Editora entidade)
         {
-            return new AdicionarResponse()
+            return new EditarEditoraResponse()
             {
                 Id = entidade.Id,
-                NomeCompleto = entidade.NomeAutor.ToString(),
+                Nome = entidade.Nome,
                 Mensagem = Message.OPERACAO_REALIZADA_COM_SUCESSO
             };
         }

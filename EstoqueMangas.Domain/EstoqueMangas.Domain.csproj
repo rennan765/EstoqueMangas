@@ -34,14 +34,10 @@
     <Folder Include="Interfaces\Repositores\" />
     <Folder Include="Interfaces\Repositores\Base\" />
     <Folder Include="Services\" />
-    <Folder Include="Arguments\" />
     <Folder Include="Arguments\Base\" />
     <Folder Include="Entities\Base\" />
     <Folder Include="Arguments\UsuarioArguments\" />
     <Folder Include="Interfaces\Transactions\" />
-    <Folder Include="Arguments\EditoraArguments\" />
-    <Folder Include="Arguments\AutorArguments\" />
-    <Folder Include="Arguments\MangaArguments\" />
     <Folder Include="Entities\Factory\" />
   </ItemGroup>
   <ItemGroup>

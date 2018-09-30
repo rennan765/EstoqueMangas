@@ -3,7 +3,7 @@ using EstoqueMangas.Domain.Entities;
 
 namespace EstoqueMangas.Domain.Arguments.AutorArguments
 {
-    public class ObterMangasResponse
+    public class ObterAutorMangaResponse
     {
         #region Propriedades
         public Guid Id { get; set; }
@@ -14,15 +14,15 @@ namespace EstoqueMangas.Domain.Arguments.AutorArguments
         #endregion
 
         #region Métodos
-        public static explicit operator ObterMangasResponse(Manga entidade)
+        public static explicit operator ObterAutorMangaResponse(Manga entidade)
         {
-            return new ObterMangasResponse()
+            return new ObterAutorMangaResponse()
             {
                 Id = entidade.Id,
                 Titulo = entidade.Titulo,
                 AnoLancamento = entidade.AnoLancamento,
                 EditoraId = entidade.EditoraId,
-                EditoraNome = !String.IsNullOrEmpty(entidade.Editora.Nome) ? entidade.Editora.Nome : ""
+                EditoraNome = !string.IsNullOrEmpty(entidade.Editora.Nome) ? entidade.Editora.Nome : ""
             };
         }
         #endregion

@@ -34,10 +34,10 @@ namespace EstoqueMangas.Domain.Services
         {
             if (!(request is null))
             {
-                AdicionarRequest adicionarRequest = (AdicionarRequest)request;
+                AdicionarAutorRequest adicionarAutorRequest = (AdicionarAutorRequest)request;
 
                 var autor = new AutorBuild()
-                    .AdicionarNome(adicionarRequest.PrimeiroNome, adicionarRequest.UltimoNome)
+                    .AdicionarNome(adicionarAutorRequest.PrimeiroNome, adicionarAutorRequest.UltimoNome)
                     .BuildAdicionar();
 
                 AddNotifications(autor);
@@ -48,7 +48,7 @@ namespace EstoqueMangas.Domain.Services
                     {
                         _repositoryAutor.Adicionar(autor);
 
-                        return (AdicionarResponse)autor;
+                        return (AdicionarAutorResponse)autor;
                     }
                     else
                     {
@@ -73,13 +73,13 @@ namespace EstoqueMangas.Domain.Services
         {
             if (!(request is null))
             {
-                EditarRequest editarRequest = (EditarRequest)request;
+                EditarAutorRequest editarAutorRequest = (EditarAutorRequest)request;
 
-                var autor = _repositoryAutor.ObterPorId(editarRequest.Id);
+                var autor = _repositoryAutor.ObterPorId(editarAutorRequest.Id);
 
                 if (!(autor is null))
                 {
-                    autor.Editar(editarRequest);
+                    autor.Editar(editarAutorRequest);
 
                     AddNotifications(autor);
 
@@ -89,7 +89,7 @@ namespace EstoqueMangas.Domain.Services
                         {
                             _repositoryAutor.Editar(autor);
 
-                            return (EditarResponse)autor;
+                            return (EditarAutorResponse)autor;
                         }
                         else
                         {
@@ -144,7 +144,7 @@ namespace EstoqueMangas.Domain.Services
 
         public IEnumerable<IResponse> Listar()
         {
-            return _repositoryAutor.Listar().ToList().Select(a => (ObterResponse)a).ToList();
+            return _repositoryAutor.Listar().ToList().Select(a => (ObterAutorResponse)a).ToList();
         }
 
         public IEnumerable<IResponse> ListarComMangas()
@@ -156,7 +156,7 @@ namespace EstoqueMangas.Domain.Services
                 return new AutorFactory()
                     .AdicionarMangasEmAutores(autoresMangas)
                     .ListarAutores()
-                    .Select(a => (ObterResponse)a)
+                    .Select(a => (ObterAutorResponse)a)
                     .ToList();
             }
             else
@@ -173,7 +173,7 @@ namespace EstoqueMangas.Domain.Services
 
             if (!(autor is null))
             {
-                return (ObterResponse)autor;
+                return (ObterAutorResponse)autor;
             }
             else
             {
@@ -191,7 +191,7 @@ namespace EstoqueMangas.Domain.Services
             {
                 autor.IncluirMangas(_repositoryAutorManga.ListarPor(am => am.AutorId == id, am => am.Manga).ToList());
 
-                return (ObterResponse)autor;
+                return (ObterAutorResponse)autor;
             }
             else
             {
@@ -205,7 +205,7 @@ namespace EstoqueMangas.Domain.Services
         {
             return _repositoryAutorManga.ListarPor(am => am.MangaId == mangaId, am => am.Autor)
                                         .ToList()
-                                        .Select(am => (ObterResponse)am.Autor)
+                                        .Select(am => (ObterAutorResponse)am.Autor)
                                         .ToList();
         }
 
@@ -227,9 +227,9 @@ namespace EstoqueMangas.Domain.Services
                     ? new AutorFactory()
                         .AdicionarMangasEmAutores(mangas)
                         .ListarAutores()
-                        .Select(a => (ObterResponse)a)
+                        .Select(a => (ObterAutorResponse)a)
                         .ToList()
-                    : autores.Select(a => (ObterResponse)a).ToList();
+                    : autores.Select(a => (ObterAutorResponse)a).ToList();
             }
             else
             {
@@ -251,7 +251,7 @@ namespace EstoqueMangas.Domain.Services
 
                 if (!(autor is null))
                 {
-                    return (ObterResponse)autor;
+                    return (ObterAutorResponse)autor;
                 }
                 else
                 {
@@ -286,8 +286,8 @@ namespace EstoqueMangas.Domain.Services
                         .ToList();
 
                     return !(mangas is null) || mangas.Count > 0
-                        ? (ObterResponse)new AutorFactory().AdicionarMangasEmAutor(mangas).ObterAutor()
-                        : (ObterResponse)autor;
+                        ? (ObterAutorResponse)new AutorFactory().AdicionarMangasEmAutor(mangas).ObterAutor()
+                        : (ObterAutorResponse)autor;
                 }
                 else
                 {
