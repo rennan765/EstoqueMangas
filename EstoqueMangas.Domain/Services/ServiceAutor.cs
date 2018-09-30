@@ -262,8 +262,7 @@ namespace EstoqueMangas.Domain.Services
             }
             else
             {
-                AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Primeiro Nome"));
-                AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Último Nome"));
+                NotificarNomeEmBranco();
 
                 return null;
             }
@@ -291,8 +290,7 @@ namespace EstoqueMangas.Domain.Services
                 }
                 else
                 {
-                    AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Primeiro Nome"));
-                    AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Último Nome"));
+                    NotificarNomeEmBranco();
 
                     return null;
                 }
@@ -305,6 +303,12 @@ namespace EstoqueMangas.Domain.Services
             }
         }
 
+        private void NotificarNomeEmBranco()
+        {
+            AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Primeiro Nome"));
+            AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Último Nome"));
+        }
+
         private void NotificarRequestNulo()
         {
             AddNotification("Request", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Request"));
@@ -312,8 +316,7 @@ namespace EstoqueMangas.Domain.Services
 
         private void NotificarAutorInexistente()
         {
-            //Nenhum.
-            AddNotification("Autor", Message.X0_NAO_ENCONTRADO.ToFormat("Autor"));
+            AddNotification("Autor", Message.NENHUM_X0_ENCONTRADO.ToFormat("Autor"));
         }
         #endregion
     }
