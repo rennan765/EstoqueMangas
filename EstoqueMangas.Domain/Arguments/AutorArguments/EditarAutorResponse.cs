@@ -19,7 +19,7 @@ namespace EstoqueMangas.Domain.Arguments.AutorArguments
             return new EditarAutorResponse()
             {
                 Id = entidade.Id,
-                NomeCompleto = entidade.ToString(),
+                NomeCompleto = entidade.NomeAutor.ToString(),
                 Mensagem = Message.OPERACAO_REALIZADA_COM_SUCESSO
             };
         }
