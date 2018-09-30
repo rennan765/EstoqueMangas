@@ -239,14 +239,15 @@ namespace EstoqueMangas.Domain.Services
             }
         }
 
-        public IResponse ObterPorNome(IRequest request)
+        public IResponse ObterPorNome(string primeiroNome, string ultimoNome)
         {
-            if (!(request is null))
+            if (!string.IsNullOrEmpty(primeiroNome) || !string.IsNullOrEmpty(ultimoNome))
             {
-                ObterRequest obterRequest = (ObterRequest)request;
-
-                var autor = _repositoryAutor.ObterPor(a => a.NomeAutor.PrimeiroNome == obterRequest.PrimeiroNome 
-                                                      && a.NomeAutor.UltimoNome == obterRequest.UltimoNome);
+                var autor = !string.IsNullOrEmpty(primeiroNome) && !string.IsNullOrEmpty(ultimoNome)
+                               ? _repositoryAutor.ObterPor(a => a.NomeAutor.PrimeiroNome == primeiroNome && a.NomeAutor.UltimoNome == ultimoNome)
+                               : !string.IsNullOrEmpty(primeiroNome) && string.IsNullOrEmpty(ultimoNome)
+                                    ? _repositoryAutor.ObterPor(a => a.NomeAutor.PrimeiroNome == primeiroNome)
+                                    : _repositoryAutor.ObterPor(a => a.NomeAutor.UltimoNome == ultimoNome);
 
                 if (!(autor is null))
                 {
@@ -261,20 +262,22 @@ namespace EstoqueMangas.Domain.Services
             }
             else
             {
-                NotificarRequestNulo();
+                AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Primeiro Nome"));
+                AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Último Nome"));
 
                 return null;
             }
         }
 
-        public IResponse ObterPorNomeComMangas(IRequest request)
+        public IResponse ObterPorNomeComMangas(string primeiroNome, string ultimoNome)
         {
-            if (!(request is null))
+            if (!string.IsNullOrEmpty(primeiroNome) || !string.IsNullOrEmpty(ultimoNome))
             {
-                ObterRequest obterRequest = (ObterRequest)request;
-
-                var autor = _repositoryAutor.ObterPor(a => a.NomeAutor.PrimeiroNome == obterRequest.PrimeiroNome 
-                                                      && a.NomeAutor.UltimoNome == obterRequest.UltimoNome);
+                var autor = !string.IsNullOrEmpty(primeiroNome) && !string.IsNullOrEmpty(ultimoNome)
+                               ? _repositoryAutor.ObterPor(a => a.NomeAutor.PrimeiroNome == primeiroNome && a.NomeAutor.UltimoNome == ultimoNome)
+                               : !string.IsNullOrEmpty(primeiroNome) && string.IsNullOrEmpty(ultimoNome)
+                                    ? _repositoryAutor.ObterPor(a => a.NomeAutor.PrimeiroNome == primeiroNome)
+                                    : _repositoryAutor.ObterPor(a => a.NomeAutor.UltimoNome == ultimoNome);
 
                 if (!(autor is null))
                 {
@@ -288,7 +291,8 @@ namespace EstoqueMangas.Domain.Services
                 }
                 else
                 {
-                    AddNotification("Autor", Message.X0_NAO_ENCONTRADO.ToFormat("Autor"));
+                    AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Primeiro Nome"));
+                    AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Último Nome"));
 
                     return null;
                 }

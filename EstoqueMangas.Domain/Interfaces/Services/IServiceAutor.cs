@@ -11,7 +11,7 @@ namespace EstoqueMangas.Domain.Interfaces.Services
         IEnumerable<IResponse> ListarComMangas();
         IEnumerable<IResponse> ListarPorManga(Guid mangaId);
         IEnumerable<IResponse> ListarPorMangaComMangas(Guid mangaId);
-        IResponse ObterPorNome(IRequest request);
-        IResponse ObterPorNomeComMangas(IRequest request);
+        IResponse ObterPorNome(string primeiroNome, string ultimoNome);
+        IResponse ObterPorNomeComMangas(string primeiroNome, string ultimoNome);
     }
 }
