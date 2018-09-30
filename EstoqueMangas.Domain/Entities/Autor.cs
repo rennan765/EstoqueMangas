@@ -16,7 +16,7 @@ namespace EstoqueMangas.Domain.Entities
         #region Construtores
         protected Autor()
         {
-
+            Mangas = new List<AutorManga>();
         }
 
         public Autor(Nome nomeAutor)
