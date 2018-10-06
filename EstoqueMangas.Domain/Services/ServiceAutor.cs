@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using EstoqueMangas.Domain.Arguments.AutorArguments;
 using EstoqueMangas.Domain.Arguments.Base;
+using EstoqueMangas.Domain.Entities;
 using EstoqueMangas.Domain.Entities.Build;
 using EstoqueMangas.Domain.Entities.Factory;
 using EstoqueMangas.Domain.Interfaces.Arguments;
@@ -19,13 +20,15 @@ namespace EstoqueMangas.Domain.Services
         #region Atributos
         private readonly IRepositoryAutor _repositoryAutor;
         private readonly IRepositoryAutorManga _repositoryAutorManga;
+        private readonly IRepositoryManga _repositoryManga;
         #endregion
 
         #region Construtores
-        public ServiceAutor(IRepositoryAutor repositoryAutor, IRepositoryAutorManga repositoryAutorManga)
+        public ServiceAutor(IRepositoryAutor repositoryAutor, IRepositoryAutorManga repositoryAutorManga, IRepositoryManga repositoryManga)
         {
             _repositoryAutor = repositoryAutor;
             _repositoryAutorManga = repositoryAutorManga;
+            _repositoryManga = repositoryManga;
         }
         #endregion
 
@@ -120,15 +123,7 @@ namespace EstoqueMangas.Domain.Services
 
             if (!(autor is null))
             {
-                var autoresMangas = _repositoryAutorManga.ListarPor(am => am.AutorId == autor.Id).ToList();
-
-                if (!(autoresMangas is null) && autoresMangas.Count > 0)
-                {
-                    foreach (var autorManga in autoresMangas)
-                    {
-                        _repositoryAutorManga.Remover(autorManga);
-                    }
-                }
+                RemoverMangasDoAutor(autor);
 
                 _repositoryAutor.Remover(autor);
 
@@ -149,22 +144,15 @@ namespace EstoqueMangas.Domain.Services
 
         public IEnumerable<IResponse> ListarComMangas()
         {
-            var autoresMangas = _repositoryAutorManga.ListarOrdenandoPor(am => am.Autor.NomeAutor, true, am => am.Autor, am => am.Manga).ToList();
+            var response = TratarAutoresComMangas(_repositoryAutor.ListarPor(a => a.Mangas.Count <= 0).ToList(), 
+                                                  _repositoryAutor.ListarPor(a => a.Mangas.Count > 0).ToList());
 
-            if (!(autoresMangas is null) || autoresMangas.Count > 0)
-            {
-                return new AutorFactory()
-                    .AdicionarMangasEmAutores(autoresMangas)
-                    .ListarAutores()
-                    .Select(a => (ObterAutorResponse)a)
-                    .ToList();
-            }
-            else
+            if (response is null)
             {
                 NotificarAutorInexistente();
-
-                return null;
             }
+
+            return response;
         }
 
         public IResponse ObterPorId(Guid id)
@@ -262,7 +250,8 @@ namespace EstoqueMangas.Domain.Services
             }
             else
             {
-                NotificarNomeEmBranco();
+                AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Primeiro Nome"));
+                AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Último Nome"));
 
                 return null;
             }
@@ -284,13 +273,14 @@ namespace EstoqueMangas.Domain.Services
                         .ListarPor(am => am.AutorId == autor.Id, am => am.Manga)
                         .ToList();
 
-                    return !(mangas is null) || mangas.Count > 0
+                    return !(mangas is null) && mangas.Count > 0
                         ? (ObterAutorResponse)new AutorFactory().AdicionarMangasEmAutor(mangas).ObterAutor()
                         : (ObterAutorResponse)autor;
                 }
                 else
                 {
-                    NotificarNomeEmBranco();
+                    AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Primeiro Nome"));
+                    AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Último Nome"));
 
                     return null;
                 }
@@ -303,12 +293,6 @@ namespace EstoqueMangas.Domain.Services
             }
         }
 
-        private void NotificarNomeEmBranco()
-        {
-            AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Primeiro Nome"));
-            AddNotification("Nome do autor", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Último Nome"));
-        }
-
         private void NotificarRequestNulo()
         {
             AddNotification("Request", Message.O_CAMPO_X0_E_INFORMACAO_OBRIGATORIA.ToFormat("Request"));
@@ -317,6 +301,45 @@ namespace EstoqueMangas.Domain.Services
         private void NotificarAutorInexistente()
         {
             AddNotification("Autor", Message.NENHUM_X0_ENCONTRADO.ToFormat("Autor"));
+        }
+
+        private void RemoverMangasDoAutor(Autor autor)
+        {
+            var autoresMangas = _repositoryAutorManga.ListarPor(am => am.AutorId == autor.Id, am => am.Manga).ToList();
+
+            if (!(autoresMangas is null) && autoresMangas.Count > 0)
+            {
+                foreach (var autorManga in autoresMangas)
+                {
+                    if (!_repositoryAutorManga.Existe(am => am.MangaId == autorManga.MangaId && am.AutorId != autorManga.AutorId))
+                    {
+                        _repositoryAutorManga.Remover(autorManga);
+                        _repositoryManga.Remover(autorManga.Manga);
+                    }
+                }
+            }
+        }
+
+        private IEnumerable<IResponse> TratarAutoresComMangas(IList<Autor> autoresSemMangas, IList<Autor> autoresComMangas)
+        {
+            var response = new List<ObterAutorResponse>();
+
+            if (!(autoresSemMangas is null))
+            {
+                response = autoresSemMangas.Select(a => (ObterAutorResponse)a).ToList();
+            }
+
+            if (!(autoresComMangas is null))
+            {
+                foreach (var autor in autoresComMangas)
+                {
+                    response.Add((ObterAutorResponse)new AutorFactory()
+                                 .AdicionarMangasEmAutor(autor.Mangas)
+                                 .ObterAutor());
+                }
+            }
+
+            return response.Count > 0 ? response : null;
         }
         #endregion
     }
