@@ -1,8 +1,8 @@
 ﻿using EstoqueMangas.Api.Controllers.Base;
-using EstoqueMangas.Api.Security;
 using EstoqueMangas.Domain.Arguments.UsuarioArguments;
 using EstoqueMangas.Domain.Interfaces.Services;
 using EstoqueMangas.Domain.Interfaces.Transactions;
+using EstoqueMangas.Infra.SecurityConfigurations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -44,7 +44,9 @@ namespace EstoqueMangas.Api.Controllers
         /// Rota para autenticação do usuário.
         /// </summary>
         [Route("api/v1/Autenticacao/Autenticar"), HttpPost, AllowAnonymous]
-        public object Autenticar([FromBody]AutenticarUsuarioRequest request, [FromServices]TokenConfigurations tokenConfigurations, [FromServices]SigningConfigurations signingConfigurations)
+        public object Autenticar([FromBody]AutenticarUsuarioRequest request, 
+                                 [FromServices]TokenConfigurations tokenConfigurations, 
+                                 [FromServices]SigningConfigurations signingConfigurations)
         {
             AutenticarUsuarioResponse response = (AutenticarUsuarioResponse)_serviceUsuario.Autenticar(request);
 

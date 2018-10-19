@@ -1,4 +1,4 @@
-﻿using EstoqueMangas.Api.Extensions;
+﻿using EstoqueMangas.CrossCutting.IoC;
 using EstoqueMangas.Domain.Interfaces.Transactions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,12 +12,6 @@ namespace EstoqueMangas.Api
     /// </summary>
     public class Startup
     {
-        #region Atributos
-        private const string Issuer = "c1f51f42";
-        private const string Audience = "c6bbbb645024";
-        #endregion
-
-        #region Métodos
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         /// <summary>
@@ -26,13 +20,7 @@ namespace EstoqueMangas.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.ConfigurarContexto()
-                    .ConfigurarAcessorDeContexto()
-                    .ConfigurarServicos()
-                    .ConfigurarRepositorios()
-                    .ConfigurarToken(Audience, Issuer)
-                    .ConfigurarMvc()
-                    .ConfigurarSwagger();
+            services.ResolveApi();
 
             services.AddCors();
         }
@@ -66,6 +54,5 @@ namespace EstoqueMangas.Api
             //Inicializa o banco de dados e migra pra versão mais recente.
             serviceProvider.GetService<IUnitOfWork>().Incializar();
         }
-        #endregion 
     }
 }

@@ -1,11 +1,8 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace EstoqueMangas.Api.Security
+namespace EstoqueMangas.Infra.SecurityConfigurations
 {
-    /// <summary>
-    /// Signing configurations.
-    /// </summary>
     public class SigningConfigurations
     {
         #region Atributos

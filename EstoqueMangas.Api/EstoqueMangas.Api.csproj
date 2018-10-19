@@ -9,10 +9,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />
-    <Folder Include="Security\" />
     <Folder Include="Controllers\" />
     <Folder Include="Controllers\Base\" />
-    <Folder Include="Extensions\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,11 +24,17 @@
   <ItemGroup>
     <ProjectReference Include="..\EstoqueMangas.Infra\EstoqueMangas.Infra.csproj" />
     <ProjectReference Include="..\EstoqueMangas.Domain\EstoqueMangas.Domain.csproj" />
+    <ProjectReference Include="..\EstoqueMangas.CrossCutting.IoC\EstoqueMangas.CrossCutting.IoC.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="appsettings.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="appsettings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Security\SigningConfigurations.cs" />
+    <Compile Remove="Security\TokenConfigurations.cs" />
+    <Compile Remove="Extensions\ServiceCollectionExtension.cs" />
   </ItemGroup>
 </Project>

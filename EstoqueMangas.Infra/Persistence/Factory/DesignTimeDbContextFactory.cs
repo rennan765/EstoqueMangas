@@ -1,4 +1,4 @@
-﻿using EstoqueMangas.Shared.Persistence;
+﻿using EstoqueMangas.CrossCutting.Connection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
