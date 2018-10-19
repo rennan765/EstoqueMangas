@@ -5,8 +5,6 @@ namespace EstoqueMangas.CrossCutting.IoC
 {
     public static class IoC
     {
-
-
         #region Métodos
         public static IServiceCollection ResolveApi(this IServiceCollection services)
         {

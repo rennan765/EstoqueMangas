@@ -19,7 +19,6 @@ namespace EstoqueMangas.Api
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.ResolveApi();
 
             services.AddCors();

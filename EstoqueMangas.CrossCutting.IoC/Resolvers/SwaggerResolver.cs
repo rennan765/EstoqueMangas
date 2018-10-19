@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
+using System.Collections.Generic;
+using System.IO;
 
 namespace EstoqueMangas.CrossCutting.IoC.Resolvers
 {

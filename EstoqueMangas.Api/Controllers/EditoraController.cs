@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using EstoqueMangas.Api.Controllers.Base;
+﻿using EstoqueMangas.Api.Controllers.Base;
 using EstoqueMangas.Domain.Arguments.EditoraArguments;
 using EstoqueMangas.Domain.Arguments.UsuarioArguments;
 using EstoqueMangas.Domain.Interfaces.Services;
@@ -8,6 +6,8 @@ using EstoqueMangas.Domain.Interfaces.Transactions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
+using System.Threading.Tasks;
 
 namespace EstoqueMangas.Api.Controllers
 {

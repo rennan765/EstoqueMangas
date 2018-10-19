@@ -1,9 +1,9 @@
-﻿using System;
-using System.Globalization;
-using EstoqueMangas.Infra.SecurityConfigurations;
+﻿using EstoqueMangas.Infra.SecurityConfigurations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Globalization;
 
 namespace EstoqueMangas.CrossCutting.IoC.Resolvers
 {
@@ -13,6 +13,7 @@ namespace EstoqueMangas.CrossCutting.IoC.Resolvers
         private const string _issuer = "c1f51f42";
         private const string _audience = "c6bbbb645024";
         #endregion
+        
         #region Métodos
         public static IServiceCollection ConfigureToken(this IServiceCollection services)
         {

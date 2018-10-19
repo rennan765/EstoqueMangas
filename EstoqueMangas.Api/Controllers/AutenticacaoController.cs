@@ -102,7 +102,7 @@ namespace EstoqueMangas.Api.Controllers
         /// <summary>
         /// Rota de alterção de senha
         /// </summary>
-        [Route("api/v1/Autenticacao/AlterarSenha"), HttpPost, AllowAnonymous]
+        [Route("api/v1/Autenticacao/AlterarSenha"), HttpPatch, AllowAnonymous]
         public async Task<IActionResult> AlterarSenha([FromBody]AlterarSenhaRequest request)
         {
             try
