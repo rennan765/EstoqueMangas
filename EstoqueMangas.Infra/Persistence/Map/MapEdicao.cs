@@ -19,11 +19,6 @@ namespace EstoqueMangas.Infra.Persistence.Map
                    .HasColumnName("NUMERO")
                    .IsRequired();
 
-            builder.Property(e => e.EdicaoManga)
-                   .HasColumnName("EDICAO_MANGA")
-                   .HasDefaultValue("")
-                   .IsRequired();
-
             builder.HasOne(e => e.Manga)
                    .WithMany()
                    .HasForeignKey(e => e.MangaId)

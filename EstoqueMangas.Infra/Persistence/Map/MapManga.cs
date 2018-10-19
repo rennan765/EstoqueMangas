@@ -29,7 +29,10 @@ namespace EstoqueMangas.Infra.Persistence.Map
                    .WithMany(e => e.Mangas)
                    .HasForeignKey(m => m.EditoraId)
                    .IsRequired();
-            
+
+            builder.Property(e => e.EdicaoManga)
+                   .HasColumnName("EDICAO_MANGA");
+
             builder.HasMany(m => m.Edicoes)
                    .WithOne(e => e.Manga)
                    .IsRequired();
