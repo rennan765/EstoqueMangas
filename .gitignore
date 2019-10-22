@@ -40,3 +40,4 @@ Thumbs.db
 # dotCover
 *.dotCover
 /EstoqueMangas.Api/Properties/
+.vscode/
