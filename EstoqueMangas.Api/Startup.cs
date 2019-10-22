@@ -1,5 +1,4 @@
 ﻿using EstoqueMangas.CrossCutting.IoC;
-using EstoqueMangas.Domain.Interfaces.Transactions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -49,9 +48,6 @@ namespace EstoqueMangas.Api
             {
                 c.SwaggerEndpoint($"{(string.IsNullOrEmpty(c.RoutePrefix) ? "." : "..")}/swagger/v1/swagger.json", "EstoqueMangas - V1");
             });
-
-            //Inicializa o banco de dados e migra pra versão mais recente.
-            serviceProvider.GetService<IUnitOfWork>().Incializar();
         }
     }
 }
