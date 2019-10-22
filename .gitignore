@@ -39,4 +39,4 @@ Thumbs.db
 
 # dotCover
 *.dotCover
-/EstoqueMangas.Api/Properties/PublishProfiles/FolderProfile.pubxml
+/EstoqueMangas.Api/Properties/
